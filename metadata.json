@@ -8,6 +8,28 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "contemplative-silence",
+  "slug": "articles/contemplative-silence.html",
+  "title": "Contemplative Silence: The Neuroscience of Inner Stillness",
+  "hook": "\"Silence is not the absence of sound — it is the presence of a mind finally still enough to hear itself think.\"",
+  "category": "stillness",
+  "traditions": ["Christianity (Hesychasm)", "Buddhism (Ariya-tuṇhībhāva)", "Islam (Khalwa)", "Hinduism (Mauna)"],
+  "namedModel": "The Stillness Model",
+  "figuresOfSpeech": [
+    "Silence is the language of the soul — the loudest sound we never speak.",
+    "To master the voice, first master its absence.",
+    "In the quiet between heartbeats, the mind finds its true rhythm.",
+    "Stillness is not emptiness — it is presence without the noise of self."
+  ],
+  "visualMotif": "Monastic stone architecture with morning light filtering through ancient windows; candle flame reflected on polished timber; desert dawn prayer grounds with mist rising; intricate geometric tilework patterns representing sacred geometry and contemplative order.",
+  "dataVisualization": "Interactive animated line chart showing HRV (Heart Rate Variability) improvement across 0-40 minutes of contemplative silence, with real-time percentage display and toggleable duration presets (5, 10, 20, 40 min).",
+  "instrument": "Contemplative Silence Timer — a localStorage-enabled timer with session tracking, total minutes counter, and day streak tracker, with pause/resume/start/reset functionality.",
+  "actionStep": "Set aside 10 minutes today in complete silence — no phone, no music, no conversation. Notice the quality of your mind before and after.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-stillness"
+},{
       "id": "fixed-hour-prayer",
       "slug": "articles/fixed-hour-prayer.html",
       "title": "The Hour Is the Habit",
