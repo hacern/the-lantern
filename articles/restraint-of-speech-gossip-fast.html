@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Speech Fast: 24 Hours Without Casual Judgment — The Lantern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    a { color: var(--flame); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout Components */
+    .header, .footer {
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+    }
+    .footer {
+      border-bottom: none;
+      border-top: 1px solid var(--line);
+      margin-top: 60px;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+    .tagline {
+      font-size: 0.85rem;
+      color: var(--dim);
+      font-family: var(--font-mono);
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Article Header */
+    .article-header {
+      padding: 60px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(193, 80, 46, 0.15);
+      color: var(--cat-discipline);
+      border: 1px solid var(--cat-discipline);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      line-height: 1.15;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--dim);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .meta-bar {
+      display: flex;
+      gap: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--dim);
+    }
+
+    /* Body Prose */
+    .prose {
+      padding-top: 36px;
+      font-size: 1.05rem;
+      color: #E2DDD5;
+    }
+    .prose p { margin-bottom: 24px; }
+    .prose strong { color: var(--text); font-weight: 600; }
+
+    /* Pull Quotes / Maxims */
+    blockquote {
+      border-left: 3px solid var(--cat-discipline);
+      padding: 12px 0 12px 20px;
+      margin: 32px 0;
+      background: var(--bg-raised);
+      border-radius: 0 6px 6px 0;
+    }
+    blockquote p {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 0 !important;
+    }
+
+    /* Interactive Data Chart */
+    .chart-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 36px 0;
+    }
+    .chart-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .chart-desc {
+      font-size: 0.85rem;
+      color: var(--dim);
+      margin-bottom: 20px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .control-group label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--flame);
+    }
+    .readout {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .metric {
+      font-family: var(--font-mono);
+    }
+    .metric-val {
+      font-size: 1.4rem;
+      color: var(--flame);
+      font-weight: 700;
+    }
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    /* Predict Before Reveal */
+    .prediction-box {
+      background: var(--bg-raised);
+      border: 1px dotted var(--cat-discipline);
+      padding: 20px;
+      border-radius: 6px;
+      margin: 32px 0;
+    }
+    .prediction-box h4 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--cat-discipline);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .prediction-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn {
+      background: var(--flame);
+      color: #17151C;
+      border: none;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    /* Instrument Section */
+    .instrument {
+      background: var(--bg-raised);
+      border: 2px solid var(--cat-discipline);
+      border-radius: 8px;
+      padding: 28px;
+      margin: 40px 0;
+    }
+    .instrument-head {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    .gate-checklist {
+      list-style: none;
+      margin: 20px 0;
+    }
+    .gate-checklist li {
+      padding: 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .gate-checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--flame);
+    }
+
+    /* Share Suite */
+    .share-suite {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      margin-top: 40px;
+    }
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .share-btn {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      color: var(--dim);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .share-btn:hover { color: var(--text); border-color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="https://the-lantern.hacernube.workers.dev/" class="brand" aria-label="The Lantern">The Lantern</a>
+    <span class="tagline">OPERATIONAL RELIGIOUS TECHNOLOGY</span>
+  </header>
+
+  <main class="container">
+    <article>
+      <header class="article-header">
+        <span class="badge">Discipline</span>
+        <h1>The Speech Fast: 24 Hours Without Casual Judgment</h1>
+        <p class="subtitle">You spend 40 minutes every day repairing, justifying, or regretting unprompted speech. Mute the social-evaluation circuit for 24 hours to reclaim working memory.</p>
+        <div class="meta-bar">
+          <span>Traditions: Buddhism · Judaism</span>
+          <span>Read Time: 4 mins</span>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>You left a meeting two hours ago, but you are still replaying a three-second comment you made about a colleague’s project. Your heart rate is slightly elevated, your cognitive load is fractured, and you have checked your inbox four times for a response that will likely never come. This is the hidden tax of unprompted evaluation: the cognitive debt incurred every time you speak to judge, correct, or vent without operational purpose.</p>
+
+        <p>The ancient world identified this energy bleed with precision. Theravada Buddhists operationalized restraint of speech through <strong>Sammā Vācā</strong> (Right Speech)—specifically forbidding gossip, harsh words, and idle babble (*samphappalāpa*). In Rabbinic Judaism, the laws of <strong>Shmirat HaLashon</strong> treat derogatory speech (*Lashon Hara*) not merely as an ethical lapse, but as a physiological breach that destabilizes the speaker's homeostatic balance. Both traditions reached the exact same conclusion: unmanaged speech is an expensive, low-yield leakage of executive control.</p>
+
+        <div class="prediction-box">
+          <h4>Predict Before Reveal</h4>
+          <p>What percentage of daily adult conversation consists of third-party evaluation or idle social judgment?</p>
+          <div class="prediction-actions" id="pred-container">
+            <button class="btn btn-outline" onclick="revealPredict(30)">~30%</button>
+            <button class="btn btn-outline" onclick="revealPredict(60)">~60%</button>
+            <button class="btn btn-outline" onclick="revealPredict(80)">~80%</button>
+          </div>
+          <p id="pred-result" style="display:none; margin-top:12px; font-size:0.9rem; color:var(--text);"></p>
+        </div>
+
+        <p>Neurobiologically, unprompted speech—especially social judgment—triggers a burst of social-reward dopamine followed by a protracted spike in baseline cortisol driven by the social-evaluative threat circuit. Every idle critique requires your brain to model how the listener perceived you, whether they will repeat the statement, and how you must defend your status if challenged. You aren't just talking; you are booting up a resource-intensive security sub-routine every time you open your mouth.</p>
+
+        <!-- Interactive Data Visualization -->
+        <div class="chart-card">
+          <div class="chart-title">The Social Evaluation Stress Engine</div>
+          <div class="chart-desc">Adjust your daily volume of unprompted judgment/gossip to calculate the daily executive load and cortisol recovery window required.</div>
+          
+          <div class="controls">
+            <div class="control-group">
+              <label for="gossip-slider">Unprompted Evaluations / Day: <span id="gossip-val">12</span></label>
+              <input type="range" id="gossip-slider" min="0" max="30" value="12" oninput="updateChart()">
+            </div>
+            <div class="control-group">
+              <label for="friction-slider">Social Network Density: <span id="friction-val">Medium</span></label>
+              <input type="range" id="friction-slider" min="1" max="3" value="2" oninput="updateChart()">
+            </div>
+          </div>
+
+          <div class="readout">
+            <div class="metric">
+              <div class="metric-val" id="metric-ram">18%</div>
+              <div class="metric-label">RAM Drain</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val" id="metric-cortisol">3.2 hrs</div>
+              <div class="metric-label">Cortisol Elevated</div>
+            </div>
+          </div>
+        </div>
+
+        <blockquote>
+          <p>“Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind?”</p>
+        </blockquote>
+
+        <p>To eliminate this friction today, you will run a 24-hour trial. The cost is straightforward: you give up all unprompted evaluation, casual sarcasm, self-justification, and third-party chatter for 1440 minutes. You speak normally for operational tasks ("pass the salt", "the report is attached"), but you mute every impulse to add an unnecessary opinion.</p>
+
+        <!-- Interactive Instrument -->
+        <div class="instrument">
+          <div class="instrument-head">The 24-Hour Speech Fast Contract</div>
+          <p style="font-size:0.85rem; color:var(--dim);">Run the three-gate filter on every utterance starting now. Check all three to sign your local commitment.</p>
+
+          <ul class="gate-checklist">
+            <li>
+              <input type="checkbox" id="gate1" onchange="checkGates()">
+              <label for="gate1"><strong>Gate 1: Truth.</strong> I will state only direct, verifiable facts—no exaggeration or unverified claims.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="gate2" onchange="checkGates()">
+              <label for="gate2"><strong>Gate 2: Necessity.</strong> I will speak only if remaining silent causes immediate operational failure.</label>
+            </li>
+            <li>
+              <input type="checkbox" id="gate3" onchange="checkGates()">
+              <label for="gate3"><strong>Gate 3: Utility/Kindness.</strong> I will withhold all casual judgment, complaining, and third-party evaluation.</label>
+            </li>
+          </ul>
+
+          <button id="commit-btn" class="btn" style="width:100%; padding:12px; opacity:0.5; cursor:not-allowed;" disabled onclick="signContract()">Commit to 24-Hour Fast</button>
+          <div id="contract-status" style="margin-top:12px; font-family:var(--font-mono); font-size:0.8rem; text-align:center; color:var(--flame);"></div>
+        </div>
+
+        <p><strong>Dose and Failure Modes:</strong> You will fail within the first two hours. You will catch yourself mid-sentence offering an unprompted opinion on a news item or a coworker's habit. When this happens, do not explain or apologize at length—that simply doubles the unnecessary speech. Stop mid-phrase, pause for two full seconds, and return to quiet operations. The win condition is not a perfect record; it is catching the impulse *before* speech 5 times before you sleep tonight.</p>
+
+        <p>Tomorrow on Day 2, raise the bar: allow yourself to offer praise only if it passes all three gates, keeping all critiques restricted entirely to writing after a 2-hour delay. Shut down the engine. Mute the noise.</p>
+      </div>
+
+      <!-- Social Sharing Suite -->
+      <div class="share-suite">
+        <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--dim); text-transform:uppercase;">Share This Protocol</span>
+        <div class="share-buttons">
+          <button class="share-btn" onclick="shareX()">X (Twitter)</button>
+          <button class="share-btn" onclick="shareWA()">WhatsApp</button>
+          <button class="share-btn" onclick="shareLinkedIn()">LinkedIn</button>
+          <button class="share-btn" onclick="copyCard()">Copy Text Card</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <a href="https://the-lantern.hacernube.workers.dev/" class="brand" aria-label="The Lantern">The Lantern</a>
+    <span class="tagline">ISOLATED PAGE UTILITY SYSTEM</span>
+  </footer>
+
+  <script>
+    // Prediction logic
+    function revealPredict(val) {
+      const res = document.getElementById('pred-result');
+      res.style.display = 'block';
+      if(val === 60) {
+        res.innerHTML = "<strong>Correct.</strong> Studies (Dunbar et al.) indicate ~65% of human speech in public settings consists of social topics, third-party evaluations, and casual social positioning.";
+      } else {
+        res.innerHTML = "<strong>Close.</strong> Observational research places it at <strong>~65%</strong>. Nearly two-thirds of daily conversation is dedicated to third-party evaluation and social positioning.";
+      }
+    }
+
+    // Dynamic Chart Update
+    function updateChart() {
+      const gossip = parseInt(document.getElementById('gossip-slider').value);
+      const friction = parseInt(document.getElementById('friction-slider').value);
+      
+      document.getElementById('gossip-val').innerText = gossip;
+      const fLabels = ['Low', 'Medium', 'High'];
+      document.getElementById('friction-val').innerText = fLabels[friction - 1];
+
+      const ram = Math.min(100, Math.round((gossip * 1.5) * (friction * 0.7)));
+      const cortisol = ((gossip * 0.2) * friction).toFixed(1);
+
+      document.getElementById('metric-ram').innerText = ram + '%';
+      document.getElementById('metric-cortisol').innerText = cortisol + ' hrs';
+    }
+
+    // Instrument Gate logic
+    function checkGates() {
+      const g1 = document.getElementById('gate1').checked;
+      const g2 = document.getElementById('gate2').checked;
+      const g3 = document.getElementById('gate3').checked;
+      const btn = document.getElementById('commit-btn');
+
+      if (g1 && g2 && g3) {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+      } else {
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+        btn.style.cursor = 'not-allowed';
+      }
+    }
+
+    function signContract() {
+      const now = new Date();
+      const expires = new Date(now.getTime() + 24*60*60*1000);
+      localStorage.setItem('lantern_speech_fast', expires.toISOString());
+      document.getElementById('contract-status').innerText = 'Contract Active until ' + expires.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+
+    // Social Sharing
+    function shareX() {
+      const text = encodeURIComponent("I'm running a 24-hour fast from casual judgment and unprompted evaluation using the Three Gates Protocol via @TheLantern.");
+      window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+    }
+    function shareWA() {
+      const text = encodeURIComponent("I'm muting unprompted speech for 24 hours to reclaim focus. Protocol here: https://the-lantern.hacernube.workers.dev/");
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+    function shareLinkedIn() {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=https://the-lantern.hacernube.workers.dev/`, '_blank');
+    }
+    function copyCard() {
+      navigator.clipboard.writeText("Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind? — Running the 24-Hour Speech Fast on The Lantern.");
+      alert("Text card copied to clipboard!");
+    }
+
+    // Check existing contract on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('lantern_speech_fast');
+      if (saved) {
+        const exp = new Date(saved);
+        if (exp > new Date()) {
+          document.getElementById('contract-status').innerText = 'Active Contract running until ' + exp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+      }
+    });
+  </script>
+</body>
+</html>
