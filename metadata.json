@@ -9,6 +9,30 @@
   },
   "articles": [
     {
+  "id": "the-generosity-circuit-why-almsgiving-rewires-the-brain",
+  "slug": "articles/the-generosity-circuit-why-almsgiving-rewires-the-brain.html",
+  "title": "The Generosity Circuit: Why Almsgiving Rewires the Brain",
+  "hook": "You don't give to lose something—you give to become someone.",
+  "category": "service",
+  "traditions": ["Islam (Zakat/Sadaqah)", "Judaism (Tzedakah)", "Christianity (Almsgiving)", "Buddhism (Dana)"],
+  "namedModel": "The Prosocial Reward Model",
+  "figuresOfSpeech": [
+    "We give not to empty our hands, but to open our hearts.",
+    "The gift returns to the giver—not as wealth, but as wiring.",
+    "Charity is not subtraction from self, but addition to soul.",
+    "Generosity: the only expenditure that compounds."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Animated bar chart showing neurochemical (dopamine/oxytocin) elevation across three time phases: baseline, during giving, and post-giving",
+  "instrument": "Giving Tracker with localStorage-enabled streak counter",
+  "actionStep": "Give something within the next 20 minutes—money, time, or attention. Make it anonymous if possible. Notice the shift in your nervous system afterward.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-19",
+  "status": "published",
+  "heroAccent": "cat-service",
+  "verification": "ok"
+},
+    {
   "id": "the-clarity-of-the-empty-plate",
   "slug": "articles/the-clarity-of-the-empty-plate.html",
   "title": "The Clarity of the Empty Plate",
