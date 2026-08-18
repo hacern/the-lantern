@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{hook}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{hook}}">
+  <meta property="og:image" content="{{hero-image-url}}">
+  <meta property="og:type" content="article">
+  <title>{{title}} | The Lantern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* Inline CSS from Visual System */
+  </style>
+</head>
+<body>
+  <article class="article" data-category="{{category}}">
+    <!-- Hero Section with Generated Image -->
+    <header class="hero">
+      <img src="{{hero-image-url}}" alt="{{hero-alt-text}}" loading="eager">
+      <h1>{{title}}</h1>
+      <p class="hook">{{hook}}</p>
+    </header>
+    
+    <!-- Introduction: The Practice Across Traditions -->
+    <section class="traditions">
+      <h2>The Practice</h2>
+      <p>Cross-tradition mapping with transliterations</p>
+    </section>
+    
+    <!-- Mechanism: The Science -->
+    <section class="mechanism">
+      <h2>Why It Works</h2>
+      <p>Neuroscience/psychology explanation</p>
+      
+      <!-- Interactive Data Visualization -->
+      <div class="data-viz" data-viz-type="timeline">
+        <!-- SVG/Canvas chart -->
+      </div>
+    </section>
+    
+    <!-- Epigrams/Maxims -->
+    <blockquote class="maxim">
+      "{{selected-epigram}}"
+    </blockquote>
+    
+    <!-- Interactive Instrument -->
+    <div class="instrument" data-instrument="{{instrument-type}}">
+      <!-- Functional tool -->
+    </div>
+    
+    <!-- Action Step (Post-Utility-Gate) -->
+    <section class="action">
+      <h2>Try This Today</h2>
+      <p class="action-step">{{action-step}}</p>
+      <p class="time-estimate"> {{interactMinutes}} minutes</p>
+    </section>
+    
+    <!-- Social Sharing Suite -->
+    <div class="share-suite">
+      <h3>Share This Practice</h3>
+      <!-- Network buttons + Canvas generator -->
+    </div>
+    
+    <!-- Supporting Images -->
+    <section class="gallery">
+      <img src="{{supporting-image-1}}" alt="{{alt-1}}">
+      <img src="{{supporting-image-2}}" alt="{{alt-2}}">
+    </section>
+  </article>
+  
+  <script>
+    // Inline JS for instrument, data viz, sharing
+  </script>
+</body>
+</html>
