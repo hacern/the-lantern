@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vagal Brake: Why Breath Practices Work | The Lantern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text); }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; margin-top: 2.5rem; }
+    
+    .model-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.25rem 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+    .model-label { color: var(--dim); margin-right: 0.5rem; }
+    .model-name { color: var(--cat-stillness); font-weight: bold; }
+    .model-tag-inline {
+      color: var(--cat-stillness);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: var(--bg-raised);
+      padding: 0.1em 0.3em;
+      border-radius: 3px;
+    }
+
+    .predict {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .predict-question { font-weight: 600; margin-top: 0; }
+    .predict-input { display: flex; align-items: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+    .predict-input input[type="range"] { flex: 1; min-width: 150px; accent-color: var(--flame); }
+    .predict-reveal-btn {
+      background: var(--flame);
+      color: var(--bg);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .predict-reveal { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+    .reveal-answer { color: var(--flame); font-family: 'JetBrains Mono', monospace; margin: 0 0 0.5rem 0; }
+    .reveal-explanation { margin: 0; color: var(--dim); font-size: 0.95rem; }
+
+    .instrument {
+      background: var(--bg-raised);
+      border: 1px solid var(--cat-stillness);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .instrument-desc { color: var(--dim); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .pacer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      margin: 1rem 0;
+    }
+    .pacer-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--cat-stillness);
+      transition: transform 5.5s ease-in-out, background-color 5.5s ease-in-out;
+      margin-bottom: 1rem;
+    }
+    .pacer-circle.inhale { transform: scale(2.5); background-color: var(--flame); }
+    .pacer-circle.exhale { transform: scale(1); background-color: var(--cat-stillness); }
+    .pacer-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--text);
+      min-height: 1.5em;
+    }
+    .pacer-controls { display: flex; gap: 1rem; justify-content: center; }
+    .btn-primary {
+      background: var(--cat-stillness);
+      color: var(--bg);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--dim);
+      border: 1px solid var(--line);
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .reframe {
+      background: var(--bg-raised);
+      border-left: 4px solid var(--flame);
+      padding: 2rem;
+      margin: 3rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .action-step { font-size: 1.1rem; color: var(--text); margin: 1.5rem 0; }
+    .share-btn {
+      background: transparent;
+      color: var(--flame);
+      border: 1px solid var(--flame);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+    .share-btn:hover { background: rgba(232, 163, 61, 0.1); }
+    
+    .back-link {
+      display: inline-block;
+      color: var(--dim);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--text); }
+    
+    .category-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cat-stillness);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">← Back to The Lantern</a>
+  
+  <span class="category-tag">Stillness</span>
+  <h1>The Vagal Brake: Why Breath Practices Work</h1>
+  
+  <p>Across traditions, breath is treated as more than a biological reflex. In Hindu yoga, <em>pranayama</em> regulates life force. In Buddhist <em>anapanasati</em>, counting the breath anchors mindfulness. In Sufi <em>dhikr</em>, rhythmic breathing accompanies the remembrance of the divine. These are not just spiritual metaphors. They are physiological technologies.</p>
+
+  <div class="predict">
+    <p class="predict-question">Guess: How many breaths per minute maximizes your heart rate variability (HRV)?</p>
+    <div class="predict-input">
+      <input type="range" min="2" max="20" value="10" id="breath-guess" oninput="document.getElementById('breath-guess-val').textContent = this.value">
+      <span id="breath-guess-val" style="font-family: 'JetBrains Mono', monospace; min-width: 2ch;">10</span> breaths/min
+    </div>
+    <button class="predict-reveal-btn" onclick="document.getElementById('breath-reveal').hidden = false;">Reveal</button>
+    <div class="predict-reveal" id="breath-reveal" hidden>
+      <p class="reveal-answer"><strong>5.5 breaths per minute.</strong></p>
+      <p class="reveal-explanation">Research shows that breathing at a rate of 5.5 breaths per minute with an equal inhalation-to-exhalation ratio maximizes heart rate variability, synchronizing your heart rate, blood pressure, and respiration.</p>
+    </div>
+  </div>
+
+  <h2>The Mechanism Underneath</h2>
+  <p>The mechanism operating underneath these traditions is what we can call <span class="model-tag-inline">The Vagal Brake</span>. The vagus nerve is the primary component of the parasympathetic nervous system, acting as a literal brake pedal for your body's stress response. </p>
+  
+  <p>When you breathe, your heart rate naturally fluctuates—a phenomenon called respiratory sinus arrhythmia. When you inhale, heart rate speeds up slightly. When you exhale, it slows down. By deliberately slowing and equalizing your breath, you amplify this fluctuation. This is why the specific rhythms in religious practices matter. Sufi practitioners pair rhythmic breathing with repetition to quiet the thinking mind. Buddhist <em>anapanasati</em> meditators consciously observe and slow the natural rhythm of the breath, which clinical studies link to increased vagal tone and reduced anxiety. The tradition provides the meaning; the nervous system provides the mechanism.</p>
+
+  <div class="predict">
+    <p class="predict-question">Guess: How long does it take for your vagus nerve to register a shift and begin lowering your heart rate when you extend your exhale?</p>
+    <div class="predict-input">
+      <input type="range" min="10" max="300" value="60" step="10" id="time-guess" oninput="document.getElementById('time-guess-val').textContent = this.value">
+      <span id="time-guess-val" style="font-family: 'JetBrains Mono', monospace; min-width: 3ch;">60</span> seconds
+    </div>
+    <button class="predict-reveal-btn" onclick="document.getElementById('time-reveal').hidden = false;">Reveal</button>
+    <div class="predict-reveal" id="time-reveal" hidden>
+      <p class="reveal-answer"><strong>Just 120 seconds (2 minutes).</strong></p>
+      <p class="reveal-explanation">Studies indicate that just two minutes of deep breathing with longer exhalations engages the vagus nerve, increases HRV, and shifts the autonomic nervous system out of a stress state.</p>
+    </div>
+  </div>
+
+  <h2>The Instrument</h2>
+  <p>You do not need a retreat, a cushion, or incense to activate <span class="model-tag-inline">The Vagal Brake</span>. You only need a timer and a rhythm. Use the tool below to run a single, evidence-backed cycle.</p>
+
+  <div class="instrument">
+    <h3>Coherent Breath Pacer</h3>
+    <p class="instrument-desc">A 2-minute session at 5.5 breaths per minute (5.5s inhale, 5.5s exhale). No setup required.</p>
+    
+    <div class="pacer-container">
+      <div class="pacer-circle" id="pacer-circle"></div>
+      <div class="pacer-text" id="pacer-text">Ready</div>
+    </div>
+    
+    <div class="pacer-controls">
+      <button id="start-pacer" class="btn-primary">Start 2-Minute Session</button>
+      <button id="stop-pacer" class="btn-secondary" hidden>Stop</button>
+    </div>
+    
+    <noscript>
+      <p class="fallback" style="color: var(--dim); font-size: 0.9rem; margin-top: 1rem;">JavaScript is disabled. To practice coherent breathing: Inhale slowly through your nose for 5.5 seconds, then exhale slowly for 5.5 seconds. Repeat for 2 minutes.</p>
+    </noscript>
+  </div>
+
+  <div class="reframe">
+    <h3>The Reframe</h3>
+    <p>You don't breathe to get oxygen. You breathe to send a memo to your nervous system.</p>
+    <p class="action-step"><strong>Your action:</strong> Run the 2-minute Coherent Breath Pacer above once today. No special posture required, just 120 seconds of 5.5-second inhales and exhales.</p>
+    <button class="share-btn" onclick="shareReframe()">Copy Reframe to Clipboard</button>
+  </div>
+
+  <script>
+    // Predict-before-reveal logic is handled inline via onclick for simplicity.
+    
+    // Instrument Logic
+    let pacerInterval;
+    let timeLeft = 120; // 2 minutes
+    let isInhaling = true;
+
+    function startPacer() {
+      document.getElementById('start-pacer').hidden = true;
+      document.getElementById('stop-pacer').hidden = false;
+      timeLeft = 120;
+      runPacerCycle();
+      
+      pacerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          stopPacer();
+          document.getElementById('pacer-text').textContent = "Session Complete";
+        }
+      }, 1000);
+    }
+
+    function runPacerCycle() {
+      if (timeLeft <= 0) return;
+      const circle = document.getElementById('pacer-circle');
+      const text = document.getElementById('pacer-text');
+      
+      if (isInhaling) {
+        circle.className = 'pacer-circle inhale';
+        text.textContent = 'Inhale (5.5s)';
+        setTimeout(() => {
+          if (timeLeft > 0) {
+            isInhaling = false;
+            runPacerCycle();
+          }
+        }, 5500);
+      } else {
+        circle.className = 'pacer-circle exhale';
+        text.textContent = 'Exhale (5.5s)';
+        setTimeout(() => {
+          if (timeLeft > 0) {
+            isInhaling = true;
+            runPacerCycle();
+          }
+        }, 5500);
+      }
+    }
+
+    function stopPacer() {
+      clearInterval(pacerInterval);
+      document.getElementById('pacer-circle').className = 'pacer-circle';
+      document.getElementById('pacer-text').textContent = 'Ready';
+      document.getElementById('start-pacer').hidden = false;
+      document.getElementById('stop-pacer').hidden = true;
+    }
+
+    document.getElementById('start-pacer').addEventListener('click', startPacer);
+    document.getElementById('stop-pacer').addEventListener('click', stopPacer);
+
+    // Share Logic
+    function shareReframe() {
+      const text = "You don't breathe to get oxygen. You breathe to send a memo to your nervous system. Try 2 minutes of coherent breathing (5.5s in, 5.5s out).";
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.share-btn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      }).catch(() => {
+        alert('Could not copy to clipboard. Please copy manually.');
+      });
+    }
+
+    // Analytics Beacon
+    try {
+      fetch('https://the-lantern-analytics.example.workers.dev/collect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: 'breath-practices', event: 'view', timestamp: new Date().toISOString() })
+      });
+    } catch (e) {
+      // Fail silently, never block render
+    }
+  </script>
+</body>
+</html>
