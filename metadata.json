@@ -8,6 +8,27 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "the-unburdening-mechanism",
+  "slug": "articles/the-unburdening-mechanism.html",
+  "title": "The Unburdening Mechanism",
+  "hook": "What is unspoken festers; what is spoken ferments into release.",
+  "category": "connection",
+  "traditions": ["Catholicism (Sacrament of Reconciliation)", "Judaism (Vidui)", "Buddhism (Patimokkha)"],
+  "namedModel": "The Affect Labeling Model",
+  "figuresOfSpeech": [
+    "What is unspoken festers; what is spoken ferments into release.",
+    "The cage of silence is opened by the key of our own voice.",
+    "What we refuse to name, we are forced to carry; what we can name, we can set down."
+  ],
+  "visualMotif": "Photorealistic 35mm film shot, extreme close-up of hands holding a wooden rosary in soft morning light filtering through stained glass. Dust motes in sunbeam. Warm amber and cool blue color grading. Focus on texture of wood and skin. No human faces.",
+  "dataVisualization": "Animated canvas line chart depicting the inverse neural pathways during a 10-minute confession: decreasing amygdala activation (threat response) and increasing prefrontal cortex engagement (cognitive control), intersecting at a 'Crossover (Relief)' point.",
+  "instrument": "The Unburdening Window (5-minute local text release tool)",
+  "actionStep": "Write down one specific regret today, speak it aloud to an empty room, then destroy the paper.",
+  "interactMinutes": 4,
+  "publishDate": "2023-10-25",
+  "status": "published",
+  "heroAccent": "cat-connection"
+},{
   "id": "kebab-case-id",
   "slug": "articles/kebab-case-id.html",
   "title": "Title Case, Cormorant-worthy, under 8 words",
