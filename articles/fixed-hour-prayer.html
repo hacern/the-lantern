@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Islam prays at five fixed hours, Judaism at three, monastic Christianity by the bell. Underneath the meaning sits something a behavioral scientist would recognize instantly: cue design.">
+<title>The Hour Is the Habit — The Lantern</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --bg:#17151C; --bg-raised:#1F1C26; --line:#332F3D; --text:#F3EFE6; --dim:#9C96A8; --flame:#E8A33D;
+  --cat:#C1502E;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+::selection{background:var(--flame);color:var(--bg)}
+a{color:var(--flame)}
+
+/* ---------- header ---------- */
+.site-head{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.backlink{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-decoration:none}
+.backlink:hover{color:var(--flame)}
+.head-meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--line)}
+
+/* ---------- article head ---------- */
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:52px}
+.cat-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cat);flex:none}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,8vw,62px);line-height:1.04;margin:22px 0 20px;letter-spacing:-.01em}
+.dek{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3.4vw,24px);line-height:1.5;color:var(--dim);margin-bottom:10px}
+
+/* ---------- prose ---------- */
+article section{margin-top:60px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.6vw,34px);line-height:1.15;margin-bottom:20px}
+h2::before{content:"";display:block;width:34px;height:3px;background:var(--cat);margin-bottom:18px;border-radius:2px}
+p{margin-bottom:20px;color:#E9E4D9}
+p em{color:var(--text)}
+.mono-note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+
+/* ---------- predict cards ---------- */
+.predict{background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:40px 0;position:relative}
+.predict::before{content:"";position:absolute;top:0;left:26px;width:46px;height:3px;background:var(--flame);border-radius:0 0 3px 3px}
+.predict-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.predict-q{font-family:var(--serif);font-size:21px;line-height:1.45;margin-bottom:18px}
+.predict-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.predict-controls input[type=range]{flex:1;min-width:160px;accent-color:var(--flame);height:28px}
+.predict-controls output{font-family:var(--mono);font-size:18px;color:var(--flame);min-width:74px;text-align:right}
+.reveal-btn{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--flame);background:transparent;border:1px solid var(--flame);border-radius:999px;padding:9px 20px;cursor:pointer;transition:all .2s}
+.reveal-btn:hover:not(:disabled){background:var(--flame);color:var(--bg)}
+.reveal-btn:disabled{opacity:.45;cursor:default}
+.predict-answer{border-top:1px dashed var(--line);margin-top:20px;padding-top:18px}
+.predict.revealed .predict-answer{animation:fadeUp .55s ease both}
+.big-number{font-family:var(--serif);font-weight:700;font-size:58px;line-height:1;color:var(--flame);margin-bottom:10px}
+.big-number .unit{font-size:26px;font-weight:500;color:var(--dim);margin-left:6px}
+.answer-explain{font-size:15px;line-height:1.65;color:var(--dim);margin-bottom:8px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- model box ---------- */
+.model-box{background:var(--bg-raised);border:1px solid rgba(232,163,61,.35);border-radius:16px;padding:30px 28px;margin:48px 0}
+.model-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--flame);border:1px solid rgba(232,163,61,.5);border-radius:999px;padding:4px 12px;margin-bottom:16px}
+.model-box h3{font-family:var(--serif);font-weight:600;font-size:30px;margin-bottom:14px}
+.model-box p{font-size:15.5px;color:#E9E4D9}
+.chain-svg{width:100%;height:auto;display:block;margin:22px 0 6px}
+.model-tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--flame);background:rgba(232,163,61,.1);border:1px solid rgba(232,163,61,.4);border-radius:5px;padding:1px 7px;white-space:nowrap}
+
+/* ---------- instrument ---------- */
+.instrument{background:var(--bg-raised);border:1px solid var(--line);border-left:4px solid var(--cat);border-radius:14px;padding:30px 28px;margin:56px 0 28px}
+.instrument-head{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cat);margin-bottom:10px}
+.instrument h3{font-family:var(--serif);font-weight:600;font-size:28px;margin-bottom:8px}
+.instrument-sub{font-size:14.5px;color:var(--dim);margin-bottom:22px}
+.inst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.inst-field label,.pillset-label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.inst-field input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;color:var(--text);font-family:var(--mono);font-size:15px}
+.inst-field input:focus,.pill:focus-within{outline:2px solid var(--flame);outline-offset:1px}
+.place-field{margin-bottom:18px}
+.pillset{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.pill{font-family:var(--mono);font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;user-select:none;transition:all .15s}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill:has(input:checked){border-color:var(--flame);color:var(--flame);background:rgba(232,163,61,.08)}
+.gen-btn{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--flame);border:none;border-radius:10px;padding:13px 24px;cursor:pointer;transition:transform .1s}
+.gen-btn:hover{transform:translateY(-1px)}
+.inst-output{margin-top:22px}
+.inst-output[hidden]{display:none}
+#plan-text{background:#131017;border:1px solid var(--line);border-radius:10px;padding:18px;font-family:var(--mono);font-size:13.5px;line-height:1.8;white-space:pre-wrap;word-break:break-word;color:var(--text);margin-bottom:14px}
+.inst-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ghost-btn{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:8px 18px;cursor:pointer}
+.ghost-btn:hover{border-color:var(--flame);color:var(--flame)}
+.chain-readout{font-family:var(--mono);font-size:13px;color:var(--flame);letter-spacing:.06em;margin-left:auto}
+.streak-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+.streak-check{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--dim);cursor:pointer}
+.streak-check input{accent-color:var(--flame);width:16px;height:16px;cursor:pointer}
+.inst-hint{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:16px;line-height:1.6}
+.paper-fallback{font-size:15px;color:var(--dim);border-left:2px solid var(--line);padding-left:18px;margin:26px 0 8px}
+.paper-fallback strong{color:var(--text)}
+
+/* ---------- reframe ---------- */
+.reframe{background:var(--text);color:var(--bg);border-radius:18px;padding:clamp(30px,6vw,48px);margin:64px 0}
+.reframe-chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text);background:var(--bg);border-radius:999px;padding:5px 13px;margin-bottom:22px}
+.reframe h2{color:var(--bg);font-size:clamp(30px,5.4vw,40px);margin-bottom:20px}
+.reframe h2::before{background:var(--cat)}
+.reframe p{color:#3A3444;font-size:16.5px}
+.keyline{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(21px,3.6vw,26px);line-height:1.4;color:var(--bg);border-left:3px solid var(--cat);padding-left:18px;margin:26px 0}
+.action-step{background:rgba(23,21,28,.05);border:1px solid rgba(23,21,28,.15);border-radius:12px;padding:18px 20px;margin:24px 0}
+.action-step strong{color:var(--bg)}
+.reframe-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.cta-btn{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:var(--bg);border:none;border-radius:10px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+.cta-btn:hover{background:var(--cat)}
+.share-btn{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:transparent;border:1.5px solid var(--bg);border-radius:10px;padding:12px 20px;cursor:pointer}
+.share-btn:hover{background:var(--bg);color:var(--text)}
+.share-status{font-family:var(--mono);font-size:11px;color:#3A3444}
+
+/* ---------- footer ---------- */
+.sources{margin:64px 0 40px}
+.sources h3{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.sources ul{list-style:none}
+.sources li{font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--dim);border-top:1px dashed var(--line);padding:9px 0}
+.site-foot{border-top:1px solid var(--line);padding:26px 0 56px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.site-foot a{color:var(--dim);text-decoration:none}
+.site-foot a:hover{color:var(--flame)}
+noscript .ns{background:var(--bg-raised);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:30px 0;font-size:14.5px;color:var(--dim);display:block}
+
+@media (max-width:620px){
+  .inst-grid{grid-template-columns:1fr}
+  body{font-size:16px}
+  .predict{padding:22px 18px 18px}
+  .instrument{padding:24px 18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-head">
+    <a class="backlink" href="../index.html">&larr; The Lantern</a>
+    <span class="head-meta">cross-faith practice &middot; mechanism shown</span>
+  </header>
+
+  <article>
+    <div class="kicker"><span class="cat-dot"></span><span>Discipline &middot; Fixed-time daily prayer</span><span>August 18, 2026</span><span>9 min read &middot; 4 min interactive</span></div>
+    <h1>The Hour Is the Habit</h1>
+    <p class="dek">Islam prays at five fixed hours, Judaism at three, monastic Christianity by the bell. Underneath the meaning sits something a behavioral scientist would recognize instantly: cue design.</p>
+
+    <section id="s1">
+      <h2>Five windows, three services, eight bells</h2>
+      <p>The first prayer of the Islamic day begins at first light. Fajr opens at true dawn and closes at sunrise, which means its clock time depends entirely on where you are and when you're asking. In Dallas, first light arrives more than an hour earlier in June than in January. Dhuhr waits until the sun has cleared its peak. Asr fills the late afternoon, Maghrib follows sunset within minutes, and Isha arrives once twilight has faded. The Qur'an anchors the pattern to the sun itself: "Establish prayer from the decline of the sun until the darkness of the night" (17:78). Mosque bulletins print a fresh column of times for every day of the year, because the cue is astronomical, not administrative.</p>
+      <p>Jewish weekday prayer runs on the same logic at a different resolution. The Amidah, the standing prayer at the center of each service, is traditionally recited three times a day: <em>Shacharit</em> in the morning, <em>Minchah</em> in the afternoon, <em>Ma'ariv</em> in the evening. Where did the three services come from? The Talmud records a running dispute. Rabbi Yose ben Hanina credits the patriarchs: Shacharit to Abraham, Minchah to Isaac, Ma'ariv to Jacob. Rabbi Yehoshua ben Levi ties the same three services to the daily offerings of the Temple (Berakhot 26b). Notice what both answers share. The tradition argues about where the times came from, not whether they should exist. The times are load-bearing.</p>
+      <p>Christian monasticism took the idea to its limit. Benedict's Rule, composed around 530 CE, arranged the entire day into eight offices: Vigils, Lauds, Prime, Terce, Sext, None, Vespers, Compline. It reached for the psalmist's line "seven times a day I praise you" (Psalm 119:164) and made it a timetable. The bells that called monks to prayer became, for centuries, the public clock of European towns. When the Second Vatican Council revised the Divine Office in 1963, it simplified the sequence and, notably, directed that laypeople be encouraged to pray it too (Sacrosanctum Concilium, 100), after long eras in which the full Hours were largely the work of monastics and clergy.</p>
+      <p>Fixed hours have always collided with harvests, shifts, and travel, and the traditions answered with accommodations rather than pretense. Islamic law permits travelers to shorten and combine prayers. Jewish law defines Minchah as a window of hours, not a minute. The design brief was never "same clock time everywhere." It was: the day has fixed joints, and the practice is bolted to them.</p>
+    </section>
+
+    <section id="s2">
+      <h2>What a <em>when</em> does that a <em>why</em> can't</h2>
+      <p>Here is the strange part, if you grew up thinking of prayer as a feelings-driven activity: none of these traditions asks whether you're in the mood. The prayer happens at the appointed window regardless, five times a day, every day, for life. From the outside that looks like a willpower feat. It isn't. It's an engineering choice, and behavioral science has spent forty years explaining why it works.</p>
+      <p>Start with an uncomfortable finding. Sheeran's review of hundreds of intention studies found that what you <em>want</em> to do predicts only about 28% of the variance in what you actually do. Roughly half of the people who form a clear, positive intention still fail to act on it; researchers call them "inclined abstainers." The bottleneck is rarely desire. It's noticing. The day does not announce the moment to begin.</p>
+      <p>Peter Gollwitzer's answer was the <em>implementation intention</em>: a plan in the form "when situation X arises, I will do Y." Not a goal. A trigger. You delegate the job of starting the behavior to a cue in the world. His 2006 meta-analysis with Sheeran pooled 94 studies and more than 8,000 participants: if-then planning produced a medium-to-large boost in goal attainment (d&nbsp;=&nbsp;0.65), across health behaviors, academic work, and more.</p>
+
+      <figure class="predict" id="predict-1" data-unit="%">
+        <div class="predict-label">Predict &middot; No. 1</div>
+        <p class="predict-q">In a 2002 study, 248 adults got the same motivational push to exercise "at least once in the coming week." One group was also asked to note exactly <em>when</em> and <em>where</em> they would do it. What percentage of the when-where planners actually exercised?</p>
+        <div class="predict-controls">
+          <input type="range" id="g1" min="0" max="100" value="45" aria-label="Your guess, percent">
+          <output for="g1" id="g1out">45%</output>
+          <button class="reveal-btn" type="button">Reveal</button>
+        </div>
+        <div class="predict-answer" hidden>
+          <div class="big-number"><span class="count" data-final="91">0</span><span class="unit">%</span></div>
+          <p class="answer-explain">The planners: 91%. The motivation-only group: about 38%. Same people, same wish; the only added ingredient was a cue. (Milne, Orbell &amp; Sheeran, 2002. One honest caveat: two weeks, self-reported, undergraduates. The reason to trust the pattern anyway is the 94-study meta-analysis underneath it.)</p>
+          <p class="mono-note your-guess"></p>
+        </div>
+      </figure>
+
+      <p>Now look back at the fixed-hour design. "When the sun clears its peak" is an implementation intention a whole civilization agreed on. The call to prayer is not a suggestion; the cue fires whether or not anyone's resolve showed up that day. A time of day is the rare cue that needs no interpretation, carries no negotiation, and arrives on schedule forever.</p>
+    </section>
+
+    <aside class="model-box" id="model" aria-label="The core model">
+      <span class="model-chip">The Model</span>
+      <h3>The Anchor Chain</h3>
+      <p>Weld one small action to one fixed cue. Repeat until the cue, not your will, pulls the action out of you. That weld is an <em>anchor</em>. Space several across the day and you have a <em>chain</em>: each link independent, each one catching you when another slips.</p>
+      <svg class="chain-svg" viewBox="0 0 600 130" role="img" aria-label="Five anchor rings linked across a day. One ring is marked missed, and the chain still connects the rest.">
+        <line x1="40" y1="60" x2="560" y2="60" stroke="#332F3D" stroke-width="2"/>
+        <circle cx="80"  cy="60" r="15" fill="#1F1C26" stroke="#E8A33D" stroke-width="2"/>
+        <circle cx="195" cy="60" r="15" fill="#1F1C26" stroke="#6b6575" stroke-width="2"/>
+        <line x1="188" y1="53" x2="202" y2="67" stroke="#6b6575" stroke-width="2"/>
+        <line x1="202" y1="53" x2="188" y2="67" stroke="#6b6575" stroke-width="2"/>
+        <circle cx="310" cy="60" r="15" fill="#E8A33D" stroke="#E8A33D" stroke-width="2"/>
+        <circle cx="425" cy="60" r="15" fill="#1F1C26" stroke="#E8A33D" stroke-width="2"/>
+        <circle cx="540" cy="60" r="15" fill="#1F1C26" stroke="#E8A33D" stroke-width="2"/>
+        <text x="80"  y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#9C96A8">WAKE</text>
+        <text x="195" y="32"  text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1" fill="#6b6575">MISSED LINK</text>
+        <text x="310" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#9C96A8">MIDDAY</text>
+        <text x="540" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#9C96A8">NIGHT</text>
+      </svg>
+      <p class="mono-note">The chain holds even when a link fails. The next anchor is always coming.</p>
+    </aside>
+
+    <section id="s3">
+      <h2>Sixty-six days, give or take</h2>
+      <p>The second half of the mechanism is time itself. A habit is not a decision you make often; it's an association between a cue and an action that deepens with repetition, rising fast and then flattening. Lally's team at University College London tracked 96 volunteers building new daily behaviors in a consistent context, "after breakfast," "at my desk," for twelve weeks.</p>
+
+      <figure class="predict" id="predict-2" data-unit=" days">
+        <div class="predict-label">Predict &middot; No. 2</div>
+        <p class="predict-q">Volunteers repeated one small daily practice and rated each day how automatic it felt. What was the <em>median</em> number of days before the behavior reached its automaticity plateau?</p>
+        <div class="predict-controls">
+          <input type="range" id="g2" min="7" max="180" value="30" aria-label="Your guess, days">
+          <output for="g2" id="g2out">30 days</output>
+          <button class="reveal-btn" type="button">Reveal</button>
+        </div>
+        <div class="predict-answer" hidden>
+          <div class="big-number"><span class="count" data-final="66">0</span><span class="unit">days</span></div>
+          <p class="answer-explain">Median: 66 days, with a range of 18 to 254. The famous "21 days" traces to a 1960s plastic surgeon's memoir, not to data. And one detail people never quote: missing a single day did not measurably dent anyone's curve (Lally et al., 2010).</p>
+          <p class="mono-note your-guess"></p>
+        </div>
+      </figure>
+
+      <p>There is a quieter finding underneath. In experience-sampling studies by Wendy Wood and colleagues, about 45% of the behaviors people reported in a day were repeated in the same physical location nearly every day. Humans are already mostly creatures of cue. Fixed-hour traditions didn't invent that architecture; they moved something they considered important into it. Every pass at the same hour, in the same posture, is <span class="model-tag">The Anchor Chain</span> doing its slow welding work. The practitioner is not re-making a decision sixty-six times. The decision is made once, and then the hour makes it.</p>
+    </section>
+
+    <section id="s4">
+      <h2>Why the chain has five links, not one</h2>
+      <p>Which raises a design question: why five anchors instead of one comfortable morning ritual? Redundancy. A single daily anchor makes a missed day feel like a verdict. A chain of five has no such arithmetic of failure: miss the noon prayer and the afternoon one is already approaching. Research on temporal landmarks by Dai, Milkman, and Riis found people are more likely to pursue goals after moments that feel like clean starts: Mondays, birthdays, the week after a milestone. Each link in <span class="model-tag">The Anchor Chain</span> is a fresh start on a timer. The sunrise anchor does not inherit the guilt of the missed sunset one. Systems built to last a lifetime are built to survive a bad Tuesday.</p>
+      <p>One more honest note. Research directly on prayer's outcomes, whether fixed prayer makes a person measurably calmer or kinder, is thinner and messier than the research underneath it. What four decades of evidence actually supports is the mechanism: fixed cues, repeated in stable contexts, become automatic. That is as true of the Amidah and the Hours as it is of a two-minute silence at 12:30.</p>
+      <p>And to be clear about what this does and does not explain: for the believer, fixed prayer is not a productivity system. Salah is an appointment with God kept whether or not the mood arrives; the Hours are the sanctification of time itself. The mechanism is not the meaning's replacement. It is the engineering underneath the covenant, the reason the keeping is possible at all for ordinary people over decades.</p>
+    </section>
+
+    <section id="s5">
+      <h2>The instrument</h2>
+      <p>The design brief, extracted from all three traditions: take the fixed joints of your own day, bolt a two-minute practice to them, and repeat until the hour does the remembering. Below is a planner. It turns your schedule into a copyable if-then plan and keeps a one-tap count of the days your anchors held.</p>
+
+      <div class="instrument" id="planner">
+        <div class="instrument-head">Instrument &middot; The Pause Planner</div>
+        <h3>Fix your anchors</h3>
+        <p class="instrument-sub">Thirty seconds. Defaults are fine; make the times yours.</p>
+
+        <div class="inst-grid">
+          <div class="inst-field">
+            <label for="m-time">Morning anchor</label>
+            <input type="time" id="m-time" value="07:30">
+          </div>
+          <div class="inst-field">
+            <label for="d-time">Midday anchor</label>
+            <input type="time" id="d-time" value="12:30">
+          </div>
+          <div class="inst-field">
+            <label for="e-time">Evening anchor</label>
+            <input type="time" id="e-time" value="20:30">
+          </div>
+        </div>
+
+        <div class="inst-field place-field">
+          <label for="place-input">Where (one spot per anchor works best)</label>
+          <input type="text" id="place-input" value="the kitchen table">
+        </div>
+
+        <span class="pillset-label" id="practice-label">Your two-minute practice</span>
+        <div class="pillset" role="radiogroup" aria-labelledby="practice-label">
+          <label class="pill"><input type="radio" name="practice" value="silence" checked>Sit in silence</label>
+          <label class="pill"><input type="radio" name="practice" value="breath">Slow breathing</label>
+          <label class="pill"><input type="radio" name="practice" value="line">Write one line</label>
+          <label class="pill"><input type="radio" name="practice" value="gratitude">Three gratitudes</label>
+        </div>
+
+        <button class="gen-btn" id="gen" type="button">Generate my plan</button>
+
+        <div class="inst-output" id="plan-out" hidden>
+          <pre id="plan-text" aria-live="polite"></pre>
+          <div class="inst-actions">
+            <button class="ghost-btn" id="copy" type="button">Copy plan</button>
+            <span class="chain-readout" id="chain-readout">CHAIN &middot; 0 DAYS</span>
+          </div>
+          <div class="streak-row" id="streak-row">
+            <label class="streak-check"><input type="checkbox" class="hit" data-i="0"> <span class="hit-label">morning</span></label>
+            <label class="streak-check"><input type="checkbox" class="hit" data-i="1"> <span class="hit-label">midday</span></label>
+            <label class="streak-check"><input type="checkbox" class="hit" data-i="2"> <span class="hit-label">evening</span></label>
+          </div>
+          <p class="inst-hint" id="inst-hint">State saves in this browser for this page. All three anchors checked = one day on the chain; tomorrow starts a fresh row. Missed one? Leave it unchecked and move on. The next anchor is already coming.</p>
+        </div>
+      </div>
+
+      <p class="paper-fallback"><strong>No scripts required.</strong> The paper version is identical: write "When it's 12:30, I will sit in silence for two minutes at my desk" on a sticky note, and put it where you will physically be at 12:30. The medium was never the point. The exact time and the exact spot were.</p>
+    </section>
+
+    <section class="reframe" id="reframe">
+      <span class="reframe-chip">The Reframe</span>
+      <h2>You don't need more discipline. You need fewer decisions.</h2>
+      <p>The assumption you arrived with: people who pray, rest, or practice at fixed hours have unusual willpower, and the schedule is a test they keep passing. Flip it. The schedule is not the test; it is the substitute for the test. The moment an hour is fixed, the only decision you ever make is the first one. Everything after that belongs to the clock. Traditions that hand people fixed hours are not selecting for the disciplined. They are manufacturing reliability in ordinary people, at scale, across centuries. That engineering is available to you with or without the faith it arrives packaged in.</p>
+      <p class="keyline">The schedule doesn't test your discipline. It replaces it.</p>
+      <div class="action-step">
+        <p><strong>The move (five minutes):</strong> Before you close this page, write two if-then plans, "When it's [exact time], I will [two-minute practice] at [spot]," one before noon and one after, and put them where you will physically be at those hours. Check back tomorrow at the same times. By day sixty-six you may not need the note.</p>
+      </div>
+      <div class="reframe-actions">
+        <a class="cta-btn" href="#planner">Build your plan</a>
+        <button class="share-btn" id="share" type="button">Export share card</button>
+        <span class="share-status" id="share-status"></span>
+      </div>
+    </section>
+
+    <noscript><div class="ns">JavaScript is off, so the interactive cards stay shut. The two findings, unlocked: 91% of when-where planners exercised versus about 38% of motivation-only peers (Milne, Orbell &amp; Sheeran, 2002), and a median 66 days for a daily practice to reach its automaticity plateau (Lally et al., 2010). The planner works fine on paper: write "When it's [exact time], I will [two-minute practice] at [spot]" twice, one before noon and one after.</div></noscript>
+
+    <div class="sources" id="sources">
+      <h3>Notes &amp; sources</h3>
+      <ul>
+        <li>Gollwitzer &amp; Sheeran (2006), "Implementation intentions and goal achievement," Advances in Experimental Social Psychology 38: 94 studies, 8,000+ participants, d = .65.</li>
+        <li>Milne, Orbell &amp; Sheeran (2002), British Journal of Health Psychology 7: 91% vs ~38% exercise follow-through; 248 participants, two weeks, self-reported.</li>
+        <li>Lally, van Jaarsveld, Potts &amp; Wardle (2010), European Journal of Social Psychology 40: median 66 days to automaticity plateau; range 18&ndash;254; single misses immaterial.</li>
+        <li>Wood, Quinn &amp; Kashy (2002), Journal of Personality and Social Psychology 83: ~45% of daily behavior repeated in the same location nearly every day.</li>
+        <li>Sheeran (2002), European Review of Social Psychology 12: intentions account for ~28% of behavioral variance; "inclined abstainers."</li>
+        <li>Dai, Milkman &amp; Riis (2014), Management Science 60(10): the fresh-start effect of temporal landmarks.</li>
+        <li>Berakhot 26b (patriarchs vs. Temple offerings); Benedict's Rule (c. 530 CE); Sacrosanctum Concilium (1963), 84&ndash;101; Qur'an 17:78; Psalm 119:164.</li>
+        <li>Islamic prayer windows and travel accommodations per standard practice; this page is a draft pending human review.</li>
+      </ul>
+    </div>
+  </article>
+
+  <footer class="site-foot">
+    <a href="../index.html">&larr; The Lantern</a>
+    <span>fixed-hour prayer &middot; the anchor chain &middot; draft</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---- storage with graceful fallback (sandboxed iframes, private mode) ---- */
+  var mem = {}, usingLocal = false, store;
+  try {
+    localStorage.setItem('__lt','1'); localStorage.removeItem('__lt');
+    store = localStorage; usingLocal = true;
+  } catch(e) {
+    store = { getItem:function(k){return (k in mem)?mem[k]:null;},
+              setItem:function(k,v){mem[k]=String(v);},
+              removeItem:function(k){delete mem[k];} };
+  }
+
+  /* ---- analytics beacon: never block render, never throw ---- */
+  try {
+    fetch('https://the-lantern-analytics.<worker-subdomain>.workers.dev/collect', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({id:'fixed-hour-prayer', event:'view'})
+    }).catch(function(){});
+  } catch(e) {}
+
+  function $(id){ return document.getElementById(id); }
+
+  /* ---- predict-before-reveal ---- */
+  function animateCount(el, from, to){
+    var dur = 1100, t0 = null;
+    function step(t){
+      if(t0===null) t0 = t;
+      var p = Math.min(1,(t-t0)/dur);
+      var e = 1 - Math.pow(1-p,3);
+      el.textContent = Math.round(from + (to-from)*e);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var ranges = document.querySelectorAll('.predict input[type=range]');
+  for(var r=0;r<ranges.length;r++){
+    (function(slider){
+      var out = slider.parentNode.querySelector('output');
+      var unit = slider.closest('.predict').getAttribute('data-unit') || '';
+      var upd = function(){ out.textContent = slider.value + unit; };
+      slider.addEventListener('input', upd); upd();
+    })(ranges[r]);
+  }
+  var btns = document.querySelectorAll('.reveal-btn');
+  for(var b=0;b<btns.length;b++){
+    (function(btn){
+      btn.addEventListener('click', function(){
+        var card = btn.closest('.predict');
+        var slider = card.querySelector('input[type=range]');
+        var ans = card.querySelector('.predict-answer');
+        var cnt = ans.querySelector('.count');
+        var final = parseInt(cnt.getAttribute('data-final'),10);
+        var guess = parseInt(slider.value,10);
+        var gnote = ans.querySelector('.your-guess');
+        if(gnote) gnote.textContent = 'You guessed ' + guess + (card.getAttribute('data-unit')||'') + '.';
+        ans.hidden = false;
+        card.classList.add('revealed');
+        animateCount(cnt, guess, final);
+        btn.disabled = true;
+        btn.textContent = 'Revealed';
+      });
+    })(btns[b]);
+  }
+
+  /* ---- the pause planner ---- */
+  var PRACTICE = {
+    silence:   'sit in silence for two minutes',
+    breath:    'breathe slowly for two minutes, four counts in and six counts out',
+    line:      'write one honest line in the same notebook',
+    gratitude: 'name three specific things that went right today'
+  };
+  var KEY = 'lantern-fixed-hour-plan';
+  var state = { times:['07:30','12:30','20:30'], place:'the kitchen table', practice:'silence',
+                done:[false,false,false], last:'', streak:0 };
+
+  function fmt(t){
+    var p = t.split(':'), h = parseInt(p[0],10), m = parseInt(p[1],10);
+    var ap = h>=12 ? 'PM' : 'AM', hh = ((h+11)%12)+1;
+    return hh + ':' + (m<10?'0':'') + m + ' ' + ap;
+  }
+  function today(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+  function save(){ try{ store.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function load(){
+    try{
+      var raw = store.getItem(KEY);
+      if(!raw) return;
+      var s = JSON.parse(raw);
+      if(s && s.times && s.times.length===3){
+        state = s;
+        if(state.last !== today()){ state.done = [false,false,false]; }
+        $('m-time').value = state.times[0];
+        $('d-time').value = state.times[1];
+        $('e-time').value = state.times[2];
+        $('place-input').value = state.place;
+        var pr = document.querySelector('input[name=practice][value="'+state.practice+'"]');
+        if(pr) pr.checked = true;
+        renderPlan();
+      }
+    }catch(e){}
+  }
+  function planText(){
+    var labels = ['Morning','Midday','Evening'];
+    var lines = state.times.map(function(t,i){
+      return (i+1) + '. WHEN it is ' + fmt(t) + ', I will ' + PRACTICE[state.practice] + ' at ' + state.place + '.   [' + labels[i] + ']';
+    });
+    return 'MY PAUSE PLAN\n' + lines.join('\n') +
+      '\n\nAll three checked = one day on the chain. Missed one? Leave it. The next anchor is already coming.' +
+      '\nThe Lantern · the anchor chain';
+  }
+  function renderReadout(){
+    $('chain-readout').innerHTML = 'CHAIN &middot; ' + state.streak + ' DAY' + (state.streak===1?'':'S');
+    var hits = document.querySelectorAll('.hit');
+    for(var i=0;i<hits.length;i++){ hits[i].checked = !!state.done[i]; }
+  }
+  function renderPlan(){
+    $('plan-text').textContent = planText();
+    $('plan-out').hidden = false;
+    renderReadout();
+    if(!usingLocal){
+      $('inst-hint').textContent = 'Storage is unavailable here, so state resets on reload. Copy your plan below so you keep it. Missed one? Leave it unchecked. The next anchor is already coming.';
+    }
+  }
+  $('gen').addEventListener('click', function(){
+    state.times = [$('m-time').value || '07:30', $('d-time').value || '12:30', $('e-time').value || '20:30'];
+    state.place = $('place-input').value || 'the kitchen table';
+    var sel = document.querySelector('input[name=practice]:checked');
+    state.practice = sel ? sel.value : 'silence';
+    save(); renderPlan();
+  });
+  var hits = document.querySelectorAll('.hit');
+  for(var h=0;h<hits.length;h++){
+    (function(box){
+      box.addEventListener('change', function(){
+        state.done[parseInt(box.getAttribute('data-i'),10)] = box.checked;
+        var all = state.done[0] && state.done[1] && state.done[2];
+        if(all && state.last !== today()){ state.last = today(); state.streak += 1; }
+        save(); renderReadout();
+      });
+    })(hits[h]);
+  }
+  $('copy').addEventListener('click', function(){
+    var txt = planText();
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(function(){ $('copy').textContent='Copied'; },
+          function(){ fallbackCopy(txt); });
+        return;
+      }
+    }catch(e){}
+    fallbackCopy(txt);
+    function fallbackCopy(t){
+      try{
+        var ta=document.createElement('textarea'); ta.value=t;
+        ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta);
+        $('copy').textContent='Copied';
+      }catch(e){ $('copy').textContent='Select & copy above'; }
+    }
+  });
+  load();
+
+  /* ---- share card export ---- */
+  $('share').addEventListener('click', function(){
+    try{
+      var c = document.createElement('canvas'); c.width=1200; c.height=630;
+      var x = c.getContext('2d');
+      x.fillStyle='#17151C'; x.fillRect(0,0,1200,630);
+      x.fillStyle='#E8A33D'; x.fillRect(80,110,56,5);
+      x.fillStyle='#9C96A8'; x.font='500 26px "JetBrains Mono", monospace';
+      x.fillText('THE LANTERN', 80, 170);
+      x.fillStyle='#F3EFE6'; x.font='600 74px "Cormorant Garamond", Georgia, serif';
+      x.fillText('The schedule doesn\u2019t test', 80, 320);
+      x.fillText('your discipline. It replaces it.', 80, 412);
+      x.strokeStyle='#332F3D'; x.lineWidth=2;
+      x.beginPath(); x.moveTo(80,498); x.lineTo(1120,498); x.stroke();
+      x.fillStyle='#9C96A8'; x.font='400 24px "JetBrains Mono", monospace';
+      x.fillText('fixed-hour prayer \u00B7 the anchor chain', 80, 548);
+      var a=document.createElement('a');
+      a.download='the-hour-is-the-habit.png';
+      a.href=c.toDataURL('image/png');
+      document.body.appendChild(a); a.click(); a.remove();
+      $('share-status').textContent='Card exported.';
+    }catch(e){
+      $('share-status').textContent='Export blocked by the browser.';
+    }
+  });
+})();
+</script>
+</body>
+</html>
