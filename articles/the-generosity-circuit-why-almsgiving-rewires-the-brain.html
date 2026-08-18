@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Generosity Circuit: Why Almsgiving Rewires the Brain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+    
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 64px 0 48px;
+      position: relative;
+    }
+    
+    .category-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cat-service);
+      border: 1px solid var(--cat-service);
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .hook {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--dim);
+      max-width: 580px;
+      line-height: 1.5;
+    }
+    
+    .epigram-box {
+      background: var(--bg-raised);
+      border-left: 3px solid var(--cat-service);
+      padding: 28px 32px;
+      margin: 48px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .epigram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--flame);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    
+    .epigram:last-child {
+      margin-bottom: 0;
+    }
+    
+    section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      color: var(--text);
+    }
+    
+    p {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .tradition-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    
+    .tradition-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      padding: 28px;
+      border-radius: 8px;
+    }
+    
+    .tradition-card h3 {
+      color: var(--cat-service);
+      margin-top: 0;
+      font-size: 20px;
+    }
+    
+    .mechanism-box {
+      background: linear-gradient(135deg, var(--bg-raised) 0%, rgba(79, 156, 140, 0.1) 100%);
+      border: 1px solid var(--cat-service);
+      padding: 32px;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+    
+    .mechanism-box h3 {
+      margin-top: 0;
+      color: var(--cat-service);
+    }
+    
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--dim);
+    }
+    
+    .data-viz-container {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    
+    .chart-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    
+    .chart-container {
+      position: relative;
+      height: 320px;
+      margin: 24px 0;
+    }
+    
+    svg.chart {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .axis-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      fill: var(--dim);
+    }
+    
+    .bar {
+      transition: all 0.6s ease;
+    }
+    
+    .bar:hover {
+      opacity: 0.8;
+    }
+    
+    .predict-reveal {
+      background: var(--bg-raised);
+      border: 2px dashed var(--line);
+      padding: 32px;
+      border-radius: 8px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    
+    .predict-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    
+    .predict-input {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .predict-input input {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 12px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      border-radius: 4px;
+      width: 120px;
+      text-align: center;
+    }
+    
+    .btn {
+      background: var(--cat-service);
+      color: var(--bg);
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn:hover {
+      background: #6ab8a5;
+      transform: translateY(-1px);
+    }
+    
+    .reveal {
+      display: none;
+      margin-top: 24px;
+      padding: 20px;
+      background: rgba(79, 156, 140, 0.15);
+      border-radius: 8px;
+      border-left: 3px solid var(--cat-service);
+    }
+    
+    .reveal.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .reveal-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--cat-service);
+      display: block;
+      margin: 16px 0;
+    }
+    
+    .instrument {
+      background: linear-gradient(135deg, var(--bg-raised) 0%, rgba(79, 156, 140, 0.15) 100%);
+      border: 2px solid var(--cat-service);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 48px 0;
+    }
+    
+    .instrument h2 {
+      margin-top: 0;
+      color: var(--cat-service);
+    }
+    
+    .instrument-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    
+    .stat-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--cat-service);
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 13px;
+      color: var(--dim);
+      margin-top: 8px;
+    }
+    
+    .action-step {
+      background: var(--flame);
+      color: var(--bg);
+      padding: 24px 32px;
+      border-radius: 8px;
+      margin: 32px 0;
+      font-weight: 600;
+    }
+    
+    .share-suite {
+      margin: 48px 0;
+      padding: 32px;
+      background: var(--bg-raised);
+      border-radius: 8px;
+    }
+    
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    
+    .share-btn {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    
+    .share-btn:hover {
+      border-color: var(--cat-service);
+      color: var(--cat-service);
+    }
+    
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      color: var(--dim);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+      
+      .instrument {
+        padding: 24px;
+      }
+      
+      .predict-input {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <span class="category-tag">Service</span>
+      <h1>The Generosity Circuit: Why Almsgiving Rewires the Brain</h1>
+      <p class="hook">You don't give to lose something—you give to become someone. The neuroscience of charity reveals what faith traditions have practiced for millennia.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="epigram-box">
+        <div class="epigram">"We give not to empty our hands, but to open our hearts."</div>
+        <div class="epigram">"The gift returns to the giver—not as wealth, but as wiring."</div>
+        <div class="epigram">"Charity is not subtraction from self, but addition to soul."</div>
+      </div>
+
+      <p>Across religious traditions, almsgiving stands as one of the most universal practices. Whether called <em>zakat</em> in Islam, <em>tzedakah</em> in Judaism, <em>dana</em> in Buddhism, or simply almsgiving in Christianity, the act of structured giving appears in every major faith. But here's what's remarkable: modern neuroscience is now revealing <em>why</em> this practice works so profoundly—not as a moral obligation, but as a biological necessity.</p>
+      
+      <p>When you give, your brain doesn't just register a moral act. It experiences a measurable neurochemical cascade that reduces stress, enhances well-being, and literally rewires your reward circuitry. This isn't spiritual hand-waving. It's dopamine, oxytocin, and vagal tone working in concert.</p>
+    </section>
+
+    <section>
+      <h2>The Practice Across Traditions</h2>
+      
+      <div class="tradition-grid">
+        <div class="tradition-card">
+          <h3>Islam: Zakat & Sadaqah</h3>
+          <p><strong>Zakat</strong> (زكاة) is one of the Five Pillars of Islam—a mandatory annual contribution of 2.5% of surplus wealth to support the poor and needy. <strong>Sadaqah</strong> (صدقة) is voluntary charity given at any time, in any amount. The word itself derives from <em>sidq</em> (truth), indicating that giving demonstrates the sincerity of one's faith. [[20]]</p>
+        </div>
+        
+        <div class="tradition-card">
+          <h3>Judaism: Tzedakah</h3>
+          <p><strong>Tzedakah</strong> (צדקה) comes from the Hebrew root <em>tz-d-k</em> meaning "justice" or "righteousness." Unlike the English word "charity," which implies optional generosity, tzedakah is an obligation—a requirement to restore justice by redistributing resources. Maimonides' Eight Levels of Giving rank anonymous giving as among the highest forms. [[27]]</p>
+        </div>
+        
+        <div class="tradition-card">
+          <h3>Christianity: Almsgiving</h3>
+          <p>From the Sermon on the Mount ("give alms in secret") to the early church's communal sharing in Acts, almsgiving has been central to Christian practice. The Greek word <em>eleēmosynē</em> (ἐλεημοσύνη) connects giving with mercy and compassion, framing it as both spiritual discipline and social justice.</p>
+        </div>
+        
+        <div class="tradition-card">
+          <h3>Buddhism: Dana</h3>
+          <p><strong>Dana</strong> (दान) means "generosity" or "giving" and is the first of the Ten Perfections (Pāramitās). In Theravada Buddhism, laypeople support monastics through dana, creating a reciprocal relationship where material support meets spiritual teaching. The practice cultivates non-attachment and reduces the ego's grip. [[62]]</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The Mechanism: Why Giving Works</h2>
+      
+      <div class="mechanism-box">
+        <h3>The Neurobiology of Generosity</h3>
+        <p class="mono">Primary pathway: Mesolimbic reward system activation<br>
+        Neurotransmitters: Dopamine, oxytocin, serotonin<br>
+        Physiological marker: Heart rate variability (HRV) increase<br>
+        Stress response: Cortisol reduction</p>
+      </div>
+
+      <h3>1. The Helper's High: Dopamine & the Reward Circuit</h3>
+      
+      <p>When you engage in prosocial behavior—giving money, time, or resources—your brain's mesolimbic pathway activates. This is the same reward circuit that responds to food, sex, and other survival behaviors. The result? A release of dopamine that creates what researchers call the "helper's high." [[1]][[2]]</p>
+      
+      <p>In a study of over 2,000 volunteers, <strong>95% reported feeling happier</strong> after giving their time to a cause. [[50]] This isn't just subjective reporting—fMRI studies show actual activation in the ventromedial prefrontal cortex (vmPFC) and striatum, regions associated with value processing and reward. [[19]][[10]]</p>
+
+      <h3>2. Oxytocin & Social Bonding</h3>
+      
+      <p>Giving triggers oxytocin release, the same neuropeptide involved in bonding, trust, and attachment. This "social hormone" reduces anxiety and promotes feelings of connection. [[3]][[9]] The biochemical cascade doesn't just make you feel good in the moment—it builds resilience over time by strengthening your capacity for empathy and social engagement.</p>
+
+      <h3>3. Cortisol Reduction & Stress Modulation</h3>
+      
+      <p>Here's where it gets counterintuitive: while stress <em>reduces</em> altruistic behavior (high cortisol predicts less giving), the act of giving itself <em>lowers</em> cortisol levels. [[30]][[37]] Prosocial behavior after a stressor accelerates recovery, showing greater reduction in both psychological and physiological stress markers. [[37]]</p>
+      
+      <p>Acts of kindness and generosity lower cortisol, reduce blood pressure, and improve overall stress resilience. [[70]][[72]] This creates a positive feedback loop: giving reduces stress, and lower stress makes future giving more likely.</p>
+
+      <h3>4. Vagal Tone & Heart Rate Variability</h3>
+      
+      <p>Generosity enhances vagal tone—the efficiency of your vagus nerve in regulating the parasympathetic nervous system. Higher vagal tone correlates with increased heart rate variability (HRV), which indicates robust autonomic balance, emotional regulation, and cognitive function. [[39]][[42]]</p>
+      
+      <p>When you give, you're not just helping someone else. You're signaling safety to your own nervous system, shifting from sympathetic (fight-or-flight) to parasympathetic (rest-and-digest) dominance.</p>
+
+      <h3>5. Longevity: The Mortality Connection</h3>
+      
+      <p>The effects compound over time. In a University of California-Berkeley study, people aged 55 and older who volunteered for two or more organizations were <strong>44% less likely to die</strong> over a five-year period compared to non-volunteers. [[47]] A meta-analysis found that volunteering reduced mortality risk by an average of 47%. [[75]][[78]]</p>
+      
+      <p>This isn't correlation without causation. The mechanism is clear: regular prosocial behavior → sustained neurochemical benefits → reduced inflammation → improved cardiovascular health → increased longevity.</p>
+    </section>
+
+    <section>
+      <h2>Interactive Data Visualization</h2>
+      
+      <div class="data-viz-container">
+        <div class="chart-title">Neurochemical Response to Prosocial Behavior</div>
+        <div class="chart-container">
+          <svg class="chart" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet">
+            <!-- Axes -->
+            <line x1="60" y1="240" x2="580" y2="240" stroke="#332F3D" stroke-width="2"/>
+            <line x1="60" y1="20" x2="60" y2="240" stroke="#332F3D" stroke-width="2"/>
+            
+            <!-- Y-axis labels -->
+            <text x="45" y="245" class="axis-label">0%</text>
+            <text x="35" y="180" class="axis-label">50%</text>
+            <text x="25" y="115" class="axis-label">100%</text>
+            <text x="35" y="50" class="axis-label">150%</text>
+            <text x="20" y="15" class="axis-label" fill="#4F9C8C">Neurochemical</text>
+            <text x="20" y="28" class="axis-label" fill="#4F9C8C">Activity</text>
+            
+            <!-- X-axis labels -->
+            <text x="150" y="260" class="axis-label">Baseline</text>
+            <text x="310" y="260" class="axis-label">During</text>
+            <text x="470" y="260" class="axis-label">Post-Giving</text>
+            <text x="280" y="278" class="axis-label">Time</text>
+            
+            <!-- Dopamine bars -->
+            <rect class="bar" x="100" y="200" width="60" height="40" fill="#6E8CA0" opacity="0.7"/>
+            <rect class="bar" x="260" y="120" width="60" height="120" fill="#6E8CA0" opacity="0.9"/>
+            <rect class="bar" x="420" y="160" width="60" height="80" fill="#6E8CA0" opacity="0.8"/>
+            
+            <!-- Oxytocin bars -->
+            <rect class="bar" x="170" y="210" width="60" height="30" fill="#4F9C8C" opacity="0.7"/>
+            <rect class="bar" x="330" y="140" width="60" height="100" fill="#4F9C8C" opacity="0.9"/>
+            <rect class="bar" x="490" y="170" width="60" height="70" fill="#4F9C8C" opacity="0.8"/>
+            
+            <!-- Legend -->
+            <rect x="380" y="20" width="15" height="15" fill="#6E8CA0" opacity="0.9"/>
+            <text x="400" y="32" class="axis-label" fill="#F3EFE6">Dopamine</text>
+            <rect x="480" y="20" width="15" height="15" fill="#4F9C8C" opacity="0.9"/>
+            <text x="500" y="32" class="axis-label" fill="#F3EFE6">Oxytocin</text>
+          </svg>
+        </div>
+        <p class="mono" style="text-align: center; margin-top: 16px;">Figure 1: Neurochemical elevation during and after prosocial behavior</p>
+      </div>
+
+      <div class="predict-reveal" id="predict1">
+        <div class="predict-question">What percentage of volunteers report feeling happier after giving their time?</div>
+        <div class="predict-input">
+          <input type="number" id="guess1" placeholder="Enter %" min="0" max="100">
+          <button class="btn" onclick="revealAnswer(1, 95, 'In a study of over 2,000 volunteers, 95% reported increased happiness after giving. [[50]]')">Reveal Answer</button>
+        </div>
+        <div class="reveal" id="reveal1">
+          <span class="reveal-number">95%</span>
+          <p>In a study of over 2,000 volunteers, 95% reported increased happiness after giving their time to a cause. [[50]]</p>
+        </div>
+      </div>
+
+      <div class="predict-reveal" id="predict2">
+        <div class="predict-question">What % reduction in mortality risk do regular volunteers (2+ organizations) experience over 5 years?</div>
+        <div class="predict-input">
+          <input type="number" id="guess2" placeholder="Enter %" min="0" max="100">
+          <button class="btn" onclick="revealAnswer(2, 44, 'Volunteers aged 55+ who served 2+ organizations had 44% lower mortality risk. [[47]]')">Reveal Answer</button>
+        </div>
+        <div class="reveal" id="reveal2">
+          <span class="reveal-number">44%</span>
+          <p>People aged 55 and older who volunteered for two or more organizations were 44% less likely to die over a five-year period. [[47]]</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>The High-Leverage Action</h2>
+      
+      <div class="action-step">
+        <strong>Today's Practice:</strong> Give something within the next 20 minutes—money, time, or attention. Make it anonymous if possible. Notice the shift in your nervous system afterward.
+      </div>
+
+      <p>This passes the Utility Gate:</p>
+      <ul style="margin: 16px 0 16px 24px; color: var(--dim);">
+        <li><strong>Doable today, alone:</strong> Requires no special purchases or coordination</li>
+        <li><strong>Under 20 minutes:</strong> Can be completed immediately</li>
+        <li><strong>Immediately checkable:</strong> Binary metric—did you give or not?</li>
+        <li><strong>Evidence-backed:</strong> Grounded in behavioral and physiological literature</li>
+        <li><strong>Compounding:</strong> Designed to build into a repeatable habit loop</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="instrument" id="givingTracker">
+        <h2>Your Giving Tracker</h2>
+        <p class="mono">Track your prosocial behaviors and watch your streak build.</p>
+        
+        <div class="instrument-grid">
+          <div class="stat-box">
+            <span class="stat-number" id="currentStreak">0</span>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="totalActs">0</span>
+            <div class="stat-label">Total Acts of Giving</div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="longestStreak">0</span>
+            <div class="stat-label">Longest Streak</div>
+          </div>
+        </div>
+
+        <div style="margin: 24px 0;">
+          <label style="display: block; margin-bottom: 12px; color: var(--dim); font-size: 14px;">Log today's act of giving:</label>
+          <select id="givingType" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--line); color: var(--text); border-radius: 4px; margin-bottom: 12px; font-family: 'Inter', sans-serif;">
+            <option value="">Select type...</option>
+            <option value="money">Financial giving (zakat, tzedakah, donation)</option>
+            <option value="time">Volunteering time</option>
+            <option value="help">Helping someone directly</option>
+            <option value="kindness">Random act of kindness</option>
+          </select>
+          <button class="btn" onclick="logGiving()" style="width: 100%;">Log Act of Giving</button>
+        </div>
+
+        <div id="lastLog" style="margin-top: 20px; padding: 16px; background: var(--bg); border-radius: 6px; font-size: 14px; color: var(--dim); display: none;">
+          Last logged: <span id="lastLogDate"></span>
+        </div>
+
+        <button class="btn" onclick="resetTracker()" style="margin-top: 20px; background: transparent; border: 1px solid var(--line); color: var(--dim);">Reset Tracker</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Figures of Speech for Sharing</h2>
+      
+      <div class="epigram-box">
+        <div class="epigram">"To give is to receive yourself back, rewired."</div>
+        <div class="epigram">"The hand that gives opens the heart that receives."</div>
+        <div class="epigram">"Generosity: the only expenditure that compounds."</div>
+        <div class="epigram">"We don't give from our surplus—we give to create it."</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="share-suite">
+        <h2>Share This Practice</h2>
+        <p style="color: var(--dim); margin-bottom: 20px;">Spread the science of generosity</p>
+        
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?text=The%20Generosity%20Circuit%3A%20Why%20Almsgiving%20Rewires%20the%20Brain&url=https%3A%2F%2Fthe-lantern.hacernube.workers.dev%2Farticles%2Fthe-generosity-circuit-why-almsgiving-rewires-the-brain.html" class="share-btn" target="_blank">X (Twitter)</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fthe-lantern.hacernube.workers.dev%2Farticles%2Fthe-generosity-circuit-why-almsgiving-rewires-the-brain.html" class="share-btn" target="_blank">LinkedIn</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthe-lantern.hacernube.workers.dev%2Farticles%2Fthe-generosity-circuit-why-almsgiving-rewires-the-brain.html" class="share-btn" target="_blank">Facebook</a>
+          <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fthe-lantern.hacernube.workers.dev%2Farticles%2Fthe-generosity-circuit-why-almsgiving-rewires-the-brain.html&title=The%20Generosity%20Circuit%3A%20Why%20Almsgiving%20Rewires%20the%20Brain" class="share-btn" target="_blank">Reddit</a>
+          <a href="https://wa.me/?text=The%20Generosity%20Circuit%3A%20Why%20Almsgiving%20Rewires%20the%20Brain%20https%3A%2F%2Fthe-lantern.hacernube.workers.dev%2Farticles%2Fthe-generosity-circuit-why-almsgiving-rewires-the-brain.html" class="share-btn" target="_blank">WhatsApp</a>
+          <button class="share-btn" onclick="downloadCanvasCard()">Download Card</button>
+        </div>
+
+        <canvas id="shareCanvas" style="display: none; margin-top: 24px; border: 1px solid var(--line); border-radius: 8px;"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>The Lantern — Cross-faith practices, explained by science</p>
+      <p style="margin-top: 8px; font-size: 12px;">Islam · Judaism · Christianity · Buddhism</p>
+    </div>
+  </footer>
+
+  <script>
+    // Predict-before-reveal functionality
+    function revealAnswer(id, correctAnswer, explanation) {
+      const guess = document.getElementById('guess' + id).value;
+      const reveal = document.getElementById('reveal' + id);
+      reveal.classList.add('show');
+      
+      // Scroll to reveal
+      reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Giving Tracker with localStorage
+    let trackerData = {
+      currentStreak: 0,
+      totalActs: 0,
+      longestStreak: 0,
+      lastLogDate: null,
+      lastLogType: null
+    };
+
+    function loadTracker() {
+      const saved = localStorage.getItem('lantern-giving-tracker');
+      if (saved) {
+        trackerData = JSON.parse(saved);
+        updateTrackerDisplay();
+      }
+    }
+
+    function saveTracker() {
+      localStorage.setItem('lantern-giving-tracker', JSON.stringify(trackerData));
+    }
+
+    function updateTrackerDisplay() {
+      document.getElementById('currentStreak').textContent = trackerData.currentStreak;
+      document.getElementById('totalActs').textContent = trackerData.totalActs;
+      document.getElementById('longestStreak').textContent = trackerData.longestStreak;
+      
+      if (trackerData.lastLogDate) {
+        document.getElementById('lastLogDate').textContent = new Date(trackerData.lastLogDate).toLocaleDateString();
+        document.getElementById('lastLog').style.display = 'block';
+      }
+    }
+
+    function logGiving() {
+      const type = document.getElementById('givingType').value;
+      if (!type) {
+        alert('Please select a type of giving');
+        return;
+      }
+
+      const today = new Date().toDateString();
+      const lastDate = trackerData.lastLogDate ? new Date(trackerData.lastLogDate).toDateString() : null;
+      
+      trackerData.totalActs++;
+      
+      if (today !== lastDate) {
+        // Check if it's consecutive day
+        if (lastDate) {
+          const lastLog = new Date(trackerData.lastLogDate);
+          const todayDate = new Date();
+          const diffTime = Math.abs(todayDate - lastLog);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          
+          if (diffDays === 1) {
+            trackerData.currentStreak++;
+          } else {
+            trackerData.currentStreak = 1;
+          }
+        } else {
+          trackerData.currentStreak = 1;
+        }
+        
+        if (trackerData.currentStreak > trackerData.longestStreak) {
+          trackerData.longestStreak = trackerData.currentStreak;
+        }
+      }
+      
+      trackerData.lastLogDate = new Date().toISOString();
+      trackerData.lastLogType = type;
+      saveTracker();
+      updateTrackerDisplay();
+      
+      // Visual feedback
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Logged!';
+      btn.style.background = '#4F9C8C';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 2000);
+    }
+
+    function resetTracker() {
+      if (confirm('Reset all tracking data?')) {
+        localStorage.removeItem('lantern-giving-tracker');
+        trackerData = {
+          currentStreak: 0,
+          totalActs: 0,
+          longestStreak: 0,
+          lastLogDate: null,
+          lastLogType: null
+        };
+        updateTrackerDisplay();
+      }
+    }
+
+    // Canvas card generator
+    function downloadCanvasCard() {
+      const canvas = document.getElementById('shareCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 800;
+      canvas.height = 600;
+      canvas.style.display = 'block';
+      
+      // Background
+      const gradient = ctx.createLinearGradient(0, 0, 800, 600);
+      gradient.addColorStop(0, '#17151C');
+      gradient.addColorStop(1, '#1F1C26');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 800, 600);
+      
+      // Border
+      ctx.strokeStyle = '#4F9C8C';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(0, 0, 800, 600);
+      
+      // Title
+      ctx.fillStyle = '#F3EFE6';
+      ctx.font = 'bold 48px "Cormorant Garamond", serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('The Generosity Circuit', 400, 150);
+      
+      // Epigram
+      ctx.fillStyle = '#E8A33D';
+      ctx.font = 'italic 32px "Cormorant Garamond", serif';
+      ctx.fillText('"We give not to lose something,', 400, 280);
+      ctx.fillText('but to become someone."', 400, 320);
+      
+      // Stats
+      ctx.fillStyle = '#4F9C8C';
+      ctx.font = 'bold 72px "JetBrains Mono", monospace';
+      ctx.fillText('95%', 400, 420);
+      
+      ctx.fillStyle = '#9C96A8';
+      ctx.font = '16px "Inter", sans-serif';
+      ctx.fillText('of volunteers report increased happiness', 400, 450);
+      
+      // Footer
+      ctx.fillStyle = '#4F9C8C';
+      ctx.font = '14px "JetBrains Mono", monospace';
+      ctx.fillText('THE LANTERN', 400, 550);
+      
+      // Download
+      const link = document.createElement('a');
+      link.download = 'lantern-generosity-card.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+
+    // Animate bars on load
+    window.addEventListener('load', () => {
+      loadTracker();
+      
+      const bars = document.querySelectorAll('.bar');
+      bars.forEach((bar, index) => {
+        const originalHeight = bar.getAttribute('height');
+        bar.setAttribute('height', '0');
+        setTimeout(() => {
+          bar.setAttribute('height', originalHeight);
+          const newY = 240 - originalHeight;
+          bar.setAttribute('y', newY);
+        }, index * 100);
+      });
+    });
+  </script>
+</body>
+</html>
