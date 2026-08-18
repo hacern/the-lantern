@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lantern — Breath of Stillness</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* ===== CSS Variables (reuse from index) ===== */
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+      
+      --radius: 8px;
+      --transition: 0.3s ease;
+    }
+    
+    /* ===== Reset & base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+    
+    /* ===== Typography ===== */
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--dim);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--cat-stillness);
+      padding-left: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+    
+    a {
+      color: var(--flame);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    a:hover {
+      color: #f0b85a;
+      text-decoration: underline;
+    }
+    
+    .dim {
+      color: var(--dim);
+    }
+    
+    /* ===== Meta bar ===== */
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--dim);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .meta-bar .tag {
+      display: inline-block;
+      background: var(--bg-raised);
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px solid var(--line);
+    }
+    
+    .meta-bar .tag.category {
+      color: var(--cat-stillness);
+      border-color: var(--cat-stillness);
+    }
+    
+    .back-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .back-link:hover {
+      color: var(--text);
+    }
+    
+    /* ===== Model tag ===== */
+    .model-tag {
+      display: inline-block;
+      background: rgba(232, 163, 61, 0.12);
+      border: 1px solid rgba(232, 163, 61, 0.3);
+      border-radius: 4px;
+      padding: 0.1rem 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--flame);
+      letter-spacing: 0.02em;
+    }
+    
+    .model-box {
+      background: var(--bg-raised);
+      border-left: 4px solid var(--flame);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .model-box .model-tag {
+      margin-bottom: 0.4rem;
+    }
+    .model-box p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* ===== Predict card ===== */
+    .predict {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.8rem 0;
+    }
+    .predict .question {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .predict .input-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.75rem 0 0.5rem;
+    }
+    .predict input[type="range"] {
+      flex: 1;
+      min-width: 150px;
+      accent-color: var(--flame);
+      background: var(--line);
+      height: 4px;
+      border-radius: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .predict input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--flame);
+      cursor: pointer;
+    }
+    .predict .value-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 500;
+      min-width: 2.5rem;
+      text-align: center;
+      color: var(--flame);
+    }
+    .predict button {
+      background: var(--flame);
+      color: var(--bg);
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: opacity var(--transition);
+    }
+    .predict button:hover {
+      opacity: 0.85;
+    }
+    .predict .reveal {
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(232, 163, 61, 0.08);
+      border-radius: 4px;
+      border-left: 3px solid var(--flame);
+      display: none;
+      font-size: 0.95rem;
+    }
+    .predict .reveal.show {
+      display: block;
+    }
+    .predict .reveal .number {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--flame);
+      font-size: 1.1rem;
+    }
+    
+    /* ===== Instrument block ===== */
+    .instrument {
+      background: var(--bg-raised);
+      border: 2px solid var(--cat-stillness);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.8rem 2rem;
+      margin: 2rem 0;
+    }
+    .instrument .instrument-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cat-stillness);
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.5rem;
+    }
+    .instrument h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .instrument .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .instrument .controls label {
+      font-size: 0.9rem;
+      color: var(--dim);
+    }
+    .instrument .controls select,
+    .instrument .controls input {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.4rem 0.7rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+    .instrument .controls select:focus,
+    .instrument .controls input:focus {
+      outline: 2px solid var(--cat-stillness);
+      border-color: transparent;
+    }
+    .instrument .controls button {
+      background: var(--cat-stillness);
+      color: var(--bg);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity var(--transition);
+    }
+    .instrument .controls button:hover {
+      opacity: 0.85;
+    }
+    .instrument .output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      min-height: 3.5rem;
+      color: var(--text);
+    }
+    .instrument .output .highlight {
+      color: var(--flame);
+    }
+    .instrument .fallback-note {
+      font-size: 0.8rem;
+      color: var(--dim);
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+    
+    /* ===== Reframe block ===== */
+    .reframe {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      margin: 2.5rem 0;
+      position: relative;
+    }
+    .reframe::before {
+      content: "⚡";
+      position: absolute;
+      top: -0.8rem;
+      left: 1.5rem;
+      background: var(--bg);
+      padding: 0 0.5rem;
+      font-size: 1.2rem;
+    }
+    .reframe .action-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      background: rgba(232, 163, 61, 0.08);
+      padding: 0.8rem 1rem;
+      border-radius: 4px;
+      border-left: 3px solid var(--flame);
+      margin: 1rem 0;
+    }
+    .reframe .cta {
+      display: inline-block;
+      background: var(--flame);
+      color: var(--bg);
+      padding: 0.6rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+    .reframe .cta:hover {
+      opacity: 0.85;
+    }
+    
+    /* ===== Share button ===== */
+    .share-btn {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--dim);
+      padding: 0.3rem 1rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-top: 0.5rem;
+    }
+    .share-btn:hover {
+      border-color: var(--flame);
+      color: var(--flame);
+    }
+    
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.5rem; }
+      .predict, .instrument, .reframe { padding: 1.2rem; }
+      .meta-bar { gap: 0.5rem; }
+      .instrument .controls { flex-direction: column; align-items: stretch; }
+    }
+    
+    /* ===== Utility ===== */
+    .mt-1 { margin-top: 1rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .flex { display: flex; }
+    .gap-1 { gap: 0.5rem; }
+    .items-center { align-items: center; }
+    
+    /* ===== Scrollbar ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--dim); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Back link -->
+    <a href="../index.html" class="back-link">← The Lantern</a>
+    
+    <!-- Meta bar -->
+    <div class="meta-bar">
+      <span class="tag category">Stillness</span>
+      <span>Hindu · Buddhist · Sufi</span>
+      <span class="tag">6 min read</span>
+      <span class="tag">Instrument: Breath Timer</span>
+    </div>
+    
+    <!-- Title -->
+    <h1>Breath of Stillness</h1>
+    <div class="subtitle">How controlled breathing gives you access to your nervous system's reset button — and why three traditions have used it for millennia</div>
+    
+    <!-- ===== INTRO ===== -->
+    <p>
+      You've probably heard "take a deep breath" so often it's lost all meaning. But here's the thing: 
+      <strong>your breath is the only autonomic function you can consciously control</strong> — a backdoor into your nervous system that no other organ gives you.
+    </p>
+    <p>
+      Hindu <em>pranayama</em>, Buddhist <em>anapanasati</em>, and Sufi breath-<em>dhikr</em> all center on the same insight: 
+      by altering your breath pattern, you can shift your heart rate, your stress response, and even your baseline emotional tone. 
+      This isn't metaphor. It's measurable physiology.
+    </p>
+    
+    <!-- ===== MODEL BOX ===== -->
+    <div class="model-box">
+      <span class="model-tag">The Vagal Brake Model</span>
+      <p>
+        The <strong>Vagal Brake Model</strong> describes how your vagus nerve — the main highway of your parasympathetic ("rest and digest") nervous system — 
+        acts like a brake on your heart rate. When you exhale slowly, you increase vagal tone, which slows your heart and lowers cortisol. 
+        The name comes from the observation that the vagus nerve literally "brakes" the sinoatrial node of the heart.
+      </p>
+      <p style="font-size:0.9rem; color:var(--dim); margin-top:0.3rem;">
+        <span class="model-tag">First use</span> — we'll come back to this model when we look at the numbers.
+      </p>
+    </div>
+    
+    <!-- ===== PREDICT #1 ===== -->
+    <h2>The numbers that might surprise you</h2>
+    <p>
+      Most people guess that a "calming breath" is about taking in more oxygen. But the research tells a different story.
+    </p>
+    
+    <div class="predict" id="predict1">
+      <div class="question">
+        <strong>Predict:</strong> What percentage of the calming effect of slow breathing comes from the <em>exhalation</em> phase, not inhalation?
+      </div>
+      <div class="input-row">
+        <input type="range" id="p1Slider" min="0" max="100" value="50" />
+        <span class="value-display" id="p1Display">50%</span>
+        <button id="p1Reveal">Reveal</button>
+      </div>
+      <div class="reveal" id="p1RevealContent">
+        <strong>~70%</strong> — Research shows the exhalation phase is disproportionately responsible for vagal activation. 
+        Slow exhalation (especially at a 1:2 inhale-to-exhale ratio) stimulates the vagus nerve, while inhalation slightly inhibits it. 
+        <span class="model-tag">Vagal Brake Model</span>
+      </div>
+    </div>
+    
+    <p>
+      The <span class="model-tag">Vagal Brake Model</span> explains why: your heart rate naturally accelerates on inhalation and decelerates on exhalation. 
+      By extending exhalation, you're applying that brake longer.
+    </p>
+    
+    <!-- ===== PREDICT #2 ===== -->
+    <div class="predict" id="predict2">
+      <div class="question">
+        <strong>Predict:</strong> How many breaths per minute is considered "optimal" for heart-rate-variability (HRV) improvement in most studies?
+      </div>
+      <div class="input-row">
+        <input type="range" id="p2Slider" min="3" max="20" value="10" step="0.5" />
+        <span class="value-display" id="p2Display">10 bpm</span>
+        <button id="p2Reveal">Reveal</button>
+      </div>
+      <div class="reveal" id="p2RevealContent">
+        <strong>~5.5 breaths per minute</strong> (roughly 5.5-second inhale, 5.5-second exhale, or similar ratio). 
+        At this rate, heart-rate variability — a marker of nervous system flexibility — increases measurably. 
+        This is called "resonance frequency" breathing, and it aligns with traditional slow-breath practices across traditions.
+        <span class="model-tag">Vagal Brake Model</span>
+      </div>
+    </div>
+    
+    <!-- ===== THREE TRADITIONS ===== -->
+    <h2>Three traditions, one mechanism</h2>
+    
+    <h3>Hindu: <em>Pranayama</em> — Life-force regulation</h3>
+    <p>
+      In the Yoga Sutras of Patanjali (c. 400 CE), <em>pranayama</em> is the fourth limb of yoga, described as the control of <em>prana</em> (life force) through breath. 
+      The practice includes <em>nadi shodhana</em> (alternate-nostril breathing) and <em>bhramari</em> (humming-bee breath), 
+      both of which slow the breath rate and shift autonomic balance.
+    </p>
+    <p>
+      Modern research has shown that <em>nadi shodhana</em> reduces anxiety and improves HRV (Telles et al., 2013), 
+      and <em>bhramari</em> increases vagal tone through the vibratory effect on the laryngeal branch of the vagus nerve.
+    </p>
+    
+    <h3>Buddhist: <em>Anapanasati</em> — Mindfulness of breathing</h3>
+    <p>
+      The <em>Anapanasati Sutta</em> (MN 118) is the foundational Buddhist discourse on breath meditation. 
+      It directs the meditator to attend to each breath, eventually moving to longer and shorter breaths, 
+      and then to "experiencing the whole body" and "tranquilizing the bodily formation" — a clear reference to the calming effect of slowed breathing.
+    </p>
+    <p>
+      Neuroscience research on mindfulness of breathing shows that it activates the insula and anterior cingulate cortex — 
+      areas involved in interoception (body awareness) — and increases HRV (Krygier et al., 2013).
+    </p>
+    
+    <h3>Sufi: Breath-<em>Dhikr</em> — Remembrance through the breath</h3>
+    <p>
+      In Sufi practice, <em>dhikr</em> (remembrance of God) is often synchronized with the breath. 
+      The Naqshbandi order, for example, practices <em>zikr-i khafi</em> (silent remembrance) with each breath: 
+      inhaling the phrase "<em>La ilaha</em>" (there is no god) and exhaling "<em>illa'llah</em>" (but God).
+    </p>
+    <p>
+      This rhythmic pairing of breath and attention has a similar effect: it slows the breath, 
+      focuses attention on a single point, and cues the parasympathetic response — 
+      a mechanism that fits the <span class="model-tag">Vagal Brake Model</span> perfectly.
+    </p>
+    
+    <!-- ===== INSTRUMENT ===== -->
+    <div class="instrument" id="breathInstrument">
+      <div class="instrument-label">⚙️ Instrument — Breath Timer</div>
+      <h3>Your 5‑minute reset</h3>
+      <p style="color:var(--dim); font-size:0.95rem;">
+        Set a target breath rate and duration, and this timer will guide you with a gentle visual pulse.
+        Start with the resonance rate of <strong>5.5 breaths/min</strong> and adjust from there.
+      </p>
+      
+      <div class="controls">
+        <div>
+          <label for="breathRate">Breaths per minute:</label>
+          <input type="number" id="breathRate" value="5.5" min="3" max="12" step="0.5" style="width:70px;" />
+        </div>
+        <div>
+          <label for="breathDuration">Duration (minutes):</label>
+          <input type="number" id="breathDuration" value="5" min="1" max="20" step="1" style="width:60px;" />
+        </div>
+        <button id="startBreathTimer">Start</button>
+        <button id="stopBreathTimer" style="background:var(--dim);">Stop</button>
+      </div>
+      
+      <div class="output" id="breathOutput">
+        <span style="color:var(--dim);">Ready. Set a rate and duration, then press Start.</span>
+      </div>
+      
+      <div class="fallback-note">
+        ⚡ <strong>JavaScript fallback:</strong> If the timer doesn't load, set a timer on your phone for 
+        the duration you chose, and use a 1:2 ratio — e.g., inhale 4 seconds, exhale 8 seconds to reach 5 breaths/min.
+      </div>
+    </div>
+    
+    <!-- ===== REFRAME ===== -->
+    <div class="reframe">
+      <h2 style="margin-top:0; font-size:1.6rem;">It's not about more air</h2>
+      <p>
+        Most of us think calming means <em>getting more oxygen</em>. But the real mechanism is 
+        <strong>prolonging the exhalation</strong> — turning on the brake. 
+        The inhale is the accelerator. The exhale is the brake.
+      </p>
+      <p>
+        Next time you're tense, don't take a big deep breath. Take a slow, long, extended exhalation. 
+        That's the lever. That's the mechanism. That's what the traditions have been pointing to for millennia.
+      </p>
+      
+      <div class="action-step">
+        <strong>Your action:</strong> Try this breath pattern 3 times today: 
+        inhale for 4 seconds, exhale for 8 seconds. Repeat 10 times. Then use the <strong>Breath Timer</strong> above 
+        to build a 5‑minute daily practice at 5.5 breaths/min.
+      </div>
+      
+      <button class="cta" id="reframeCta">Start 5‑Minute Reset Now</button>
+      <br />
+      <button class="share-btn" id="shareReframe">Share this insight</button>
+    </div>
+    
+    <!-- ===== FOOTER / ANALYTICS ===== -->
+    <p style="font-size:0.75rem; color:var(--dim); text-align:center; margin-top:3rem; border-top:1px solid var(--line); padding-top:1.5rem;">
+      The Lantern — practical wisdom, mechanism shown, instrument attached.
+    </p>
+  </div>
+  
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    (function() {
+      'use strict';
+      
+      // ---------- Predict #1 ----------
+      const p1Slider = document.getElementById('p1Slider');
+      const p1Display = document.getElementById('p1Display');
+      const p1RevealBtn = document.getElementById('p1Reveal');
+      const p1Content = document.getElementById('p1RevealContent');
+      
+      p1Slider.addEventListener('input', function() {
+        p1Display.textContent = this.value + '%';
+      });
+      p1RevealBtn.addEventListener('click', function() {
+        p1Content.classList.toggle('show');
+        this.textContent = p1Content.classList.contains('show') ? 'Hide' : 'Reveal';
+      });
+      
+      // ---------- Predict #2 ----------
+      const p2Slider = document.getElementById('p2Slider');
+      const p2Display = document.getElementById('p2Display');
+      const p2RevealBtn = document.getElementById('p2Reveal');
+      const p2Content = document.getElementById('p2RevealContent');
+      
+      p2Slider.addEventListener('input', function() {
+        p2Display.textContent = this.value + ' bpm';
+      });
+      p2RevealBtn.addEventListener('click', function() {
+        p2Content.classList.toggle('show');
+        this.textContent = p2Content.classList.contains('show') ? 'Hide' : 'Reveal';
+      });
+      
+      // ---------- Breath Timer Instrument ----------
+      let timerInterval = null;
+      let timerRemaining = 0;
+      let breathPhase = 'inhale';
+      let breathCount = 0;
+      let breathRate = 5.5;
+      let breathDuration = 5;
+      let phaseDuration = 0; // seconds per phase (half of breath cycle)
+      
+      const startBtn = document.getElementById('startBreathTimer');
+      const stopBtn = document.getElementById('stopBreathTimer');
+      const output = document.getElementById('breathOutput');
+      const rateInput = document.getElementById('breathRate');
+      const durationInput = document.getElementById('breathDuration');
+      
+      function updateDisplay(message, isPhase = false) {
+        if (isPhase) {
+          output.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span><span class="highlight">${breathPhase.toUpperCase()}</span> — 
+              ${breathCount} breaths completed</span>
+              <span style="font-size:0.85rem; color:var(--dim);">${Math.ceil(timerRemaining)}s remaining</span>
+            </div>
+            <div style="margin-top:0.4rem; width:100%; height:3px; background:var(--line); border-radius:4px;">
+              <div style="width:${(breathPhase === 'inhale' ? 1 : 0) * 100}%; height:100%; background:var(--flame); border-radius:4px; transition: width 0.3s;"></div>
+            </div>
+          `;
+        } else {
+          output.innerHTML = `<span>${message}</span>`;
+        }
+      }
+      
+      function stopTimer() {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        breathPhase = 'inhale';
+        breathCount = 0;
+        timerRemaining = 0;
+        startBtn.textContent = 'Start';
+        updateDisplay('Stopped. Press Start to begin again.');
+        output.style.borderColor = 'var(--line)';
+      }
+      
+      function startTimer() {
+        // Clear any existing timer
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        
+        // Read inputs
+        breathRate = parseFloat(rateInput.value) || 5.5;
+        breathDuration = parseFloat(durationInput.value) || 5;
+        if (breathRate < 3) breathRate = 3;
+        if (breathRate > 12) breathRate = 12;
+        if (breathDuration < 1) breathDuration = 1;
+        if (breathDuration > 20) breathDuration = 20;
+        
+        // Calculate phase duration: each breath = inhale + exhale
+        // We'll use a 1:2 ratio (inhale 1 part, exhale 2 parts)
+        // Total breath cycle = 60 / breathRate seconds
+        const totalCycle = 60 / breathRate;
+        const inhaleDuration = totalCycle / 3;  // 1 part
+        const exhaleDuration = totalCycle * 2 / 3; // 2 parts
+        phaseDuration = inhaleDuration; // we'll switch phases
+        
+        let totalSeconds = breathDuration * 60;
+        timerRemaining = totalSeconds;
+        breathPhase = 'inhale';
+        breathCount = 0;
+        let phaseRemaining = inhaleDuration;
+        
+        updateDisplay('Starting...');
+        startBtn.textContent = 'Running...';
+        output.style.borderColor = 'var(--flame)';
+        
+        // Function to compute next phase
+        function nextPhase() {
+          if (timerRemaining <= 0) {
+            stopTimer();
+            updateDisplay('✅ Done! ${breathDuration} minutes completed. ${breathCount} breaths total.');
+            output.style.borderColor = 'var(--cat-stillness)';
+            return;
+          }
+          
+          // Determine current phase
+          if (breathPhase === 'inhale') {
+            breathPhase = 'exhale';
+            phaseRemaining = exhaleDuration;
+          } else {
+            breathPhase = 'inhale';
+            breathCount++;
+            phaseRemaining = inhaleDuration;
+          }
+          
+          // Update display
+          updateDisplay('', true);
+          
+          // Set timeout for phase switch
+          const phaseMs = phaseRemaining * 1000;
+          if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+          }
+          timerInterval = setInterval(function() {
+            timerRemaining -= 0.1;
+            if (timerRemaining <= 0) {
+              timerRemaining = 0;
+              clearInterval(timerInterval);
+              timerInterval = null;
+              nextPhase();
+              return;
+            }
+            // Update the display with countdown
+            updateDisplay('', true);
+          }, 100);
+        }
+        
+        // Start the first phase
+        breathPhase = 'inhale';
+        phaseRemaining = inhaleDuration;
+        updateDisplay('', true);
+        
+        timerInterval = setInterval(function() {
+          timerRemaining -= 0.1;
+          if (timerRemaining <= 0) {
+            timerRemaining = 0;
+            clearInterval(timerInterval);
+            timerInterval = null;
+            // Show final state
+            updateDisplay('✅ Done! ${breathDuration} minutes completed. ${breathCount} breaths total.');
+            output.style.borderColor = 'var(--cat-stillness)';
+            startBtn.textContent = 'Start';
+            return;
+          }
+          updateDisplay('', true);
+        }, 100);
+        
+        // Schedule phase switching separately
+        let phaseSwitchTimeout = setTimeout(function phaseSwitch() {
+          if (timerRemaining <= 0) return;
+          
+          // Switch phase
+          if (breathPhase === 'inhale') {
+            breathPhase = 'exhale';
+            phaseRemaining = exhaleDuration;
+          } else {
+            breathPhase = 'inhale';
+            breathCount++;
+            phaseRemaining = inhaleDuration;
+          }
+          
+          updateDisplay('', true);
+          
+          // Schedule next switch
+          if (timerRemaining > 0) {
+            phaseSwitchTimeout = setTimeout(phaseSwitch, phaseRemaining * 1000);
+          }
+        }, phaseRemaining * 1000);
+      }
+      
+      startBtn.addEventListener('click', function() {
+        // If running, restart
+        if (timerInterval) {
+          stopTimer();
+        }
+        startTimer();
+      });
+      
+      stopBtn.addEventListener('click', function() {
+        stopTimer();
+        output.style.borderColor = 'var(--line)';
+        startBtn.textContent = 'Start';
+        updateDisplay('Stopped. Adjust settings and press Start.');
+      });
+      
+      // ---------- Reframe CTA ----------
+      document.getElementById('reframeCta').addEventListener('click', function() {
+        const instrument = document.getElementById('breathInstrument');
+        instrument.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Auto-start the timer with 5.5 breaths/min for 5 min
+        rateInput.value = '5.5';
+        durationInput.value = '5';
+        if (timerInterval) stopTimer();
+        startTimer();
+      });
+      
+      // ---------- Share ----------
+      document.getElementById('shareReframe').addEventListener('click', function() {
+        const text = '"It\'s not about more air — it\'s about extending the exhale. That\'s the brake." — The Lantern';
+        if (navigator.share) {
+          navigator.share({
+            title: 'Breath of Stillness — The Lantern',
+            text: text,
+            url: window.location.href
+          }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(text + ' ' + window.location.href).then(() => {
+            alert('Link and quote copied to clipboard!');
+          }).catch(() => {
+            prompt('Copy this link:', window.location.href);
+          });
+        }
+      });
+      
+      // ---------- Analytics (non-blocking) ----------
+      try {
+        fetch('https://the-lantern-analytics.example.workers.dev/collect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: 'breath-of-stillness', event: 'view' })
+        }).catch(() => {});
+      } catch (_) {}
+      
+      // ---------- Init output ----------
+      updateDisplay('Set your breath rate and duration, then press Start.');
+      
+    })();
+  </script>
+</body>
+</html>
