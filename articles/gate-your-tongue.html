@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gate Your Tongue for One Day — The Lantern</title>
+  <meta name="description" content="Run a 24-hour speech gate: speak only when asked, only what is necessary. Count every impulse you stop. The prefrontal override circuit strengthens with each one.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-discipline: #C1502E;
+      --cat-stillness: #6E8CA0;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8T;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ---- Category Badge ---- */
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--cat-discipline);
+      color: var(--cat-discipline);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- Typography ---- */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 3.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.75rem;
+      line-height: 1.25;
+      color: var(--text);
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      color: var(--flame);
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p { margin-bottom: 1.25rem; }
+
+    strong { color: var(--flame); font-weight: 600; }
+
+    .hook {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--dim);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      border-left: 2px solid var(--cat-discipline);
+      padding-left: 1rem;
+    }
+
+    /* ---- Pull-quote / Maxim ---- */
+    .maxim {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--flame);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      margin: 2.5rem -1.5rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-raised);
+    }
+
+    /* ---- Sections ---- */
+    section { margin-bottom: 2rem; }
+
+    .cost-opening {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+    }
+
+    .cost-opening .stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: var(--flame);
+      font-weight: 500;
+    }
+
+    /* ---- Traditions list ---- */
+    .tradition-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (min-width: 540px) {
+      .tradition-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .tradition-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1rem;
+    }
+
+    .tradition-card .t-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.0625rem;
+      color: var(--flame);
+      margin-bottom: 0.25rem;
+    }
+
+    .tradition-card .t-tradition {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .tradition-card .t-action {
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    /* ---- Predict-before-reveal ---- */
+    .predict {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .predict-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cat-discipline);
+      margin-bottom: 0.75rem;
+    }
+
+    .predict-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 1rem;
+    }
+
+    .predict-input-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .predict-input-row input[type="number"] {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      width: 100px;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .predict-input-row input[type="number"]:focus {
+      outline: 2px solid var(--flame);
+      outline-offset: 1px;
+    }
+
+    .btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--flame);
+      background: transparent;
+      color: var(--flame);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn:hover, .btn:focus-visible {
+      background: var(--flame);
+      color: var(--bg);
+    }
+
+    .btn-solid {
+      background: var(--flame);
+      color: var(--bg);
+    }
+
+    .btn-solid:hover, .btn-solid:focus-visible {
+      background: #d4911f;
+      border-color: #d4911f;
+    }
+
+    .predict-reveal {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-left: 3px solid var(--flame);
+      border-radius: 0 4px 4px 0;
+      display: none;
+    }
+
+    .predict-reveal.visible { display: block; }
+
+    .predict-reveal .answer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      color: var(--flame);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .predict-reveal .answer-context {
+      font-size: 0.875rem;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    /* ---- Interactive Chart ---- */
+    .chart-container {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .chart-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .chart-svg-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .chart-svg-wrap svg { display: block; }
+
+    .chart-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      align-items: center;
+    }
+
+    .chart-controls label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .chart-controls input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 160px;
+      height: 4px;
+      background: var(--line);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .chart-controls input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--flame);
+      cursor: pointer;
+    }
+
+    .chart-mode-btns {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chart-mode-btns button {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--dim);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .chart-mode-btns button.active,
+    .chart-mode-btns button:hover {
+      border-color: var(--flame);
+      color: var(--flame);
+    }
+
+    .chart-readout {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      color: var(--dim);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .chart-readout .val {
+      color: var(--flame);
+      font-weight: 500;
+    }
+
+    /* ---- Instrument ---- */
+    .instrument {
+      background: var(--bg-raised);
+      border: 2px solid var(--cat-discipline);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .instrument-header {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cat-discipline);
+      margin-bottom: 0.5rem;
+    }
+
+    .instrument-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .instrument-desc {
+      font-size: 0.9375rem;
+      color: var(--dim);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Timeline steps */
+    .timeline {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      border-bottom: 2px solid var(--line);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      color: var(--dim);
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      min-width: 80px;
+    }
+
+    .timeline-step.active {
+      border-bottom-color: var(--flame);
+      color: var(--flame);
+    }
+
+    .timeline-step.completed {
+      border-bottom-color: var(--cat-discipline);
+      color: var(--cat-discipline);
+    }
+
+    /* Commit area */
+    .commit-area {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .commit-area .vow-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .commit-area .cost-statement {
+      font-size: 0.8125rem;
+      color: var(--dim);
+      margin-bottom: 1.25rem;
+    }
+
+    .commit-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 2.5rem;
+      background: var(--cat-discipline);
+      color: var(--text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .commit-btn:hover { background: #a84325; }
+
+    /* Counter area (post-commit) */
+    .counter-area { display: none; text-align: center; }
+    .counter-area.visible { display: block; }
+
+    .counter-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 4rem;
+      font-weight: 500;
+      color: var(--flame);
+      line-height: 1;
+      margin: 0.5rem 0;
+    }
+
+    .counter-label {
+      font-size: 0.875rem;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .gate-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      background: var(--flame);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-bottom: 0.5rem;
+    }
+
+    .gate-btn:hover { background: #d4911f; }
+
+    .elapsed {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      margin-top: 1rem;
+    }
+
+    .win-condition {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: var(--bg);
+      border: 1px solid var(--flame);
+      border-radius: 4px;
+      display: none;
+    }
+
+    .win-condition.visible { display: block; }
+
+    .win-condition .win-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--flame);
+      margin-bottom: 0.25rem;
+    }
+
+    .win-condition .win-text {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .day2-prompt {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-left: 3px solid var(--cat-discipline);
+      border-radius: 0 4px 4px 0;
+      display: none;
+    }
+
+    .day2-prompt.visible { display: block; }
+
+    .day2-prompt strong {
+      color: var(--cat-discipline);
+    }
+
+    /* Break log */
+    .break-log {
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      color: var(--dim);
+    }
+
+    .break-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--dim);
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.15s;
+    }
+
+    .break-btn:hover { border-color: var(--cat-discipline); color: var(--cat-discipline); }
+
+    /* ---- Dose / Failure ---- */
+    .failure-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (min-width: 540px) {
+      .failure-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .failure-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1rem;
+    }
+
+    .failure-card .f-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cat-discipline);
+      margin-bottom: 0.5rem;
+    }
+
+    .failure-card .f-text {
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    /* ---- Share Suite ---- */
+    .share-suite {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .share-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--dim);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .share-btn:hover {
+      border-color: var(--flame);
+      color: var(--flame);
+    }
+
+    .share-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* Canvas card */
+    .canvas-card-section { margin-top: 1.5rem; }
+
+    .canvas-card-section canvas {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      max-width: 100%;
+    }
+
+    /* ---- Noscript fallback ---- */
+    .noscript-instrument {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2rem 0;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .noscript-instrument strong { color: var(--flame); }
+
+    /* ---- Utility ---- */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.25rem; }
+      article { padding: 2rem 1rem 4rem; }
+      .counter-display { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<article id="gate-your-tongue">
+
+  <!-- Category Badge -->
+  <span class="badge">Discipline</span>
+
+  <!-- Title -->
+  <h1>Gate Your Tongue for One Day</h1>
+
+  <!-- Hook -->
+  <p class="hook">You sent the message at 11:47 p.m. and regretted it by morning. For 24 hours, speak only when asked — and count every impulse you stop.</p>
+
+  <!-- ============================================ -->
+  <!-- 1. COST                                      -->
+  <!-- ============================================ -->
+  <section class="cost-opening">
+    <p>You sent it at 11:47 p.m. — the reply that felt urgent and reads corrosive by morning. You've re-read it twice. <span class="stat">64%</span> of workers admit to sending a message they immediately regretted, and those are only the ones they noticed. Every unchecked impulse from your tongue costs something: a relationship thread, a night's sleep, an apology you'll rehearse for an hour for something that took ten seconds to say.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 2. NAME THE LEVER                            -->
+  <!-- ============================================ -->
+  <section>
+    <h2>The Lever: A Gate on Voluntary Speech</h2>
+    <p>For the next 24 hours, you will run a <strong>speech gate</strong>: speak only when someone asks you a direct question, and only what is necessary to answer. Nothing volunteered. No corrections, no commentary, no filler.</p>
+
+    <div class="tradition-grid">
+      <div class="tradition-card">
+        <div class="t-name">Samma Vaca</div>
+        <div class="t-tradition">Buddhism</div>
+        <div class="t-action">Run every intended utterance through four gates: true, kind, useful, timely. One failure — the word stays in.</div>
+      </div>
+      <div class="tradition-card">
+        <div class="t-name">Shmirat Lashon</div>
+        <div class="t-tradition">Judaism</div>
+        <div class="t-action">Before speaking, assess whether the words diminish anyone — even if true. The cost is the pleasure of sharing you give up.</div>
+      </div>
+      <div class="tradition-card">
+        <div class="t-name">Hifz al-Lisan</div>
+        <div class="t-tradition">Islam</div>
+        <div class="t-action">Run each statement through a filter before it passes the teeth. Sufi <em>samt</em> trains the filter under pressure.</div>
+      </div>
+    </div>
+
+    <p>Each tradition found the same lever: the pause before the mouth opens trains a circuit that the impulse to speak cannot outrun.</p>
+  </section>
+
+  <div class="maxim">Gate it: true, necessary, kind. One failure, keep it in.</div>
+
+  <!-- ============================================ -->
+  <!-- 3. MECHANISM AS PERMISSION                   -->
+  <!-- ============================================ -->
+  <section>
+    <h2>Why the Gate Works</h2>
+    <p>The lever works because of <strong>prefrontal inhibitory override</strong>. When you force a pause between the impulse to speak and the utterance, you activate the ventrolateral prefrontal cortex — the brain's braking system. Lieberman et al. (2007) showed that engaging this region downregulates amygdala reactivity within 2–3 seconds. The pause doesn't just block one word. It trains the inhibitory circuit itself. Each gated impulse is one rep.</p>
+    <p>Verbruggen &amp; Logan (2008) proved that stop-signal practice transfers: the more impulses you inhibit, the faster inhibition becomes on the next one. You are not just keeping quiet today. You are upgrading the hardware that decides whether you speak at all.</p>
+    <p>So you will gate every utterance for 24 hours. Each time you feel the impulse to speak unprompted — a comment, a correction, a joke, a reaction, the reflex to fill silence — you will stop, count it, and stay silent. That count is your proof the circuit ran.</p>
+  </section>
+
+  <div class="maxim">Make the tongue wait three seconds — the prefrontal needs two.</div>
+
+  <!-- ============================================ -->
+  <!-- PREDICT-BEFORE-REVEAL #1                     -->
+  <!-- ============================================ -->
+  <div class="predict" id="predict1">
+    <div class="predict-label">Predict Before Reveal</div>
+    <div class="predict-question">How many seconds does your prefrontal cortex need to override an emotional speech impulse?</div>
+    <div class="predict-input-row">
+      <input type="number" id="predict1-input" min="0" max="30" step="0.5" aria-label="Your guess in seconds">
+      <span style="color:var(--dim); font-size:0.875rem;">seconds</span>
+      <button class="btn" id="predict1-btn" onclick="revealPredict1()">Commit &amp; Reveal</button>
+    </div>
+    <div class="predict-reveal" id="predict1-reveal">
+      <div class="answer">≈ 2–3 seconds</div>
+      <div class="answer-context">For simple motor stops the window is ~200 ms, but verbal inhibition of emotional content requires 2–3 seconds of prefrontal engagement (Lieberman et al., 2007; Verbruggen &amp; Logan, 2008). This is why "count to three" works and "just stop" doesn't — the circuit needs the time.</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PREDICT-BEFORE-REVEAL #2                     -->
+  <!-- ============================================ -->
+  <div class="predict" id="predict2">
+    <div class="predict-label">Predict Before Reveal</div>
+    <div class="predict-question">What fraction of your conversational turns are responses to direct questions (vs. self-initiated)?</div>
+    <div class="predict-input-row">
+      <input type="number" id="predict2-input" min="0" max="100" step="1" aria-label="Your guess as a percentage">
+      <span style="color:var(--dim); font-size:0.875rem;">%</span>
+      <button class="btn" id="predict2-btn" onclick="revealPredict2()">Commit &amp; Reveal</button>
+    </div>
+    <div class="predict-reveal" id="predict2-reveal">
+      <div class="answer">≈ 30–35%</div>
+      <div class="answer-context">Conversation analysis finds that roughly two-thirds of turns are self-initiated, not other-initiated (Sacks, Schegloff &amp; Jefferson, 1974; Dunbar et al., 1997). A speech gate eliminates ~65% of your output by volume — and nearly all of the impulsive fraction.</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- INTERACTIVE CHART                            -->
+  <!-- ============================================ -->
+  <div class="chart-container">
+    <div class="chart-title">Dose Response: Hours Gated → Inhibitory Control</div>
+    <div class="chart-svg-wrap">
+      <svg id="doseChart" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive dose response chart showing inhibitory control strength over hours of speech gate practice">
+        <!-- Grid -->
+        <line x1="60" y1="20" x2="60" y2="230" stroke="#332F3D" stroke-width="1"/>
+        <line x1="60" y1="230" x2="580" y2="230" stroke="#332F3D" stroke-width="1"/>
+        <!-- Y-axis labels -->
+        <text x="55" y="230" text-anchor="end" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9">0%</text>
+        <text x="55" y="125" text-anchor="end" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9">50%</text>
+        <text x="55" y="24" text-anchor="end" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9">100%</text>
+        <!-- X-axis labels -->
+        <text x="60" y="248" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">0h</text>
+        <text x="180" y="248" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">6h</text>
+        <text x="300" y="248" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">12h</text>
+        <text x="420" y="248" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">18h</text>
+        <text x="540" y="248" fill="#9C96A8" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle">24h</text>
+        <!-- Grid lines -->
+        <line x1="60" y1="125" x2="580" y2="125" stroke="#332F3D" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <line x1="180" y1="20" x2="180" y2="230" stroke="#332F3D" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <line x1="300" y1="20" x2="300" y2="230" stroke="#332F3D" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <line x1="420" y1="20" x2="420" y2="230" stroke="#332F3D" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <!-- Curves (drawn by JS) -->
+        <polyline id="curveFilter" fill="none" stroke="#E8A33D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline id="curveThreeGate" fill="none" stroke="#C1502E" stroke-width="2" stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline id="curveSilence" fill="none" stroke="#9C96A8" stroke-width="1.5" stroke-dasharray="2,3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Marker for current hours -->
+        <circle id="chartMarker" cx="60" cy="230" r="5" fill="#E8A33D" stroke="#17151C" stroke-width="2"/>
+        <!-- Legend -->
+        <line x1="80" y1="268" x2="100" y2="268" stroke="#E8A33D" stroke-width="2.5"/>
+        <text x="105" y="272" fill="#9C96A8" font-family="Inter, sans-serif" font-size="9">Only when asked</text>
+        <line x1="230" y1="268" x2="250" y2="268" stroke="#C1502E" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="255" y="272" fill="#9C96A8" font-family="Inter, sans-serif" font-size="9">3-gate filter</text>
+        <line x1="360" y1="268" x2="380" y2="268" stroke="#9C96A8" stroke-width="1.5" stroke-dasharray="2,3"/>
+        <text x="385" y="272" fill="#9C96A8" font-family="Inter, sans-serif" font-size="9">Total silence (rebound)</text>
+      </svg>
+    </div>
+    <div class="chart-controls">
+      <div>
+        <label for="chartHours">Hours committed</label><br>
+        <input type="range" id="chartHours" min="1" max="24" value="12" oninput="updateChart()">
+        <span id="chartHoursVal" style="font-family:'JetBrains Mono',monospace;font-size:0.8125rem;color:var(--flame);margin-left:0.5rem;">12h</span>
+      </div>
+      <div>
+        <label>Strictness</label><br>
+        <div class="chart-mode-btns">
+          <button class="active" id="modeFilter" onclick="setChartMode('filter')">Only when asked</button>
+          <button id="modeThreeGate" onclick="setChartMode('threegate')">3-gate</button>
+          <button id="modeSilence" onclick="setChartMode('silence')">Total silence</button>
+        </div>
+      </div>
+    </div>
+    <div class="chart-readout" id="chartReadout">
+      At <span class="val" id="readoutHours">12</span> hours with "only when asked" strictness, your inhibitory control reaches roughly <span class="val" id="readoutStrength">78%</span> of trained capacity. The circuit is past the steepest gains — each additional hour compounds more slowly but still adds.
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 4. RUN THE TRIAL — INSTRUMENT                -->
+  <!-- ============================================ -->
+  <section>
+    <h2>Run the Trial</h2>
+
+    <div class="instrument" id="instrumentBlock">
+      <div class="instrument-header">Interactive Instrument</div>
+      <div class="instrument-title">Speech Gate Counter &amp; Commitment Contract</div>
+      <div class="instrument-desc">Commit to the 24-hour gate. Then count every impulse you stop — every comment you swallowed, every reply you deleted, every silence you chose not to fill.</div>
+
+      <!-- Timeline -->
+      <div class="timeline" id="timeline">
+        <div class="timeline-step active" id="step1">1. Commit</div>
+        <div class="timeline-step" id="step2">2. Gate</div>
+        <div class="timeline-step" id="step3">3. Check</div>
+        <div class="timeline-step" id="step4">4. Compound</div>
+      </div>
+
+      <!-- Pre-commit -->
+      <div class="commit-area" id="commitArea">
+        <div class="vow-text">For the next 24 hours, I will speak only when directly asked, and only what is necessary to answer.</div>
+        <div class="cost-statement">Cost: I give up unsolicited opinion, the witty reply, the reflex to fill silence, and every reaction that wants out loud.</div>
+        <button class="commit-btn" id="commitBtn" onclick="commitToGate()">Commit to the Gate</button>
+      </div>
+
+      <!-- Post-commit counter -->
+      <div class="counter-area" id="counterArea">
+        <div class="counter-label">Gated impulses (things you wanted to say but didn't)</div>
+        <div class="counter-display" id="gateCount">0</div>
+        <button class="gate-btn" onclick="incrementGate()">+1 Gated Impulse</button>
+        <div class="elapsed" id="elapsedTime">Elapsed: 0h 0m</div>
+
+        <div class="break-log" id="breakLog"></div>
+        <button class="break-btn" onclick="logBreak()">I broke the gate — log it</button>
+
+        <div class="win-condition" id="winCondition">
+          <div class="win-title">First Win Achieved</div>
+          <div class="win-text">You have gated at least one impulse and held the gate for a measurable interval. The prefrontal override circuit has run at least one rep. The hardware upgrade has started.</div>
+        </div>
+
+        <div class="day2-prompt" id="day2Prompt">
+          <strong>Day 2 — Add the three gates:</strong> Before each permitted response, run it through: <em>Is it true? Is it necessary? Is it kind?</em> One failure and the word stays in. The gate tightens; the circuit deepens.
+        </div>
+      </div>
+
+      <!-- Noscript fallback -->
+      <noscript>
+        <div class="noscript-instrument">
+          <strong>Paper method:</strong> Write "SPEECH GATE" and today's date on a card. Carry it. Each time you stop an unprompted utterance, make a tally mark. Count the marks at the end of the day. That count is your proof the circuit ran. If you break the gate, circle the break and restart the count. Tomorrow, add the three-gate filter: true, necessary, kind.
+        </div>
+      </noscript>
+    </div>
+  </section>
+
+  <div class="maxim">What you don't send today, you won't retract tomorrow.</div>
+
+  <!-- ============================================ -->
+  <!-- 5. DOSE AND FAILURE MODES                    -->
+  <!-- ============================================ -->
+  <section>
+    <h2>Dose and Failure Modes</h2>
+
+    <div class="failure-grid">
+      <div class="failure-card">
+        <div class="f-label">Too loose</div>
+        <div class="f-text">Gating only the "big" impulses — the angry email, the harsh criticism — skips the small reps where the circuit actually strengthens: the unsolicited <em>actually</em>, the reflexive filler, the comment you add to someone else's sentence.</div>
+      </div>
+      <div class="failure-card">
+        <div class="f-label">Too strict</div>
+        <div class="f-text">Total silence — zero words, zero interaction — pushes suppressed speech into rumination. The pressure builds until it breaks the gate. The sweet spot is the <strong>filter, not the muzzle</strong>. You respond when asked. You just don't volunteer.</div>
+      </div>
+      <div class="failure-card">
+        <div class="f-label">Likely cheat</div>
+        <div class="f-text">Interpreting an implied question as a direct one. Someone says, "It's so cold in here," and you treat it as a request to close the window. If they didn't ask, it's not a question. The gate holds.</div>
+      </div>
+      <div class="failure-card">
+        <div class="f-label">Recovery move</div>
+        <div class="f-text">If you break the gate — you speak unprompted — log it and restart the clock. The restart is data, not failure. Each break tells you where the impulse is strongest.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 6. KEEP IT                                   -->
+  <!-- ============================================ -->
+  <section>
+    <h2>Keep It</h2>
+
+    <h3>Day 2 — Add the Three Gates</h3>
+    <p>Before each permitted response, run it through: <em>Is it true? Is it necessary? Is it kind?</em> One failure and the word stays in. The filter tightens; the circuit deepens.</p>
+
+    <h3>Day 7 — Gate Under Provocation</h3>
+    <p>Run the gate during your hardest conversation — the person you always react to, the topic that always triggers you. This is where the circuit proves itself. If the gate holds under provocation, it holds anywhere.</p>
+
+    <h3>Day 30 — Autopilot</h3>
+    <p>The gate runs itself. You'll notice the pause happening before you decide to pause. That's the circuit on autopilot — the hardware upgrade is installed.</p>
+  </section>
+
+  <div class="maxim">Every word you withhold is a retraction you'll never need.</div>
+
+  <!-- ============================================ -->
+  <!-- SHARE SUITE                                  -->
+  <!-- ============================================ -->
+  <div class="share-suite">
+    <div class="share-title">Share the Gate</div>
+    <div class="share-buttons">
+      <a class="share-btn" id="shareX" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <a class="share-btn" id="shareLinkedIn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.139 1.45-2.139 2.94v5.666H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="share-btn" id="shareWhatsApp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.05-.66.149-.19.198-.713.712-.877.844-.164.132-.33.149-.598-.048-.297-.198-1.164-.822-1.774-1.499-.66-.733-1.164-1.588-1.298-1.86-.132-.266-.014-.41.148-.56.149-.132.33-.297.494-.462.165-.165.297-.33.33-.598.033-.266-.014-.41-.148-.66-.165-.297-.844-1.499-1.164-2.024-.297-.494-.598-.867-.867-.899-.273-.033-.598-.033-.867.0-.33.099-.746.297-.877.598-.132.598-.297 1.164-.33 1.328-.033.165.0.41.0.66.165.66.867 1.66 1.164 2.024.297.33.598.867 1.164 1.499.598.598 1.164.712 1.429.712.297 0 .66-.165.867-.297.165-.132.598-.462.712-.598.165-.165.33-.33.494-.165.165.165.099.41.0.66-.099.266-.33.1.429-.598 1.774-.66 1.164-.746 1.328-.867 1.499-.099.165-.0.41.148.66.165.297.844 1.499 1.164 2.024.867.494 1.774 1.164 2.203 1.328.297.099.598.099.867.0.297-.099.598-.297.867-.598l.0-.0zM12.045 21.75c-2.16 0-4.194-.654-5.915-1.774L0 21.75l1.932-5.726C.638 14.202 0 12.164 0 10.045 0 4.505 4.505 0 10.045 0 15.585 0 21.75 4.505 21.75 10.045c0 5.54-5.048 10.045-10.045 10.045l.34-.34z"/></svg>
+        WhatsApp
+      </a>
+      <a class="share-btn" id="shareFacebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.413c0-3.014 1.831-4.669 4.532-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="share-btn" id="shareReddit" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Reddit">
+        <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.56 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.387-.47a.48.48 0 0 0-.56.38l-.5 3.06c-2.16.16-3.94.93-3.94.93s-.25.12-.5.25l.22.1c-.34.17-.68.37-1.02.6-.68.5-1.02 1.1-1.02 1.1s-.36-.02-.7.0c-.68.04-1.36.44-1.36 1.3 0 .85.7 1.28 1.36 1.3.34.02.7 0 .7 0s.34.6 1.02 1.1c.34.23.68.43 1.02.6l-.22.1c.25.13.5.25.5.25s1.78.77 3.94.93l.5 3.06a.48.48 0 0 0 .56.38l2.387-.47a1.246 1.246 0 0 1 2.498.056c0 .689-.56 1.249-1.25 1.249-.688 0-1.249-.56-1.249-1.25 0-.05.015-.105.02-.155l-2.01-.4a.48.48 0 0 0-.56.38l-.47 2.87c-1.2.3-2.47.3-3.68 0l-.47-2.87a.48.48 0 0 0-.56-.38l-2.01.4c.005.05.02.105.02.155a1.25 1.25 0 0 1-2.5 0c0-.689.56-1.249 1.25-1.249.35 0 .66.15.88.38l1.68-1.2a.48.48 0 0 0 .08-.66c-.52-.76-.84-1.66-.84-2.64 0-2.48 2.16-4.5 4.84-4.5s4.84 2.02 4.84 4.5c0 .98-.32 1.88-.84 2.64a.48.48 0 0 0 .08.66l1.68 1.2c.22-.23.53-.38.88-.38z"/></svg>
+        Reddit
+      </a>
+      <a class="share-btn" id="shareThreads" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Threads">
+        <svg viewBox="0 0 24 24"><path d="M12.186 24c-4.126 0-7.37-2.04-8.972-5.464-.744-1.595-.99-3.463-.908-5.552.155-3.95 1.77-7.293 4.59-9.355C8.905 2.376 11.046 1.5 13.21 1.5c2.734 0 4.854 1.147 6.298 3.1 1.122 1.517 1.668 3.387 1.668 5.55 0 1.578-.324 3.09-.962 4.484-.62 1.357-1.476 2.49-2.548 3.354.068-.638.102-1.3.102-1.98 0-3.07-.932-5.6-2.72-7.35-1.737-1.7-4.06-2.6-6.758-2.6-2.562 0-4.7.856-6.2 2.45C1.564 9.64.82 11.76.82 14.26c0 2.51.746 4.63 2.22 6.18 1.496 1.58 3.636 2.44 6.2 2.44 1.748 0 3.27-.396 4.526-1.176 1.196-.745 2.146-1.8 2.816-3.12.64-1.27.98-2.71.98-4.26 0-1.93-.466-3.49-1.386-4.64-.892-1.12-2.14-1.72-3.64-1.72-1.238 0-2.288.414-3.09 1.19-.768.75-1.174 1.74-1.174 2.86 0 1.03.348 1.88 1.014 2.47.636.56 1.458.85 2.394.85.87 0 1.602-.216 2.172-.636.098 1.48-.636 2.55-1.638 3.12-.714.408-1.57.616-2.544.616-1.578 0-2.826-.55-3.654-1.59-.772-.97-1.164-2.26-1.164-3.82 0-1.62.47-3.01 1.36-4.12.92-1.14 2.19-1.76 3.69-1.76 1.594 0 2.886.608 3.752 1.74.822 1.08 1.248 2.54 1.248 4.28 0 1.39-.288 2.7-.846 3.87z"/></svg>
+        Threads
+      </a>
+    </div>
+
+    <!-- Canvas Card Generator -->
+    <div class="canvas-card-section">
+      <button class="btn" onclick="generateShareCard()">Generate Share Card</button>
+      <canvas id="shareCanvas" width="600" height="315" style="margin-top:1rem;display:none;"></canvas>
+      <a id="cardDownload" href="#" download="speech-gate-card.png" style="display:none;margin-top:0.5rem;" class="btn">Download Card</a>
+    </div>
+  </div>
+
+  <!-- Closing imperative -->
+  <div class="maxim" style="margin-top:3rem;border-top:2px solid var(--cat-discipline);border-bottom:none;padding-top:2.5rem;">Open your mouth only when asked. Count every word you keep in.</div>
+
+</article>
+
+<script>
+// ============================================================
+// PREDICT-BEFORE-REVEAL
+// ============================================================
+function revealPredict1() {
+  const input = document.getElementById('predict1-input');
+  const btn = document.getElementById('predict1-btn');
+  const reveal = document.getElementById('predict1-reveal');
+  if (!input.value && input.value !== '0') return;
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+  reveal.classList.add('visible');
+}
+
+function revealPredict2() {
+  const input = document.getElementById('predict2-input');
+  const btn = document.getElementById('predict2-btn');
+  const reveal = document.getElementById('predict2-reveal');
+  if (!input.value && input.value !== '0') return;
+  btn.disabled = true;
+  btn.style.opacity = '0.5';
+  reveal.classList.add('visible');
+}
+
+// ============================================================
+// INTERACTIVE CHART
+// ============================================================
+let chartMode = 'filter';
+const CHART = {
+  x0: 60, y0: 230,   // origin
+  xMax: 580, yMax: 20, // top-right area
+  width: 520, height: 210
+};
+
+function hoursToX(h) { return CHART.x0 + (h / 24) * CHART.width; }
+function pctToY(p) { return CHART.y0 - (p / 100) * CHART.height; }
+
+function curveFilter(h)   { return 100 * (1 - Math.exp(-0.25 * h)); }
+function curveThreeGate(h) { return 100 * (1 - Math.exp(-0.30 * h)); }
+function curveSilence(h)  {
+  const base = 100 * (1 - Math.exp(-0.20 * h));
+  const rebound = h > 10 ? 25 * ((h - 10) / 14) * (1 - Math.exp(-0.15 * (h - 10))) : 0;
+  return Math.max(0, base - rebound);
+}
+
+function buildPolyline(fn) {
+  const pts = [];
+  for (let h = 0; h <= 24; h += 0.5) {
+    pts.push(hoursToX(h).toFixed(1) + ',' + pctToY(fn(h)).toFixed(1));
+  }
+  return pts.join(' ');
+}
+
+function updateChart() {
+  const hours = parseInt(document.getElementById('chartHours').value);
+  document.getElementById('chartHoursVal').textContent = hours + 'h';
+
+  document.getElementById('curveFilter').setAttribute('points', buildPolyline(curveFilter));
+  document.getElementById('curveThreeGate').setAttribute('points', buildPolyline(curveThreeGate));
+  document.getElementById('curveSilence').setAttribute('points', buildPolyline(curveSilence));
+
+  // Move marker
+  const fns = { filter: curveFilter, threegate: curveThreeGate, silence: curveSilence };
+  const fn = fns[chartMode];
+  const cx = hoursToX(hours);
+  const cy = pctToY(fn(hours));
+  const marker = document.getElementById('chartMarker');
+  marker.setAttribute('cx', cx.toFixed(1));
+  marker.setAttribute('cy', cy.toFixed(1));
+
+  // Highlight active curve
+  const colors = { filter: '#E8A33D', threegate: '#C1502E', silence: '#9C96A8' };
+  marker.setAttribute('fill', colors[chartMode]);
+
+  // Readout
+  document.getElementById('readoutHours').textContent = hours;
+  const strength = fn(hours).toFixed(0);
+  document.getElementById('readoutStrength').textContent = strength + '%';
+
+  let msg = '';
+  if (chartMode === 'filter') {
+    if (hours <= 4) msg = 'The steepest gains happen in the first 4 hours. Each gated impulse is a full rep for the override circuit.';
+    else if (hours <= 12) msg = 'Past the steepest phase. Each additional hour compounds more slowly but still adds — this is where the circuit stabilizes.';
+    else msg = 'The circuit is well-trained by now. Returns diminish but reliability increases — you will notice the pause starting to happen before you decide to pause.';
+  } else if (chartMode === 'threegate') {
+    if (hours <= 6) msg = 'The 3-gate filter is stricter — each gated impulse counts for more, but the cognitive load is higher. The first hours are the hardest.';
+    else msg = 'The three gates are running as a single reflex now. This is the compound version — Day 2+ territory.';
+  } else {
+    if (hours <= 10) msg = 'Total silence builds the circuit fast — but the rebound zone is approaching.';
+    else msg = 'Rebound zone. Suppressed speech is returning as rumination. Switch to "only when asked" to keep the gains without the pressure buildup.';
+  }
+  document.getElementById('chartReadout').innerHTML =
+    'At <span class="val">' + hours + '</span> hours, inhibitory control reaches <span class="val">' + strength + '%</span> of trained capacity. ' + msg;
+}
+
+function setChartMode(mode) {
+  chartMode = mode;
+  document.querySelectorAll('.chart-mode-btns button').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode' + mode.charAt(0).toUpperCase() + mode.slice(1)).classList.add('active');
+  updateChart();
+}
+
+// Init chart
+updateChart();
+
+// ============================================================
+// INSTRUMENT — COMMITMENT + GATE COUNTER
+// ============================================================
+const STORAGE_KEY = 'lantern_speech_gate';
+
+function getStore() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
+}
+
+function setStore(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function restoreSession() {
+  const store = getStore();
+  if (!store) return;
+  if (store.committed) {
+    showCounter(store);
+  }
+}
+
+function commitToGate() {
+  const now = Date.now();
+  const data = { committed: true, commitTime: now, gateCount: 0, breaks: 0 };
+  setStore(data);
+  showCounter(data);
+}
+
+function showCounter(data) {
+  document.getElementById('commitArea').style.display = 'none';
+  document.getElementById('counterArea').classList.add('visible');
+
+  // Update timeline
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step1').classList.add('completed');
+  document.getElementById('step2').classList.add('active');
+
+  document.getElementById('gateCount').textContent = data.gateCount;
+  updateElapsed(data);
+  checkWin(data);
+
+  // Start elapsed timer
+  if (!window._elapsedInterval) {
+    window._elapsedInterval = setInterval(() => {
+      const s = getStore();
+      if (s) updateElapsed(s);
+    }, 30000);
+  }
+}
+
+function incrementGate() {
+  const data = getStore();
+  if (!data) return;
+  data.gateCount++;
+  setStore(data);
+  document.getElementById('gateCount').textContent = data.gateCount;
+  checkWin(data);
+
+  // Animate counter
+  const el = document.getElementById('gateCount');
+  el.style.transform = 'scale(1.15)';
+  setTimeout(() => { el.style.transform = 'scale(1)'; }, 150);
+}
+
+function logBreak() {
+  const data = getStore();
+  if (!data) return;
+  data.breaks = (data.breaks || 0) + 1;
+  setStore(data);
+
+  const logEl = document.getElementById('breakLog');
+  logEl.textContent = 'Gate breaks logged: ' + data.breaks + '. Restart the clock — each break is data.';
+}
+
+function updateElapsed(data) {
+  const elapsed = Date.now() - data.commitTime;
+  const hours = Math.floor(elapsed / 3600000);
+  const mins = Math.floor((elapsed % 3600000) / 60000);
+  document.getElementById('elapsedTime').textContent = 'Elapsed: ' + hours + 'h ' + mins + 'm';
+}
+
+function checkWin(data) {
+  const elapsed = Date.now() - data.commitTime;
+  const hasGated = data.gateCount >= 1;
+  const hasTime = elapsed >= 300000; // 5 min minimum for a "first win" — achievable tonight
+
+  if (hasGated) {
+    const win = document.getElementById('winCondition');
+    win.classList.add('visible');
+
+    // Timeline update
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step2').classList.add('completed');
+    document.getElementById('step3').classList.add('active');
+  }
+
+  if (hasGated && hasTime) {
+    const day2 = document.getElementById('day2Prompt');
+    day2.classList.add('visible');
+
+    document.getElementById('step3').classList.remove('active');
+    document.getElementById('step3').classList.add('completed');
+    document.getElementById('step4').classList.add('active');
+  }
+}
+
+// Restore on load
+restoreSession();
+
+// ============================================================
+// SOCIAL SHARING
+// ============================================================
+const PAGE_URL = 'https://the-lantern.hacernube.workers.dev/articles/gate-your-tongue.html';
+const SHARE_TEXT_X = 'I\'m running a 24-hour speech gate: only speaking when asked, only what\'s necessary. First win — zero regretted messages by tonight.';
+const SHARE_TEXT_REDDIT = 'Running a 24-hour speech gate experiment — speak only when asked, count every impulse you stop. The prefrontal override circuit strengthens with each gated impulse.';
+const SHARE_TEXT_WHATSAPP = 'Try this: for 24 hours, speak only when someone asks you a direct question. Count every impulse you stop. I\'m running it now.';
+const SHARE_TEXT_LINKEDIN = 'I\'m testing a 24-hour speech gate today — speaking only when asked, only what\'s necessary. Each gated impulse trains the prefrontal override circuit. Simple lever, outsized effect.';
+
+function initShares() {
+  const enc = encodeURIComponent;
+  document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + enc(SHARE_TEXT_X) + '&url=' + enc(PAGE_URL);
+  document.getElementById('shareLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + enc(PAGE_URL);
+  document.getElementById('shareWhatsApp').href = 'https://wa.me/?text=' + enc(SHARE_TEXT_WHATSAPP + ' ' + PAGE_URL);
+  document.getElementById('shareFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + enc(PAGE_URL);
+  document.getElementById('shareReddit').href = 'https://reddit.com/submit?url=' + enc(PAGE_URL) + '&title=' + enc(SHARE_TEXT_REDDIT);
+  document.getElementById('shareThreads').href = 'https://threads.net/intent/post?text=' + enc(SHARE_TEXT_X + ' ' + PAGE_URL);
+}
+
+initShares();
+
+// ============================================================
+// CANVAS SHARE CARD
+// ============================================================
+function generateShareCard() {
+  const canvas = document.getElementById('shareCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#17151C';
+  ctx.fillRect(0, 0, 600, 315);
+
+  // Accent bar
+  ctx.fillStyle = '#C1502E';
+  ctx.fillRect(0, 0, 600, 4);
+
+  // Title
+  ctx.fillStyle = '#F3EFE6';
+  ctx.font = '600 32px Cormorant Garamond, serif';
+  ctx.fillText('Gate Your Tongue for One Day', 40, 65);
+
+  // Maxim
+  ctx.fillStyle = '#E8A33D';
+  ctx.font = '500 20px Cormorant Garamond, serif';
+  ctx.fillText('Make the tongue wait three seconds —', 40, 120);
+  ctx.fillText('the prefrontal needs two.', 40, 148);
+
+  // Category
+  ctx.fillStyle = '#9C96A8';
+  ctx.font = '500 11px JetBrains Mono, monospace';
+  ctx.fillText('DISCIPLINE  ·  THE LANTERN', 40, 195);
+
+  // Trial instruction
+  ctx.fillStyle = '#9C96A8';
+  ctx.font = '400 14px Inter, sans-serif';
+  ctx.fillText('Speak only when asked. Count every impulse you stop.', 40, 240);
+
+  // URL
+  ctx.fillStyle = '#6E6A76';
+  ctx.font = '400 12px JetBrains Mono, monospace';
+  ctx.fillText('the-lantern.hacernube.workers.dev', 40, 280);
+
+  canvas.style.display = 'block';
+
+  // Download link
+  const dl = document.getElementById('cardDownload');
+  dl.href = canvas.toDataURL('image/png');
+  dl.style.display = 'inline-block';
+}
+</script>
+
+</body>
+</html>
