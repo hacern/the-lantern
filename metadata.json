@@ -61,7 +61,7 @@
   "actionStep": "One-sentence action post-Utility-Gate",
   "interactMinutes": 4,
   "publishDate": "YYYY-MM-DD",
-  "status": "published",
+  "status": "draft",
   "heroAccent": "cat-<category>"
 },{
   "id": "kebab-case-slug",
