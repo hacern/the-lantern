@@ -7,7 +7,42 @@
     "connection": { "label": "Connection", "description": "Practices for binding people together — shared ritual, confession, communal meals, pilgrimage." },
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
-  "articles": [
+  "articles": [{
+  "id": "breath-of-stillness",
+  "slug": "articles/breath-of-stillness.html",
+  "title": "Breath of Stillness",
+  "hook": "Slow breathing works — but not for the reason most people think. The science of the vagus nerve explains what Hindu, Buddhist, and Sufi traditions have known for millennia.",
+  "category": "stillness",
+  "traditions": ["Hinduism", "Buddhism", "Sufism"],
+  "namedModel": "The Vagal Brake Model",
+  "instrument": "breath timer with 1:2 inhale-to-exhale ratio",
+  "actionStep": "Try this breath pattern 3 times today: inhale for 4 seconds, exhale for 8 seconds. Repeat 10 times. Then build a 5‑minute daily practice at 5.5 breaths/min using the Breath Timer.",
+  "interactMinutes": 4,
+  "publishDate": "2025-03-23",
+  "status": "published",
+  "heroAccent": "cat-stillness"
+},{
+  "id": "fasting-and-focus",
+  "slug": "articles/fasting-and-focus.html",
+  "title": "The Empty Stomach and the Sharpened Mind",
+  "hook": "Fasting is not the absence of food, but the presence of focus. Discover how metabolic switching rewires attention across ancient traditions.",
+  "category": "discipline",
+  "traditions": ["Islam (Sawm)", "Judaism (Yom Kippur)", "Christianity (Lent)", "Buddhism (Uposatha)"],
+  "namedModel": "The Metabolic Switch Hypothesis",
+  "figuresOfSpeech": [
+    "Fasting is not the absence of food, but the presence of focus.",
+    "When the body ceases to digest, the mind begins to discern.",
+    "We do not empty the stomach to punish the flesh; we clear the plate to quiet the noise."
+  ],
+  "visualMotif": "Interlocking geometric arches and glowing lantern motifs representing Islamic arabesque, Jewish lattice, and Christian monastic window symmetries.",
+  "dataVisualization": "Interactive animated line graph plotting liver glycogen depletion against BDNF (brain-derived neurotrophic factor) elevation and ketone levels over a 24-hour fast.",
+  "instrument": "Metabolic Window & Fasting Focus Planner",
+  "actionStep": "Select one 16-hour fasting window this week, schedule your high-focus task during hours 12–16, and track your attentional clarity.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-discipline"
+},
     {
   "id": "sabbath-reset",
   "slug": "articles/sabbath-reset.html",
