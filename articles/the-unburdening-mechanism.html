@@ -69,48 +69,6 @@
             margin: 0 auto;
         }
 
-        .hero-image-placeholder {
-            margin: 3rem 0;
-            border: 1px solid var(--line);
-            padding: 1rem;
-            background: var(--bg-raised);
-            position: relative;
-        }
-
-        .hero-image-placeholder::before {
-            content: '';
-            display: block;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        }
-
-        .hero-image-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 80%;
-        }
-
-        .hero-image-content svg {
-            width: 60px;
-            height: 60px;
-            fill: var(--flame);
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .image-prompt-display {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--dim);
-            margin-top: 1rem;
-            text-align: left;
-            border-top: 1px dashed var(--line);
-            padding-top: 1rem;
-            white-space: pre-wrap;
-        }
-
         .prose {
             margin: 3rem 0;
         }
@@ -274,18 +232,6 @@
         <h1>The Unburdening Mechanism</h1>
         <p class="hook">What is unspoken festers; what is spoken ferments into release.</p>
     </header>
-
-    <!-- Image Asset Block -->
-    <div class="hero-image-placeholder">
-        <div class="hero-image-content">
-            <svg viewBox="0 0 24 24"><path d="M12 2C12 2 6 10 6 14C6 17.3137 8.68629 20 12 20C15.3137 20 18 17.3137 18 14C18 10 12 2 12 2Z"/></svg>
-            <p>Photorealistic Asset Placeholder</p>
-        </div>
-        <div class="image-prompt-display">
-// TEXT-TO-IMAGE PROMPT:
-// Photorealistic 35mm film shot, extreme close-up of hands holding a wooden rosary in soft morning light filtering through stained glass. Dust motes in sunbeam. Subtle depth of field, warm amber and cool blue color grading. Focus on texture of wood and skin. No human faces. Respectful, quiet tone.
-        </div>
-    </div>
 
     <section class="prose">
         <p>Across cultures, the act of confession is often framed as a transaction: a debt paid to the divine, a ledger balanced. But beneath the theological scaffolding lies a deeply conserved neurological mechanism. From the Catholic confessional to the Jewish <em>Vidui</em>, from the Buddhist <em>Patimokkha</em> recitation to the spontaneous unburdening in a therapist's chair, the act of verbalizing failure triggers a distinct physiological cascade.</p>
@@ -477,11 +423,6 @@
             let lastRelease = localStorage.getItem('lanternLastRelease') || '';
             let today = new Date().toISOString().split('T')[0];
 
-            if (lastRelease !== today) {
-                // Reset streak if it's a new day? Actually, let's just increment per release for this demo.
-                // To make it a "streak", we'll check if they did it yesterday.
-            }
-            
             streakCount.innerText = streak;
 
             releaseBtn.addEventListener('click', function() {
