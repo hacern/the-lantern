@@ -9,6 +9,29 @@
   },
   "articles": [
     {
+  "id": "the-clarity-of-the-empty-plate",
+  "slug": "articles/the-clarity-of-the-empty-plate.html",
+  "title": "The Clarity of the Empty Plate",
+  "hook": "We empty the stomach to fill the mind; what we withhold from the body, we offer to the spirit.",
+  "category": "discipline",
+  "traditions": ["Islam", "Christianity", "Buddhism"],
+  "namedModel": "The Metabolic Switch",
+  "figuresOfSpeech": [
+    "We empty the stomach to fill the mind.",
+    "What we withhold from the body, we offer to the spirit.",
+    "Hunger is not the absence of food, but the presence of clarity."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Interactive dual-line SVG chart demonstrating blood glucose depletion versus ketone production over a 24-hour fasting window, with a dynamic state readout.",
+  "instrument": "The 14-Hour Window Calculator",
+  "actionStep": "Stop eating at 8:00 PM tonight and consume no caloric food or drink until 10:00 AM tomorrow to trigger the metabolic switch.",
+  "interactMinutes": 4,
+  "publishDate": "2023-10-25",
+  "status": "published",
+  "heroAccent": "cat-discipline",
+  "verification": "skipped"
+},
+    {
       "id": "contemplative-silence",
       "slug": "articles/contemplative-silence.html",
       "title": "Contemplative Silence: The Neuroscience of Inner Stillness",
