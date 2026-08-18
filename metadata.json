@@ -7,7 +7,53 @@
     "connection": { "label": "Connection", "description": "Practices for binding people together — shared ritual, confession, communal meals, pilgrimage." },
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
-  "articles": [{
+  "articles": [
+    {
+  "id": "gate-your-tongue",
+  "slug": "articles/gate-your-tongue.html",
+  "title": "Gate Your Tongue for One Day",
+  "hook": "You sent the message at 11:47 p.m. and regretted it by morning. For 24 hours, speak only when asked — and count every impulse you stop.",
+  "category": "discipline",
+  "traditions": ["Buddhism (Samma Vaca)", "Judaism (Shmirat Lashon)", "Islam (Hifz al-Lisan)"],
+  "namedModel": "The Speech Gate Model",
+  "figuresOfSpeech": [
+    "Gate it: true, necessary, kind. One failure, keep it in.",
+    "Make the tongue wait three seconds — the prefrontal needs two.",
+    "What you don't send today, you won't retract tomorrow.",
+    "Every word you withhold is a retraction you'll never need."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Interactive dose-response curve: hours of speech gate practice vs. inhibitory control strength, with three strictness modes (only-when-asked / 3-gate / total silence with rebound zone)",
+  "instrument": "Speech Gate Counter & Commitment Contract",
+  "actionStep": "For 24 hours, speak only when directly asked and only what is necessary; count every impulse you gate.",
+  "interactMinutes": 4,
+  "publishDate": "2025-07-10",
+  "status": "published",
+  "heroAccent": "cat-discipline",
+  "verification": "skipped"
+},{
+  "id": "the-16-hour-reset",
+  "slug": "articles/the-16-hour-reset.html",
+  "title": "The 16-Hour Reset",
+  "hook": "You make 227 food decisions a day. Close the kitchen at 8pm to reclaim tomorrow morning.",
+  "category": "discipline",
+  "traditions": ["Islam - Ramadan", "Judaism - Yom Kippur", "Hinduism - Upavasa"],
+  "namedModel": "The Metabolic Switch Model",
+  "figuresOfSpeech": [
+    "Close the kitchen to open the morning.",
+    "Hunger passes; you stay.",
+    "Eat after you decide, not before."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Reader-controlled glucose/ketone/ghrelin vs hours-fasted chart with dose slider and predict-before-reveal guesses",
+  "instrument": "Fasting Window Commitment Contract with Countdown and Win Tracker",
+  "actionStep": "Finish eating at 8pm tonight and consume only water/black coffee until noon tomorrow, logging the kitchen-close as your win.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-discipline",
+  "verification": "skipped"
+},{
   "id": "contemplative-silence-reset",
   "slug": "articles/contemplative-silence-reset.html",
   "title": "The 20-Minute Silence Reset",
