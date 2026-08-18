@@ -8,6 +8,26 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "kebab-case-id",
+  "slug": "articles/kebab-case-id.html",
+  "title": "Title Case, Cormorant-worthy, under 8 words",
+  "hook": "One sentence, under 30 words, featuring a memorable figure of speech",
+  "category": "stillness | discipline | connection | service",
+  "traditions": ["Tradition A", "Tradition B"],
+  "namedModel": "The [Model Name]",
+  "figuresOfSpeech": [
+    "Epigram or maxim 1",
+    "Epigram or maxim 2"
+  ],
+  "visualMotif": "Description of religious visual theme and generated photorealistic imagery",
+  "dataVisualization": "Description of interactive animated chart/graph",
+  "instrument": "Name of embedded tool",
+  "actionStep": "One-sentence action post-Utility-Gate",
+  "interactMinutes": 4,
+  "publishDate": "YYYY-MM-DD",
+  "status": "published",
+  "heroAccent": "cat-<category>"
+},{
   "id": "kebab-case-slug",
   "slug": "articles/kebab-case-slug.html",
   "title": "Title Case, Cormorant-Worthy, Under 8 Words",
