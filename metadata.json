@@ -8,6 +8,41 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "kebab-case-slug",
+  "slug": "articles/kebab-case-slug.html",
+  "title": "Title Case, Cormorant-Worthy, Under 8 Words",
+  "hook": "One sentence under 30 words with memorable figure of speech",
+  "category": "stillness | discipline | connection | service",
+  "traditions": ["Tradition A", "Tradition B", "Tradition C"],
+  "namedModel": "The [Descriptive Model Name]",
+  "figuresOfSpeech": [
+    "Epigram or maxim 1",
+    "Epigram or maxim 2",
+    "Epigram or maxim 3"
+  ],
+  "visualMotif": "Description of religious visual theme and photorealistic imagery generated",
+  "dataVisualization": "Description of interactive animated chart/graph and mechanism shown",
+  "instrument": "Name of embedded tool (e.g., 'Streak Tracker', 'Interval Timer')",
+  "actionStep": "One-sentence actionable instruction post-Utility-Gate validation",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-service",
+  "scienceCitations": [
+    "Author et al. (Year). Title. Journal. DOI/URL",
+    "Author et al. (Year). Title. Journal. DOI/URL"
+  ],
+  "imagePrompts": {
+    "hero": "Full photorealistic prompt for hero image",
+    "supporting1": "Full photorealistic prompt for supporting image 1",
+    "supporting2": "Full photorealistic prompt for supporting image 2"
+  },
+  "topicVerification": {
+    "checkedAgainst": "https://the-lantern.hacernube.workers.dev/",
+    "duplicatesFound": false,
+    "categoryBalance": "Service category prioritized (0 existing articles)"
+  }
+},{
   "id": "hunger-switch",
   "slug": "articles/hunger-switch.html",
   "title": "The Hunger Switch",
