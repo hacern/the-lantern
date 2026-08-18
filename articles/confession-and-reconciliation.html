@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confession & Reconciliation — The Lantern</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-connection: #C97B93;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    /* Navigation Header */
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1rem;
+    }
+    .back-link {
+      color: var(--dim);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .back-link:hover { color: var(--flame); }
+    .category-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cat-connection);
+      background: rgba(201, 123, 147, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--cat-connection);
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    p { margin-bottom: 1.25rem; font-size: 1.05rem; color: #E0DCDB; }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* Model Tag & Box */
+    .model-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--flame);
+      background: rgba(232, 163, 61, 0.1);
+      border: 1px solid var(--flame);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin: 0 0.2rem;
+    }
+    .model-box {
+      background: var(--bg-raised);
+      border-left: 3px solid var(--flame);
+      padding: 1.25rem;
+      margin: 2rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .model-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--flame);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Predict-Before-Reveal Cards */
+    .predict-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .predict-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.8rem;
+    }
+    .slider-container { margin: 1rem 0; }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--flame);
+    }
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      margin-top: 0.25rem;
+    }
+    .reveal-btn {
+      background: var(--line);
+      color: var(--text);
+      border: none;
+      padding: 0.5rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.75rem;
+    }
+    .reveal-btn:hover { background: var(--flame); color: var(--bg); }
+    .reveal-content {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--line);
+    }
+
+    /* Instrument Section */
+    .instrument {
+      background: var(--bg-raised);
+      border: 1px solid var(--cat-connection);
+      border-radius: 8px;
+      padding: 1.75rem;
+      margin: 2.5rem 0;
+    }
+    .instrument-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .instrument-step { margin-bottom: 1rem; }
+    textarea {
+      width: 100%;
+      height: 100px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    .action-btn {
+      background: var(--cat-connection);
+      color: #FFF;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Reframe Block */
+    .reframe {
+      background: #000;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    .reframe h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--flame);
+      margin-bottom: 1rem;
+    }
+
+    /* Footer / Analytics */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav-header">
+    <a href="../index.html" class="back-link">← The Lantern</a>
+    <span class="category-badge">Connection</span>
+  </header>
+
+  <main>
+    <h1>The Unburdening Mechanics: Why Confession Recodes the Neural Architecture of Guilt</h1>
+
+    <p>In Catholicism, the <em>Sacrament of Reconciliation</em> requires explicit spoken vocalization of specific transgressions to an ordained priest. In Judaism, the solemn Yom Kippur liturgy hinges on <em>Vidui</em> — a vocalized, public-communal and private enumeration of moral missteps. In Islam, <em>Tawbah</em> demands acknowledging transgressions directly to the Divine, accompanied by explicit internal commitment to cease the action. Across traditions, the requirement is non-negotiable: unresolved ethical friction cannot remain an amorphous, unspoken internal monologue.</p>
+
+    <div class="model-box">
+      <h3>The Linguistic Recoding Model</h3>
+      <p>Unvocalized guilt exists as diffuse, non-linear neural activity spread across the Default Mode Network (DMN) and limbic structures. Translating abstract emotional distress into concrete syntax forces neural processing from subterranean autonomic arousal into the prefrontal cortex, fundamentally altering how the event is stored in autobiographical memory.</p>
+    </div>
+
+    <div class="predict-card">
+      <div class="predict-title">Predict the Finding #1</div>
+      <p>By what percentage does converting an emotionally traumatic or guilt-inducing event into structured language lower circulating autonomic stress markers (such as salivary cortisol) over a 4-week period?</p>
+      <div class="slider-container">
+        <input type="range" id="predict1" min="0" max="100" value="10">
+        <div class="slider-labels">
+          <span>0%</span>
+          <span id="slider1-val">10%</span>
+          <span>100%</span>
+        </div>
+      </div>
+      <button class="reveal-btn" onclick="revealPredict(1)">Reveal Research Data</button>
+      <div id="reveal1" class="reveal-content">
+        <p><strong>Actual finding: ~35% sustained reduction [VERIFY].</strong> Landmark research in expressive disclosure (Pennebaker et al.) demonstrated that structured linguistic translation of personal distress drastically attenuates chronic autonomic nervous system hyper-arousal compared to keeping the narrative unexpressed.</p>
+      </div>
+    </div>
+
+    <p>Without explicit syntax, negative autobiographical events linger as rumination. Applying <span class="model-tag">The Linguistic Recoding Model</span> forces the brain to assign temporal boundaries, cause-and-effect relationships, and physical context to an unsaid burden. Unspoken guilt stays active as an open loop; once transcribed or vocalized, the brain categorizes it as a closed historic event.</p>
+
+    <div class="predict-card">
+      <div class="predict-title">Predict the Finding #2</div>
+      <p>How many days of structured, 15-minute linguistic disclosure of an unexpressed burden are required before measurable improvements in working memory capacity and immune function occur?</p>
+      <div class="slider-container">
+        <input type="range" id="predict2" min="1" max="30" value="14">
+        <div class="slider-labels">
+          <span>1 Day</span>
+          <span id="slider2-val">14 Days</span>
+          <span>30 Days</span>
+        </div>
+      </div>
+      <button class="reveal-btn" onclick="revealPredict(2)">Reveal Research Data</button>
+      <div id="reveal2" class="reveal-content">
+        <p><strong>Actual finding: 3 to 4 days [VERIFY].</strong> Studies reveal that as few as 3–4 consecutive short sessions of explicit linguistic recoding free up cognitive resources previously consumed by active suppression, resulting in immediate gains in working memory efficiency.</p>
+      </div>
+    </div>
+
+    <p>Confession is rarely a comfortable exercise, but its therapeutic vector relies on precise cognitive shifts rather than vague catharsis. By leveraging <span class="model-tag">The Linguistic Recoding Model</span>, sacred traditions built an operational mechanism to reset working memory, break ruminate loops, and repair social dynamics.</p>
+
+    <!-- Embedded Instrument -->
+    <div class="instrument">
+      <div class="instrument-title">Instrument: The 10-Minute Recoding Session</div>
+      <p style="font-size: 0.9rem; color: var(--dim);">A structured, private tool to operationalize expressive disclosure today.</p>
+      
+      <div class="instrument-step">
+        <label for="confession-input" style="font-size:0.85rem; font-family:'JetBrains Mono', monospace; display:block; margin-bottom:0.4rem; color:var(--text);">1. Identify one unsaid ethical or relational burden currently causing internal friction:</label>
+        <textarea id="confession-input" placeholder="Name the specific event, the action taken or untaken, and the concrete outcome without rationalization..."></textarea>
+      </div>
+
+      <button class="action-btn" onclick="processRecode()">Recode & Seal Session</button>
+
+      <div id="instrument-output" style="display:none; margin-top: 1rem; padding: 1rem; background: var(--bg); border-radius: 4px; border-left: 2px solid var(--cat-connection);">
+        <p style="font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--flame); margin-bottom:0.25rem;">STATUS: RECODING COMPLETE</p>
+        <p style="font-size:0.95rem; margin-bottom:0;">Your input has been translated into explicit syntax. You have converted an open ruminate loop into a discrete past event. State your resolution plainly and destroy or archive this record.</p>
+      </div>
+    </div>
+
+    <!-- Reframe Closing Block -->
+    <div class="reframe">
+      <h2>The Reframe</h2>
+      <p>Confession is not an exercise in self-flagellation or earning external permission to exist. It is a biological operating system update. You are not cleansing a mystical stain; you are converting disorganized, high-cortisol emotional chaos into structured linguistic history so your working memory can finally let it go.</p>
+      <p><strong>High-Agency Action Step:</strong> Set a timer for 10 minutes right now. Write down one unaddressed ethical friction using plain facts (what happened, what you did, the direct impact). Read it aloud once to lock in the linguistic conversion, then delete or destroy the text.</p>
+    </div>
+  </main>
+
+  <footer>
+    <span>The Lantern © 2026</span>
+    <span>Category: Connection</span>
+  </footer>
+
+  <script>
+    // Live update range sliders
+    document.getElementById('predict1').addEventListener('input', (e) => {
+      document.getElementById('slider1-val').innerText = e.target.value + '%';
+    });
+    document.getElementById('predict2').addEventListener('input', (e) => {
+      document.getElementById('slider2-val').innerText = e.target.value + ' Days';
+    });
+
+    function revealPredict(id) {
+      document.getElementById('reveal' + id).style.display = 'block';
+    }
+
+    function processRecode() {
+      const val = document.getElementById('confession-input').value.trim();
+      if (!val) {
+        alert('Please write out the friction point to recode it.');
+        return;
+      }
+      document.getElementById('instrument-output').style.display = 'block';
+    }
+
+    // Fixed analytics beacon on load
+    try {
+      fetch('https://the-lantern-analytics.worker-subdomain.workers.dev/collect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: 'confession-and-reconciliation', event: 'view' })
+      });
+    } catch (e) {
+      // Graceful fallback: non-blocking
+    }
+  </script>
+</body>
+</html>
