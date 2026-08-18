@@ -8,6 +8,24 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "breath-practices-resonance",
+  "slug": "articles/breath-practices-resonance.html",
+  "title": "The Vagal Brake: Why Breath Practices Work",
+  "hook": "You don't need to clear your mind to find calm. You just need to breathe at 5.5 cycles per minute.",
+  "category": "stillness",
+  "traditions": [
+    "Hinduism (Sama Vritti Pranayama)",
+    "Buddhism (Ānāpānasati)",
+    "Sufism (Dam / Breath Dhikr)"
+  ],
+  "namedModel": "The Vagal Brake Model",
+  "instrument": "5-minute resonance breath pacer",
+  "actionStep": "Spend 5 minutes today breathing at a 5.5 breaths-per-minute pace (5 seconds in, 6 seconds out) using the embedded pacer.",
+  "interactMinutes": 5,
+  "publishDate": "2026-08-18",
+  "status": "draft",
+  "heroAccent": "cat-stillness"
+},{
   "id": "breath-of-stillness",
   "slug": "articles/breath-of-stillness.html",
   "title": "Breath of Stillness",
