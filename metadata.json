@@ -20,7 +20,7 @@
   "actionStep": "Write down one unaddressed ethical friction using plain facts for 10 minutes, read it aloud once to complete the linguistic recoding, then destroy the transcript.",
   "interactMinutes": 4,
   "publishDate": "2026-08-18",
-  "status": "draft",
+  "status": "published",
   "heroAccent": "cat-connection"
 },{
   "id": "breath-practices",
@@ -63,7 +63,7 @@
       "namedModel": "The Costly Signal",
       "interactMinutes": 6,
       "publishDate": "2026-08-08",
-      "status": "published",
+      "status": "draft",
       "heroAccent": "cat-discipline"
     },
     {
