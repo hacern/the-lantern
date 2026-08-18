@@ -8,6 +8,26 @@
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
   "articles": [{
+  "id": "hunger-switch",
+  "slug": "articles/hunger-switch.html",
+  "title": "The Hunger Switch",
+  "hook": "Every major religion demands voluntary hunger. The body's response is older than any of them.",
+  "category": "discipline",
+  "traditions": [
+    "Islam (Ramadan sawm)",
+    "Judaism (Yom Kippur)",
+    "Christianity (Lenten fasting)",
+    "Buddhism (Uposatha)",
+    "Hinduism (Ekadashi vrata)"
+  ],
+  "namedModel": "The Metabolic Switch",
+  "instrument": "fast-window calculator",
+  "actionStep": "Pick one day this week. Stop eating at 7pm and eat next at 9am — a 14-hour fast. Use the calculator to see when the metabolic switch flips for your schedule.",
+  "interactMinutes": 4,
+  "publishDate": "2025-06-03",
+  "status": "draft",
+  "heroAccent": "cat-discipline"
+},{
   "id": "breath-practices-resonance",
   "slug": "articles/breath-practices-resonance.html",
   "title": "The Vagal Brake: Why Breath Practices Work",
