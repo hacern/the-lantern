@@ -9,6 +9,20 @@
   },
   "articles": [
     {
+  "id": "sabbath-reset",
+  "slug": "articles/sabbath-reset.html",
+  "title": "The Sabbath Reset",
+  "hook": "One day of structural rest — not as a luxury, but as a physiological reset that pays back in six.",
+  "category": "stillness",
+  "traditions": ["Judaism", "Christianity", "Baháʼí"],
+  "namedModel": "The Recovery Debt",
+  "instrument": "Rest-window planner",
+  "actionStep": "Pick your 24-hour window in the next seven days. Set a phone reminder that says 'Rest window — no work, no catch-up.' Do it once this week. Then do it again next week.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-stillness"
+},{
   "id": "confession-and-reconciliation",
   "slug": "articles/confession-and-reconciliation.html",
   "title": "The Unburdening Mechanics: Why Confession Recodes the Neural Architecture of Guilt",
