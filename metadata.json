@@ -7,29 +7,31 @@
     "connection": { "label": "Connection", "description": "Practices for binding people together — shared ritual, confession, communal meals, pilgrimage." },
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
-  "articles": [{
-  "id": "contemplative-silence",
-  "slug": "articles/contemplative-silence.html",
-  "title": "Contemplative Silence: The Neuroscience of Inner Stillness",
-  "hook": "\"Silence is not the absence of sound — it is the presence of a mind finally still enough to hear itself think.\"",
-  "category": "stillness",
-  "traditions": ["Christianity (Hesychasm)", "Buddhism (Ariya-tuṇhībhāva)", "Islam (Khalwa)", "Hinduism (Mauna)"],
-  "namedModel": "The Stillness Model",
-  "figuresOfSpeech": [
-    "Silence is the language of the soul — the loudest sound we never speak.",
-    "To master the voice, first master its absence.",
-    "In the quiet between heartbeats, the mind finds its true rhythm.",
-    "Stillness is not emptiness — it is presence without the noise of self."
-  ],
-  "visualMotif": "Monastic stone architecture with morning light filtering through ancient windows; candle flame reflected on polished timber; desert dawn prayer grounds with mist rising; intricate geometric tilework patterns representing sacred geometry and contemplative order.",
-  "dataVisualization": "Interactive animated line chart showing HRV (Heart Rate Variability) improvement across 0-40 minutes of contemplative silence, with real-time percentage display and toggleable duration presets (5, 10, 20, 40 min).",
-  "instrument": "Contemplative Silence Timer — a localStorage-enabled timer with session tracking, total minutes counter, and day streak tracker, with pause/resume/start/reset functionality.",
-  "actionStep": "Set aside 10 minutes today in complete silence — no phone, no music, no conversation. Notice the quality of your mind before and after.",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-stillness"
-},{
+  "articles": [
+    {
+      "id": "contemplative-silence",
+      "slug": "articles/contemplative-silence.html",
+      "title": "Contemplative Silence: The Neuroscience of Inner Stillness",
+      "hook": "\"Silence is not the absence of sound — it is the presence of a mind finally still enough to hear itself think.\"",
+      "category": "stillness",
+      "traditions": ["Christianity (Hesychasm)", "Buddhism (Ariya-tuṇhībhāva)", "Islam (Khalwa)", "Hinduism (Mauna)"],
+      "namedModel": "The Stillness Model",
+      "figuresOfSpeech": [
+        "Silence is the language of the soul — the loudest sound we never speak.",
+        "To master the voice, first master its absence.",
+        "In the quiet between heartbeats, the mind finds its true rhythm.",
+        "Stillness is not emptiness — it is presence without the noise of self."
+      ],
+      "visualMotif": "Monastic stone architecture with morning light filtering through ancient windows; candle flame reflected on polished timber; desert dawn prayer grounds with mist rising; intricate geometric tilework patterns representing sacred geometry and contemplative order.",
+      "dataVisualization": "Interactive animated line chart showing HRV (Heart Rate Variability) improvement across 0-40 minutes of contemplative silence, with real-time percentage display and toggleable duration presets (5, 10, 20, 40 min).",
+      "instrument": "Contemplative Silence Timer — a localStorage-enabled timer with session tracking, total minutes counter, and day streak tracker, with pause/resume/start/reset functionality.",
+      "actionStep": "Set aside 10 minutes today in complete silence — no phone, no music, no conversation. Notice the quality of your mind before and after.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-stillness"
+    },
+    {
       "id": "fixed-hour-prayer",
       "slug": "articles/fixed-hour-prayer.html",
       "title": "The Hour Is the Habit",
@@ -43,204 +45,213 @@
       "publishDate": "2026-08-18",
       "status": "draft",
       "heroAccent": "cat-discipline"
-    }
-  ,{
-  "id": "the-unburdening-mechanism",
-  "slug": "articles/the-unburdening-mechanism.html",
-  "title": "The Unburdening Mechanism",
-  "hook": "What is unspoken festers; what is spoken ferments into release.",
-  "category": "connection",
-  "traditions": ["Catholicism (Sacrament of Reconciliation)", "Judaism (Vidui)", "Buddhism (Patimokkha)"],
-  "namedModel": "The Affect Labeling Model",
-  "figuresOfSpeech": [
-    "What is unspoken festers; what is spoken ferments into release.",
-    "The cage of silence is opened by the key of our own voice.",
-    "What we refuse to name, we are forced to carry; what we can name, we can set down."
-  ],
-  "visualMotif": "Photorealistic 35mm film shot, extreme close-up of hands holding a wooden rosary in soft morning light filtering through stained glass. Dust motes in sunbeam. Warm amber and cool blue color grading. Focus on texture of wood and skin. No human faces.",
-  "dataVisualization": "Animated canvas line chart depicting the inverse neural pathways during a 10-minute confession: decreasing amygdala activation (threat response) and increasing prefrontal cortex engagement (cognitive control), intersecting at a 'Crossover (Relief)' point.",
-  "instrument": "The Unburdening Window (5-minute local text release tool)",
-  "actionStep": "Write down one specific regret today, speak it aloud to an empty room, then destroy the paper.",
-  "interactMinutes": 4,
-  "publishDate": "2023-10-25",
-  "status": "published",
-  "heroAccent": "cat-connection"
-},{
-  "id": "kebab-case-id",
-  "slug": "articles/kebab-case-id.html",
-  "title": "Title Case, Cormorant-worthy, under 8 words",
-  "hook": "One sentence, under 30 words, featuring a memorable figure of speech",
-  "category": "stillness | discipline | connection | service",
-  "traditions": ["Tradition A", "Tradition B"],
-  "namedModel": "The [Model Name]",
-  "figuresOfSpeech": [
-    "Epigram or maxim 1",
-    "Epigram or maxim 2"
-  ],
-  "visualMotif": "Description of religious visual theme and generated photorealistic imagery",
-  "dataVisualization": "Description of interactive animated chart/graph",
-  "instrument": "Name of embedded tool",
-  "actionStep": "One-sentence action post-Utility-Gate",
-  "interactMinutes": 4,
-  "publishDate": "YYYY-MM-DD",
-  "status": "draft",
-  "heroAccent": "cat-<category>"
-},{
-  "id": "kebab-case-slug",
-  "slug": "articles/kebab-case-slug.html",
-  "title": "Title Case, Cormorant-Worthy, Under 8 Words",
-  "hook": "One sentence under 30 words with memorable figure of speech",
-  "category": "stillness | discipline | connection | service",
-  "traditions": ["Tradition A", "Tradition B", "Tradition C"],
-  "namedModel": "The [Descriptive Model Name]",
-  "figuresOfSpeech": [
-    "Epigram or maxim 1",
-    "Epigram or maxim 2",
-    "Epigram or maxim 3"
-  ],
-  "visualMotif": "Description of religious visual theme and photorealistic imagery generated",
-  "dataVisualization": "Description of interactive animated chart/graph and mechanism shown",
-  "instrument": "Name of embedded tool (e.g., 'Streak Tracker', 'Interval Timer')",
-  "actionStep": "One-sentence actionable instruction post-Utility-Gate validation",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-service",
-  "scienceCitations": [
-    "Author et al. (Year). Title. Journal. DOI/URL",
-    "Author et al. (Year). Title. Journal. DOI/URL"
-  ],
-  "imagePrompts": {
-    "hero": "Full photorealistic prompt for hero image",
-    "supporting1": "Full photorealistic prompt for supporting image 1",
-    "supporting2": "Full photorealistic prompt for supporting image 2"
-  },
-  "topicVerification": {
-    "checkedAgainst": "https://the-lantern.hacernube.workers.dev/",
-    "duplicatesFound": false,
-    "categoryBalance": "Service category prioritized (0 existing articles)"
-  }
-},{
-  "id": "hunger-switch",
-  "slug": "articles/hunger-switch.html",
-  "title": "The Hunger Switch",
-  "hook": "Every major religion demands voluntary hunger. The body's response is older than any of them.",
-  "category": "discipline",
-  "traditions": [
-    "Islam (Ramadan sawm)",
-    "Judaism (Yom Kippur)",
-    "Christianity (Lenten fasting)",
-    "Buddhism (Uposatha)",
-    "Hinduism (Ekadashi vrata)"
-  ],
-  "namedModel": "The Metabolic Switch",
-  "instrument": "fast-window calculator",
-  "actionStep": "Pick one day this week. Stop eating at 7pm and eat next at 9am — a 14-hour fast. Use the calculator to see when the metabolic switch flips for your schedule.",
-  "interactMinutes": 4,
-  "publishDate": "2025-06-03",
-  "status": "draft",
-  "heroAccent": "cat-discipline"
-},{
-  "id": "breath-practices-resonance",
-  "slug": "articles/breath-practices-resonance.html",
-  "title": "The Vagal Brake: Why Breath Practices Work",
-  "hook": "You don't need to clear your mind to find calm. You just need to breathe at 5.5 cycles per minute.",
-  "category": "stillness",
-  "traditions": [
-    "Hinduism (Sama Vritti Pranayama)",
-    "Buddhism (Ānāpānasati)",
-    "Sufism (Dam / Breath Dhikr)"
-  ],
-  "namedModel": "The Vagal Brake Model",
-  "instrument": "5-minute resonance breath pacer",
-  "actionStep": "Spend 5 minutes today breathing at a 5.5 breaths-per-minute pace (5 seconds in, 6 seconds out) using the embedded pacer.",
-  "interactMinutes": 5,
-  "publishDate": "2026-08-18",
-  "status": "draft",
-  "heroAccent": "cat-stillness"
-},{
-  "id": "breath-of-stillness",
-  "slug": "articles/breath-of-stillness.html",
-  "title": "Breath of Stillness",
-  "hook": "Slow breathing works — but not for the reason most people think. The science of the vagus nerve explains what Hindu, Buddhist, and Sufi traditions have known for millennia.",
-  "category": "stillness",
-  "traditions": ["Hinduism", "Buddhism", "Sufism"],
-  "namedModel": "The Vagal Brake Model",
-  "instrument": "breath timer with 1:2 inhale-to-exhale ratio",
-  "actionStep": "Try this breath pattern 3 times today: inhale for 4 seconds, exhale for 8 seconds. Repeat 10 times. Then build a 5‑minute daily practice at 5.5 breaths/min using the Breath Timer.",
-  "interactMinutes": 4,
-  "publishDate": "2025-03-23",
-  "status": "published",
-  "heroAccent": "cat-stillness"
-},{
-  "id": "fasting-and-focus",
-  "slug": "articles/fasting-and-focus.html",
-  "title": "The Empty Stomach and the Sharpened Mind",
-  "hook": "Fasting is not the absence of food, but the presence of focus. Discover how metabolic switching rewires attention across ancient traditions.",
-  "category": "discipline",
-  "traditions": ["Islam (Sawm)", "Judaism (Yom Kippur)", "Christianity (Lent)", "Buddhism (Uposatha)"],
-  "namedModel": "The Metabolic Switch Hypothesis",
-  "figuresOfSpeech": [
-    "Fasting is not the absence of food, but the presence of focus.",
-    "When the body ceases to digest, the mind begins to discern.",
-    "We do not empty the stomach to punish the flesh; we clear the plate to quiet the noise."
-  ],
-  "visualMotif": "Interlocking geometric arches and glowing lantern motifs representing Islamic arabesque, Jewish lattice, and Christian monastic window symmetries.",
-  "dataVisualization": "Interactive animated line graph plotting liver glycogen depletion against BDNF (brain-derived neurotrophic factor) elevation and ketone levels over a 24-hour fast.",
-  "instrument": "Metabolic Window & Fasting Focus Planner",
-  "actionStep": "Select one 16-hour fasting window this week, schedule your high-focus task during hours 12–16, and track your attentional clarity.",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-discipline"
-},
+    },
     {
-  "id": "sabbath-reset",
-  "slug": "articles/sabbath-reset.html",
-  "title": "The Sabbath Reset",
-  "hook": "One day of structural rest — not as a luxury, but as a physiological reset that pays back in six.",
-  "category": "stillness",
-  "traditions": ["Judaism", "Christianity", "Baháʼí"],
-  "namedModel": "The Recovery Debt",
-  "instrument": "Rest-window planner",
-  "actionStep": "Pick your 24-hour window in the next seven days. Set a phone reminder that says 'Rest window — no work, no catch-up.' Do it once this week. Then do it again next week.",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-stillness"
-},{
-  "id": "confession-and-reconciliation",
-  "slug": "articles/confession-and-reconciliation.html",
-  "title": "The Unburdening Mechanics: Why Confession Recodes the Neural Architecture of Guilt",
-  "hook": "Translating unsaid guilt into explicit language isn't just moral catharsis—it systematically alters autobiographical memory storage and drops autonomic stress markers.",
-  "category": "connection",
-  "traditions": ["Catholicism", "Judaism", "Islam"],
-  "namedModel": "The Linguistic Recoding Model",
-  "instrument": "10-minute expressive recoding tool",
-  "actionStep": "Write down one unaddressed ethical friction using plain facts for 10 minutes, read it aloud once to complete the linguistic recoding, then destroy the transcript.",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-connection"
-},{
-  "id": "breath-practices",
-  "slug": "articles/breath-practices.html",
-  "title": "The Vagal Brake: Why Breath Practices Work",
-  "hook": "You don't breathe to get oxygen. You breathe to send a memo to your nervous system.",
-  "category": "stillness",
-  "traditions": [
-    "Hinduism (Pranayama)",
-    "Buddhism (Anapanasati)",
-    "Islam (Sufi Dhikr)"
-  ],
-  "namedModel": "The Vagal Brake",
-  "instrument": "2-minute coherent breath pacer",
-  "actionStep": "Run the 2-minute Coherent Breath Pacer once today, focusing on 5.5-second inhales and exhales.",
-  "interactMinutes": 4,
-  "publishDate": "2026-08-18",
-  "status": "published",
-  "heroAccent": "cat-stillness"
-},{
+      "id": "the-unburdening-mechanism",
+      "slug": "articles/the-unburdening-mechanism.html",
+      "title": "The Unburdening Mechanism",
+      "hook": "What is unspoken festers; what is spoken ferments into release.",
+      "category": "connection",
+      "traditions": ["Catholicism (Sacrament of Reconciliation)", "Judaism (Vidui)", "Buddhism (Patimokkha)"],
+      "namedModel": "The Affect Labeling Model",
+      "figuresOfSpeech": [
+        "What is unspoken festers; what is spoken ferments into release.",
+        "The cage of silence is opened by the key of our own voice.",
+        "What we refuse to name, we are forced to carry; what we can name, we can set down."
+      ],
+      "visualMotif": "Photorealistic 35mm film shot, extreme close-up of hands holding a wooden rosary in soft morning light filtering through stained glass. Dust motes in sunbeam. Warm amber and cool blue color grading. Focus on texture of wood and skin. No human faces.",
+      "dataVisualization": "Animated canvas line chart depicting the inverse neural pathways during a 10-minute confession: decreasing amygdala activation (threat response) and increasing prefrontal cortex engagement (cognitive control), intersecting at a 'Crossover (Relief)' point.",
+      "instrument": "The Unburdening Window (5-minute local text release tool)",
+      "actionStep": "Write down one specific regret today, speak it aloud to an empty room, then destroy the paper.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-connection"
+    },
+    {
+      "id": "kebab-case-id",
+      "slug": "articles/kebab-case-id.html",
+      "title": "Title Case, Cormorant-worthy, under 8 words",
+      "hook": "One sentence, under 30 words, featuring a memorable figure of speech",
+      "category": "stillness | discipline | connection | service",
+      "traditions": ["Tradition A", "Tradition B"],
+      "namedModel": "The [Model Name]",
+      "figuresOfSpeech": [
+        "Epigram or maxim 1",
+        "Epigram or maxim 2"
+      ],
+      "visualMotif": "Description of religious visual theme and generated photorealistic imagery",
+      "dataVisualization": "Description of interactive animated chart/graph",
+      "instrument": "Name of embedded tool",
+      "actionStep": "One-sentence action post-Utility-Gate",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "draft",
+      "heroAccent": "cat-<category>"
+    },
+    {
+      "id": "kebab-case-slug",
+      "slug": "articles/kebab-case-slug.html",
+      "title": "Title Case, Cormorant-Worthy, Under 8 Words",
+      "hook": "One sentence under 30 words with memorable figure of speech",
+      "category": "stillness | discipline | connection | service",
+      "traditions": ["Tradition A", "Tradition B", "Tradition C"],
+      "namedModel": "The [Descriptive Model Name]",
+      "figuresOfSpeech": [
+        "Epigram or maxim 1",
+        "Epigram or maxim 2",
+        "Epigram or maxim 3"
+      ],
+      "visualMotif": "Description of religious visual theme and photorealistic imagery generated",
+      "dataVisualization": "Description of interactive animated chart/graph and mechanism shown",
+      "instrument": "Name of embedded tool (e.g., 'Streak Tracker', 'Interval Timer')",
+      "actionStep": "One-sentence actionable instruction post-Utility-Gate validation",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-service",
+      "scienceCitations": [
+        "Author et al. (Year). Title. Journal. DOI/URL",
+        "Author et al. (Year). Title. Journal. DOI/URL"
+      ],
+      "imagePrompts": {
+        "hero": "Full photorealistic prompt for hero image",
+        "supporting1": "Full photorealistic prompt for supporting image 1",
+        "supporting2": "Full photorealistic prompt for supporting image 2"
+      },
+      "topicVerification": {
+        "checkedAgainst": "https://the-lantern.hacernube.workers.dev/",
+        "duplicatesFound": false,
+        "categoryBalance": "Service category prioritized (0 existing articles)"
+      }
+    },
+    {
+      "id": "hunger-switch",
+      "slug": "articles/hunger-switch.html",
+      "title": "The Hunger Switch",
+      "hook": "Every major religion demands voluntary hunger. The body's response is older than any of them.",
+      "category": "discipline",
+      "traditions": [
+        "Islam (Ramadan sawm)",
+        "Judaism (Yom Kippur)",
+        "Christianity (Lenten fasting)",
+        "Buddhism (Uposatha)",
+        "Hinduism (Ekadashi vrata)"
+      ],
+      "namedModel": "The Metabolic Switch",
+      "instrument": "fast-window calculator",
+      "actionStep": "Pick one day this week. Stop eating at 7pm and eat next at 9am — a 14-hour fast. Use the calculator to see when the metabolic switch flips for your schedule.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "draft",
+      "heroAccent": "cat-discipline"
+    },
+    {
+      "id": "breath-practices-resonance",
+      "slug": "articles/breath-practices-resonance.html",
+      "title": "The Vagal Brake: Why Breath Practices Work",
+      "hook": "You don't need to clear your mind to find calm. You just need to breathe at 5.5 cycles per minute.",
+      "category": "stillness",
+      "traditions": [
+        "Hinduism (Sama Vritti Pranayama)",
+        "Buddhism (Ānāpānasati)",
+        "Sufism (Dam / Breath Dhikr)"
+      ],
+      "namedModel": "The Vagal Brake Model",
+      "instrument": "5-minute resonance breath pacer",
+      "actionStep": "Spend 5 minutes today breathing at a 5.5 breaths-per-minute pace (5 seconds in, 6 seconds out) using the embedded pacer.",
+      "interactMinutes": 5,
+      "publishDate": "2026-08-18",
+      "status": "draft",
+      "heroAccent": "cat-stillness"
+    },
+    {
+      "id": "breath-of-stillness",
+      "slug": "articles/breath-of-stillness.html",
+      "title": "Breath of Stillness",
+      "hook": "Slow breathing works — but not for the reason most people think. The science of the vagus nerve explains what Hindu, Buddhist, and Sufi traditions have known for millennia.",
+      "category": "stillness",
+      "traditions": ["Hinduism", "Buddhism", "Sufism"],
+      "namedModel": "The Vagal Brake Model",
+      "instrument": "breath timer with 1:2 inhale-to-exhale ratio",
+      "actionStep": "Try this breath pattern 3 times today: inhale for 4 seconds, exhale for 8 seconds. Repeat 10 times. Then build a 5‑minute daily practice at 5.5 breaths/min using the Breath Timer.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-stillness"
+    },
+    {
+      "id": "fasting-and-focus",
+      "slug": "articles/fasting-and-focus.html",
+      "title": "The Empty Stomach and the Sharpened Mind",
+      "hook": "Fasting is not the absence of food, but the presence of focus. Discover how metabolic switching rewires attention across ancient traditions.",
+      "category": "discipline",
+      "traditions": ["Islam (Sawm)", "Judaism (Yom Kippur)", "Christianity (Lent)", "Buddhism (Uposatha)"],
+      "namedModel": "The Metabolic Switch Hypothesis",
+      "figuresOfSpeech": [
+        "Fasting is not the absence of food, but the presence of focus.",
+        "When the body ceases to digest, the mind begins to discern.",
+        "We do not empty the stomach to punish the flesh; we clear the plate to quiet the noise."
+      ],
+      "visualMotif": "Interlocking geometric arches and glowing lantern motifs representing Islamic arabesque, Jewish lattice, and Christian monastic window symmetries.",
+      "dataVisualization": "Interactive animated line graph plotting liver glycogen depletion against BDNF (brain-derived neurotrophic factor) elevation and ketone levels over a 24-hour fast.",
+      "instrument": "Metabolic Window & Fasting Focus Planner",
+      "actionStep": "Select one 16-hour fasting window this week, schedule your high-focus task during hours 12–16, and track your attentional clarity.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-discipline"
+    },
+    {
+      "id": "sabbath-reset",
+      "slug": "articles/sabbath-reset.html",
+      "title": "The Sabbath Reset",
+      "hook": "One day of structural rest — not as a luxury, but as a physiological reset that pays back in six.",
+      "category": "stillness",
+      "traditions": ["Judaism", "Christianity", "Baháʼí"],
+      "namedModel": "The Recovery Debt",
+      "instrument": "Rest-window planner",
+      "actionStep": "Pick your 24-hour window in the next seven days. Set a phone reminder that says 'Rest window — no work, no catch-up.' Do it once this week. Then do it again next week.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-stillness"
+    },
+    {
+      "id": "confession-and-reconciliation",
+      "slug": "articles/confession-and-reconciliation.html",
+      "title": "The Unburdening Mechanics: Why Confession Recodes the Neural Architecture of Guilt",
+      "hook": "Translating unsaid guilt into explicit language isn't just moral catharsis—it systematically alters autobiographical memory storage and drops autonomic stress markers.",
+      "category": "connection",
+      "traditions": ["Catholicism", "Judaism", "Islam"],
+      "namedModel": "The Linguistic Recoding Model",
+      "instrument": "10-minute expressive recoding tool",
+      "actionStep": "Write down one unaddressed ethical friction using plain facts for 10 minutes, read it aloud once to complete the linguistic recoding, then destroy the transcript.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-connection"
+    },
+    {
+      "id": "breath-practices",
+      "slug": "articles/breath-practices.html",
+      "title": "The Vagal Brake: Why Breath Practices Work",
+      "hook": "You don't breathe to get oxygen. You breathe to send a memo to your nervous system.",
+      "category": "stillness",
+      "traditions": [
+        "Hinduism (Pranayama)",
+        "Buddhism (Anapanasati)",
+        "Islam (Sufi Dhikr)"
+      ],
+      "namedModel": "The Vagal Brake",
+      "instrument": "2-minute coherent breath pacer",
+      "actionStep": "Run the 2-minute Coherent Breath Pacer once today, focusing on 5.5-second inhales and exhales.",
+      "interactMinutes": 4,
+      "publishDate": "2026-08-18",
+      "status": "published",
+      "heroAccent": "cat-stillness"
+    },
+    {
       "id": "sabbath-rest-as-infrastructure",
       "slug": "articles/sabbath-rest-as-infrastructure.html",
       "title": "Rest as Infrastructure",
@@ -249,7 +260,7 @@
       "traditions": ["Judaism", "Christianity"],
       "namedModel": "The Recovery Debt",
       "interactMinutes": 5,
-      "publishDate": "2026-08-01",
+      "publishDate": "2026-08-18",
       "status": "published",
       "heroAccent": "cat-stillness"
     },
@@ -262,7 +273,7 @@
       "traditions": ["Islam", "Christianity", "Judaism", "Buddhism"],
       "namedModel": "The Costly Signal",
       "interactMinutes": 6,
-      "publishDate": "2026-08-08",
+      "publishDate": "2026-08-18",
       "status": "draft",
       "heroAccent": "cat-discipline"
     },
@@ -275,7 +286,7 @@
       "traditions": ["Christianity", "Islam", "Recovery traditions"],
       "namedModel": "The Open Loop",
       "interactMinutes": 5,
-      "publishDate": "2026-08-15",
+      "publishDate": "2026-08-18",
       "status": "draft",
       "heroAccent": "cat-connection"
     },
@@ -288,7 +299,7 @@
       "traditions": ["Islam", "Christianity", "Buddhism"],
       "namedModel": "The Forced Gift",
       "interactMinutes": 4,
-      "publishDate": null,
+      "publishDate": "2026-08-18",
       "status": "draft",
       "heroAccent": "cat-service"
     }
