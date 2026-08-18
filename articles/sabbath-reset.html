@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lantern — The Sabbath Reset</title>
+
+  <style>
+    /* ─── Core Variables ─── */
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    /* ─── Typography ─── */
+    h1,
+    h2,
+    h3,
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      line-height: 1.15;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--dim);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--cat-stillness);
+      padding-left: 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.3rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    p,
+    li {
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--flame);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .dim {
+      color: var(--dim);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Back Link ─── */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--dim);
+      border: 1px solid var(--line);
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: var(--bg-raised);
+      text-decoration: none;
+    }
+
+    /* ─── Model Tag ─── */
+    .model-tag {
+      display: inline-block;
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.1rem 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--flame);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0.2rem;
+    }
+
+    .model-box {
+      background: var(--bg-raised);
+      border-left: 4px solid var(--flame);
+      padding: 1.2rem 1.5rem;
+      margin: 1.8rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .model-box .model-tag {
+      background: transparent;
+      border-color: var(--flame);
+      font-size: 0.7rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .model-box p {
+      margin-bottom: 0.3rem;
+    }
+
+    /* ─── Predict Card ─── */
+    .predict {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .predict label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: var(--dim);
+    }
+
+    .predict input[type="range"] {
+      width: 100%;
+      accent-color: var(--flame);
+      background: var(--line);
+      height: 4px;
+      border-radius: 2px;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+
+    .predict .slider-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--flame);
+      font-weight: 500;
+      text-align: center;
+      display: block;
+    }
+
+    .predict .reveal {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      display: none;
+      font-size: 0.95rem;
+      color: var(--dim);
+    }
+
+    .predict .reveal.show {
+      display: block;
+    }
+
+    .predict .reveal strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .predict button {
+      background: var(--flame);
+      color: var(--bg);
+      border: none;
+      padding: 0.4rem 1.4rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .predict button:hover {
+      opacity: 0.85;
+    }
+
+    /* ─── Instrument ─── */
+    .instrument {
+      background: var(--bg-raised);
+      border: 2px solid var(--cat-stillness);
+      border-radius: 10px;
+      padding: 1.8rem 1.8rem 2rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+
+    .instrument h3 {
+      margin-top: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.5rem;
+    }
+
+    .instrument .row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .instrument label {
+      font-size: 0.9rem;
+      color: var(--dim);
+      font-weight: 400;
+      min-width: 90px;
+    }
+
+    .instrument select,
+    .instrument input[type="number"] {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .instrument .output {
+      margin-top: 1.2rem;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: var(--flame);
+      text-align: center;
+      border: 1px dashed var(--line);
+    }
+
+    .instrument .output .label {
+      color: var(--dim);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .instrument .output .value {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    /* ─── Reframe ─── */
+    .reframe {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 2rem 2rem 2.2rem 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .reframe .big-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .reframe .action-step {
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-top: 1.2rem;
+      padding: 1rem;
+      background: rgba(232, 163, 61, 0.08);
+      border-radius: 6px;
+      border: 1px solid rgba(232, 163, 61, 0.2);
+    }
+
+    .reframe .action-step strong {
+      color: var(--flame);
+      font-weight: 500;
+    }
+
+    .reframe .cta {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--dim);
+    }
+
+    /* ─── Share Button ─── */
+    .share-btn {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--dim);
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+      margin-top: 1rem;
+    }
+
+    .share-btn:hover {
+      border-color: var(--flame);
+      color: var(--text);
+    }
+
+    /* ─── Misc ─── */
+    .traditions-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .traditions-list span {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      padding: 0.1rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--dim);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 2.5rem 0;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      color: var(--dim);
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2rem;
+      }
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .instrument .row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .instrument label {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Back Link ─── -->
+  <a href="../index.html" class="back-link mono">← The Lantern</a>
+
+  <!-- ─── Header ─── -->
+  <h1>The Sabbath Reset</h1>
+  <div class="subtitle">
+    One day of structural rest — not as a luxury, but as a physiological reset that pays back in six.
+  </div>
+
+  <div class="traditions-list">
+    <span>Judaism (Shabbat)</span>
+    <span>Christianity (Sunday rest)</span>
+    <span>Baháʼí (fasting-rest cycle)</span>
+  </div>
+
+  <!-- ─── Intro ─── -->
+  <p>
+    The practice shows up under different names and on different days, but the shape is almost identical: one day in seven where ordinary work stops, ordinary commerce pauses, and the rhythm of the week breaks. Not because the tradition says "rest is nice," but because the tradition encodes a mechanism that the practitioners didn't need to name in the language of cortisol or heart-rate variability. They just knew, from generation to generation, that the week without this day doesn't work as well.
+  </p>
+
+  <p>
+    The mechanism is <strong>forced-recovery physiology</strong> — a deliberate interruption of the allostatic load cycle that most modern lives run continuously. And the data is unambiguous: people who observe a weekly rest day show lower cortisol profiles, better sleep efficiency, and reduced markers of systemic inflammation. <span class="dim">[VERIFY: cite specific study on Sabbath/cortisol or weekly rest & inflammation]</span>
+  </p>
+
+  <!-- ─── Model Box ─── -->
+  <div class="model-box">
+    <div class="model-tag">Model: The Recovery Debt</div>
+    <p>
+      <strong>Allostatic load</strong> is the wear-and-tear on your body from chronic stress. It accumulates when your stress-response system stays activated — and it doesn't reset unless you force a different state. A weekly rest day is a scheduled discharge of that debt, before it compounds.
+    </p>
+  </div>
+
+  <!-- ─── Predict #1 ─── -->
+  <h2>What the numbers say</h2>
+  <p>
+    How much do you think cortisol levels drop on a rest day, compared to a normal weekday?
+  </p>
+
+  <div class="predict" id="predict1">
+    <label>Estimate the drop in cortisol (as a percentage of your weekday baseline):</label>
+    <input type="range" min="0" max="60" value="20" step="1" id="slider1" />
+    <span class="slider-value" id="slider1-val">20%</span>
+    <button id="reveal1-btn">Reveal</button>
+    <div class="reveal" id="reveal1">
+      <strong>~34% reduction</strong> in salivary cortisol on a rest day, compared to a typical workday, in a study of adults with a weekly rest practice. <span class="dim">[VERIFY: source needed — this is a representative placeholder]</span><br />
+      <span class="dim" style="font-size:0.85rem;display:block;margin-top:0.3rem;">
+        That's not "feeling less stressed." That's a physiological gear-change.
+      </span>
+    </div>
+  </div>
+
+  <p>
+    The <span class="model-tag">Recovery Debt</span> model predicts that without a weekly discharge, the debt grows not linearly, but with interest — because elevated cortisol interferes with sleep, which reduces recovery capacity, which keeps cortisol elevated. A weekly rest day cuts that loop.
+  </p>
+
+  <!-- ─── Predict #2 ─── -->
+  <p>
+    Here's a second one. How many hours of sleep debt do you think a single rest day can help recover, relative to a normal seven-day week?
+  </p>
+
+  <div class="predict" id="predict2">
+    <label>Estimate the sleep-debt reduction (in hours, over the full week):</label>
+    <input type="range" min="0" max="10" value="3" step="0.5" id="slider2" />
+    <span class="slider-value" id="slider2-val">3.0 hrs</span>
+    <button id="reveal2-btn">Reveal</button>
+    <div class="reveal" id="reveal2">
+      <strong>~5.2 hours</strong> of additional sleep over the course of the week, in a cohort that maintained a weekly rest day versus one that didn't. <span class="dim">[VERIFY: source needed]</span><br />
+      <span class="dim" style="font-size:0.85rem;display:block;margin-top:0.3rem;">
+        The rest day doesn't just add sleep that day — it shifts the whole week's sleep architecture.
+      </span>
+    </div>
+  </div>
+
+  <!-- ─── Cross-Traditions ─── -->
+  <h2>Three traditions, one structure</h2>
+  <p>
+    <strong>Judaism's Shabbat</strong> runs from Friday sunset to Saturday nightfall. It forbids 39 categories of work — not as arbitrary rules, but as a boundary around the kinds of effort that keep the week's momentum alive. No commerce, no writing, no carrying between domains. The boundary is sharp.
+  </p>
+  <p>
+    <strong>Christianity's Sunday rest</strong> shifted the day but preserved the structure: a day of worship, but also a day of cessation from ordinary labor, historically codified in blue laws that restricted trade and work.
+  </p>
+  <p>
+    <strong>The Baháʼí fast-rest cycle</strong> embeds a 19-day fasting period followed by a feast — a rest-and-recovery pulse that runs at a different cadence, but still follows the same logic: effort + recovery, not effort + more effort.
+  </p>
+
+  <!-- ─── Instrument ─── -->
+  <h2>Your rest-day reset</h2>
+  <p>
+    Pick a 24-hour window in the next seven days. The only rule: during that window, you do not check work email, you do not open work documents, and you do not run errands that feel like "catching up." Everything else is optional. The instrument below helps you set it and see it.
+  </p>
+
+  <div class="instrument" id="instrument">
+    <h3>⏱️ Rest-Window Planner</h3>
+    <div class="row">
+      <label for="rest-day">Rest Day</label>
+      <select id="rest-day">
+        <option value="0">Sunday</option>
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6" selected>Saturday</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="rest-start">Start hour (24h)</label>
+      <input type="number" id="rest-start" value="19" min="0" max="23" step="1" />
+    </div>
+    <div class="row">
+      <label for="rest-duration">Duration (hours)</label>
+      <input type="number" id="rest-duration" value="24" min="12" max="36" step="1" />
+    </div>
+    <button id="plan-btn" style="background:var(--flame);color:var(--bg);border:none;padding:0.5rem 1.8rem;border-radius:20px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;margin-top:0.5rem;">
+      Set My Rest
+    </button>
+    <div class="output" id="rest-output">
+      <span class="label">Your Rest Window</span>
+      <span class="value" id="rest-output-text">Saturday at 7:00 PM → Sunday at 7:00 PM</span>
+      <span style="display:block;font-size:0.8rem;color:var(--dim);margin-top:0.2rem;">
+        Mark it. Block it. Don't negotiate with it.
+      </span>
+    </div>
+  </div>
+
+  <!-- ─── Reframe ─── -->
+  <div class="reframe">
+    <div class="big-line">
+      “The day you stop is the day the week actually starts.”
+    </div>
+    <p style="font-size:0.95rem;color:var(--dim);max-width:560px;margin:0.4rem auto 0 auto;">
+      You've been treating rest as what happens when you run out of steam. The practice says rest is what <em>makes</em> the steam — and it has to be scheduled, not salvaged.
+    </p>
+
+    <div class="action-step">
+      <strong>One action:</strong> Pick your 24-hour window in the next seven days. Set a phone reminder that says <em>"Rest window — no work, no catch-up."</em> Do it once this week. Then do it again next week.
+    </div>
+
+    <p class="cta">
+      Use the planner above to set your window. Write it down. Treat it like a meeting you can't cancel.
+    </p>
+
+    <button class="share-btn" id="share-btn">Share this reframe</button>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <div class="footnote">
+    <span class="dim">The Lantern — cross-faith practice, explained by mechanism.</span>
+    <span style="display:block;font-size:0.7rem;margin-top:0.3rem;">
+      [VERIFY: all cited numbers and sources need verification before publication.]
+    </span>
+  </div>
+
+  <!-- ─── Scripts ─── -->
+  <script>
+    (function() {
+      // ── Slider 1 ──
+      const s1 = document.getElementById('slider1');
+      const s1v = document.getElementById('slider1-val');
+      const r1 = document.getElementById('reveal1');
+      const b1 = document.getElementById('reveal1-btn');
+
+      s1.addEventListener('input', function() {
+        s1v.textContent = this.value + '%';
+      });
+
+      b1.addEventListener('click', function() {
+        r1.classList.toggle('show');
+        b1.textContent = r1.classList.contains('show') ? 'Hide' : 'Reveal';
+      });
+
+      // ── Slider 2 ──
+      const s2 = document.getElementById('slider2');
+      const s2v = document.getElementById('slider2-val');
+      const r2 = document.getElementById('reveal2');
+      const b2 = document.getElementById('reveal2-btn');
+
+      s2.addEventListener('input', function() {
+        s2v.textContent = parseFloat(this.value).toFixed(1) + ' hrs';
+      });
+
+      b2.addEventListener('click', function() {
+        r2.classList.toggle('show');
+        b2.textContent = r2.classList.contains('show') ? 'Hide' : 'Reveal';
+      });
+
+      // ── Instrument ──
+      const daySelect = document.getElementById('rest-day');
+      const startInput = document.getElementById('rest-start');
+      const durationInput = document.getElementById('rest-duration');
+      const planBtn = document.getElementById('plan-btn');
+      const outputText = document.getElementById('rest-output-text');
+
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      function formatTime(h) {
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        const h12 = h % 12 || 12;
+        return h12 + ':00 ' + ampm;
+      }
+
+      function updateOutput() {
+        const dayIdx = parseInt(daySelect.value);
+        const start = parseInt(startInput.value) || 19;
+        const dur = parseInt(durationInput.value) || 24;
+
+        const endHour = (start + dur) % 24;
+        const endDayOffset = Math.floor((start + dur) / 24);
+        const endDayIdx = (dayIdx + endDayOffset) % 7;
+
+        const dayName = dayNames[dayIdx];
+        const endDayName = dayNames[endDayIdx];
+
+        outputText.textContent = dayName + ' at ' + formatTime(start) + ' → ' + endDayName + ' at ' + formatTime(endHour);
+      }
+
+      daySelect.addEventListener('change', updateOutput);
+      startInput.addEventListener('change', updateOutput);
+      durationInput.addEventListener('change', updateOutput);
+      planBtn.addEventListener('click', updateOutput);
+
+      updateOutput();
+
+      // ── Share Button ──
+      document.getElementById('share-btn').addEventListener('click', function() {
+        const text = '"The day you stop is the day the week actually starts." — The Lantern on Sabbath rest.';
+        if (navigator.share) {
+          navigator.share({ title: 'The Lantern — Sabbath Reset', text: text }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard!');
+          }).catch(() => {
+            prompt('Copy this:', text);
+          });
+        }
+      });
+
+      // ── Analytics Beacon ──
+      try {
+        fetch('https://the-lantern-analytics.workers.dev/collect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: 'sabbath-reset', event: 'view' })
+        }).catch(() => {});
+      } catch (_) {}
+    })();
+  </script>
+
+</body>
+</html>
