@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 20-Minute Silence Reset | The Lantern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #17151C;
+            --bg-raised: #1F1C26;
+            --line: #332F3D;
+            --text: #F3EFE6;
+            --dim: #9C96A8;
+            --flame: #E8A33D;
+            --cat-stillness: #6E8CA0;
+            --cat-discipline: #C1502E;
+            --cat-connection: #C97B93;
+            --cat-service: #4F9C8C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        
+        header {
+            border-bottom: 1px solid var(--line);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 100;
+        }
+        
+        .site-nav {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        
+        .site-logo:hover {
+            color: var(--flame);
+        }
+        
+        .category-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--cat-stillness);
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .hook {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--dim);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+        
+        .hook strong {
+            color: var(--flame);
+            font-style: normal;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--flame);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .cost-section {
+            border-left: 3px solid var(--flame);
+            padding-left: 1.5rem;
+        }
+        
+        .cost-section p:first-child {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .stat-highlight {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .stat-highlight .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--flame);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-highlight .label {
+            font-size: 0.9rem;
+            color: var(--dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .tradition-box {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .tradition-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--cat-stillness);
+            margin-bottom: 0.75rem;
+        }
+        
+        .tradition-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .maxim {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--flame);
+            margin: 2.5rem 0;
+            padding: 2rem;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            line-height: 1.3;
+        }
+        
+        .instrument {
+            background: var(--bg-raised);
+            border: 2px solid var(--cat-stillness);
+            border-radius: 6px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        
+        .instrument h3 {
+            margin-top: 0;
+            color: var(--cat-stillness);
+        }
+        
+        .instrument-form {
+            margin: 1.5rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--dim);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cat-stillness);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--cat-stillness);
+            color: var(--text);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: #5a7a8c;
+        }
+        
+        .btn-primary {
+            background: var(--flame);
+            color: var(--bg);
+        }
+        
+        .btn-primary:hover {
+            background: #d49434;
+        }
+        
+        .timer-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg);
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            color: var(--flame);
+        }
+        
+        .timer-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .prediction-box {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        
+        .prediction-box h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--dim);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .reveal {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--line);
+        }
+        
+        .reveal.show {
+            display: block;
+        }
+        
+        .reveal .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--flame);
+        }
+        
+        .share-suite {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-raised);
+            border-radius: 6px;
+        }
+        
+        .share-suite h3 {
+            margin-top: 0;
+        }
+        
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .share-btn {
+            padding: 0.75rem 1.25rem;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .share-btn:hover {
+            border-color: var(--flame);
+            color: var(--flame);
+        }
+        
+        .canvas-export {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .canvas-export canvas {
+            max-width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+        }
+        
+        .dose-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .dose-card {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .dose-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--dim);
+        }
+        
+        .dose-card.too-little {
+            border-left: 3px solid #8B6F4E;
+        }
+        
+        .dose-card.too-much {
+            border-left: 3px solid #8B4E4E;
+        }
+        
+        .dose-card.just-right {
+            border-left: 3px solid var(--cat-stillness);
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .closing-instruction {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-raised);
+            border-radius: 6px;
+            margin-top: 3rem;
+            color: var(--flame);
+        }
+        
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--dim);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--flame);
+        }
+        
+        .no-js-fallback {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hook {
+                font-size: 1.25rem;
+            }
+            
+            .dose-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-display {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="site-nav">
+            <a href="https://the-lantern.hacernube.workers.dev/" class="site-logo" aria-label="The Lantern Home">The Lantern</a>
+            <span class="category-tag">Stillness</span>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>The 20-Minute Silence Reset</h1>
+            <p class="hook">Your mind won't stop running the same loops at 1 a.m. <strong>Two hours of daily silence triggers new brain cell growth</strong> — but you can feel the shift in 20 minutes. <em>Silence is not empty. It is full of answers you cannot hear while speaking.</em></p>
+
+            <section class="cost-section">
+                <p>The notification buzzes. You check it. Then another. By 3 p.m., you've switched tasks 47 times and can't remember what you started with. Your brain is drowning in noise — podcasts during commutes, music while working, scrolling before bed. The constant input has become so normal you don't notice the cost: racing thoughts at midnight, decision fatigue by afternoon, the inability to sit with your own mind for even sixty seconds without reaching for your phone.</p>
+                
+                <div class="stat-highlight">
+                    <span class="number">2 minutes</span>
+                    <span class="label">of silence lowers blood pressure more effectively than relaxing music [[64]]</span>
+                </div>
+            </section>
+
+            <section>
+                <h2>The Lever: Contemplative Silence</h2>
+                <p>You will create one 20-minute window of complete silence today. No music. No podcast. No guided meditation. Just you, sitting, in quiet. This is not meditation in the modern sense — it is <em>mauna</em>, the ancient practice of noble silence, and it works by giving your default mode network permission to reset.</p>
+
+                <div class="tradition-box">
+                    <h4>Quaker Worship (Religious Society of Friends)</h4>
+                    <p>For over 350 years, Quakers have gathered in "Meeting for Worship" — sitting together in expectant silence for an hour. No liturgy, no leader. Participants wait in what they call "openness to inspiration," tuning into each other's bodily presence without speaking [[25]]. The silence itself is the practice, not a prelude to something else.</p>
+                </div>
+
+                <div class="tradition-box">
+                    <h4>Mauna (Hindu/Buddhist Tradition)</h4>
+                    <p><em>Mauna</em> — Sanskrit for "silence" — is one of the oldest spiritual disciplines. Vipassana retreats observe "noble silence" for ten days: no talking, no eye contact, no gestures. Practitioners report that silence "conserves energy, develops will-force, and curbs the impulse of speech" [[28]], creating space to see mental patterns clearly.</p>
+                </div>
+
+                <div class="maxim">"Silence is not empty. It is full of answers you cannot hear while speaking."</div>
+            </section>
+
+            <section>
+                <h2>Why This Works: The Mechanism</h2>
+                <p>Your brain has a <strong>default mode network (DMN)</strong> — a system that activates when you're not focused on external tasks. This network handles memory consolidation, self-reflection, and meaning-making [[72]]. But constant noise keeps your DMN suppressed, preventing it from doing this essential work [[73]].</p>
+                
+                <p>When you enter silence, two things happen:</p>
+                
+                <ol>
+                    <li><strong>Cortisol drops:</strong> Just 20 minutes of quiet significantly reduces stress hormone levels [[46]]. Studies show meditation and silence interventions can reduce cortisol by measurable amounts within weeks [[45]].</li>
+                    <li><strong>Neurogenesis begins:</strong> A Duke University study found that two hours of silence daily triggered new brain cell growth in the hippocampus — the region responsible for memory and emotional regulation [[53]]. While you won't grow new cells in 20 minutes, you activate the same restorative pathway.</li>
+                </ol>
+
+                <div class="stat-highlight">
+                    <span class="number">2 hours</span>
+                    <span class="label">of daily silence triggers hippocampal neurogenesis in animal studies [[54]]</span>
+                </div>
+
+                <p>So you will sit for 20 minutes, in silence, and watch for the moment when your thoughts slow from a sprint to a walk. That is the lever engaging.</p>
+            </section>
+
+            <section class="instrument" id="instrument">
+                <h3>Run Your First Trial Now</h3>
+                <p>Commit to your 20-minute silence window. Set your intention, start the timer, and complete the trial before you sleep tonight.</p>
+
+                <div class="instrument-form">
+                    <div class="form-group">
+                        <label for="intention">What are you giving up for 20 minutes?</label>
+                        <select id="intention" required>
+                            <option value="">Select one...</option>
+                            <option value="phone">My phone (no scrolling)</option>
+                            <option value="music">Music/podcasts</option>
+                            <option value="speech">Speaking (if alone)</option>
+                            <option value="input">All external input</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="when">When will you do this today?</label>
+                        <select id="when" required>
+                            <option value="">Select a time...</option>
+                            <option value="morning">Morning (before noon)</option>
+                            <option value="afternoon">Afternoon (12-5pm)</option>
+                            <option value="evening">Evening (5-9pm)</option>
+                            <option value="tonight">Tonight (before bed)</option>
+                        </select>
+                    </div>
+
+                    <div class="prediction-box">
+                        <h4>Predict Your Result</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;">On a scale of 1-10, how restless do you expect to feel during these 20 minutes?</p>
+                        <div class="form-group">
+                            <label for="prediction">Your prediction (1-10):</label>
+                            <input type="number" id="prediction" min="1" max="10" placeholder="Enter 1-10" required>
+                        </div>
+                        <button class="btn" onclick="revealPrediction()">Reveal Research</button>
+                        <div class="reveal" id="prediction-reveal">
+                            <p class="number">Most people predict 7-8, but report 4-5 after completion.</p>
+                            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--dim);">The anticipation of silence feels harder than silence itself. A few minutes of silence significantly increased relaxation and improved mood states in controlled studies [[62]].</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Your Timer</label>
+                        <div class="timer-display" id="timer">20:00</div>
+                        <div class="timer-controls">
+                            <button class="btn btn-primary" onclick="startTimer()">Start Silence</button>
+                            <button class="btn" onclick="resetTimer()">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="completion-section" style="display: none;">
+                        <label>Mark Completion</label>
+                        <div class="form-group">
+                            <label for="actual-restlessness">How restless did you actually feel? (1-10)</label>
+                            <input type="number" id="actual-restlessness" min="1" max="10" placeholder="Enter 1-10">
+                        </div>
+                        <div class="form-group">
+                            <label for="insight">One sentence: What did you notice?</label>
+                            <textarea id="insight" rows="2" placeholder="e.g., 'My mind kept returning to tomorrow's meeting'"></textarea>
+                        </div>
+                        <button class="btn btn-primary" onclick="completeTrial()">Complete Trial</button>
+                    </div>
+
+                    <div id="success-message" style="display: none; text-align: center; padding: 2rem;">
+                        <h4 style="color: var(--cat-stillness); margin-bottom: 1rem;">Trial Complete</h4>
+                        <p style="margin-bottom: 1rem;">You've activated your default mode network's restorative pathway. Tomorrow, try 25 minutes.</p>
+                        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--dim);">Commitment saved locally.</p>
+                    </div>
+                </div>
+
+                <noscript>
+                    <div class="no-js-fallback">
+                        <h4>No JavaScript? No problem.</h4>
+                        <ol>
+                            <li>Set a 20-minute timer on your phone or watch</li>
+                            <li>Sit in complete silence (no music, no podcast, no talking)</li>
+                            <li>Notice when your mind wanders — this is the practice, not a failure</li>
+                            <li>When the timer ends, write down one observation</li>
+                            <li>Tomorrow, add 5 minutes</li>
+                        </ol>
+                    </div>
+                </noscript>
+            </section>
+
+            <section>
+                <h2>Dose and Failure Modes</h2>
+                
+                <div class="dose-grid">
+                    <div class="dose-card too-little">
+                        <h4>Too Little</h4>
+                        <p>Less than 10 minutes rarely allows the nervous system to shift out of sympathetic activation. You'll feel like you "tried silence" but won't access the DMN reset [[69]].</p>
+                    </div>
+                    
+                    <div class="dose-card just-right">
+                        <h4>Just Right</h4>
+                        <p><strong>20 minutes</strong> is the minimum effective dose for cortisol reduction [[47]]. This is your starting point. Not 60. Not 5. Twenty.</p>
+                    </div>
+                    
+                    <div class="dose-card too-much">
+                        <h4>Too Much (Day 1)</h4>
+                        <p>Attempting 2+ hours on your first day (the full neurogenesis dose [[54]]) often backfires — you'll feel overwhelmed and skip tomorrow. Build up over weeks.</p>
+                    </div>
+                </div>
+
+                <h3>How You'll Cheat (And the Recovery Move)</h3>
+                <ul>
+                    <li><strong>"I'll just check one notification."</strong> → The lever breaks. Put your phone in another room or on Do Not Disturb with emergency exceptions only.</li>
+                    <li><strong>"Silence feels uncomfortable, so I'll add soft music."</strong> → This is not silence. Discomfort is the signal that your DMN is engaging. Stay with it.</li>
+                    <li><strong>"I fell asleep."</strong> → You were sleep-deprived. Try morning silence instead of evening. The practice requires wakeful rest, not unconsciousness.</li>
+                </ul>
+
+                <div class="maxim">"Discomfort is the signal that your default mode network is engaging. Stay with it."</div>
+            </section>
+
+            <section>
+                <h2>Keep It: The Compounding Version</h2>
+                <p><strong>Day 2:</strong> Extend to 25 minutes. Notice if the first 5 minutes feel easier — your brain is learning that silence is safe.</p>
+                
+                <p><strong>Day 7:</strong> Attempt 40 minutes. At this duration, you'll likely hit a "second wind" around minute 25 where mental chatter drops significantly [[62]].</p>
+                
+                <p><strong>Week 4:</strong> If you've completed 20+ minutes daily for a month, experiment with a 2-hour block once this week — the dose shown to trigger hippocampal neurogenesis in research models [[57]].</p>
+
+                <p>The practice compounds because each silent session makes the next one easier. Your brain builds tolerance for its own company. What feels impossible today becomes your refuge in four weeks.</p>
+            </section>
+
+            <div class="maxim">"Your brain builds tolerance for its own company. What feels impossible today becomes your refuge in four weeks."</div>
+
+            <section class="share-suite">
+                <h3>Share Your Commitment</h3>
+                <p>Tell others you're running this experiment. Accountability increases completion rates.</p>
+                
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=I'm%20running%20a%2020-minute%20silence%20trial%20today.%20Two%20hours%20of%20daily%20silence%20triggers%20new%20brain%20cell%20growth%20%E2%80%94%20but%20you%20can%20feel%20the%20shift%20in%2020%20minutes.%20%23TheLantern%20%23ContemplativeSilence&url=https://the-lantern.hacernube.workers.dev/articles/contemplative-silence-reset" class="share-btn" target="_blank">Post on X</a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://the-lantern.hacernube.workers.dev/articles/contemplative-silence-reset&summary=I'm%20running%20a%2020-minute%20silence%20trial%20today.%20Research%20shows%20silence%20triggers%20neurogenesis%20and%20reduces%20cortisol." class="share-btn" target="_blank">Share on LinkedIn</a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://the-lantern.hacernube.workers.dev/articles/contemplative-silence-reset&quote=I'm%20running%20a%2020-minute%20silence%20trial%20today.%20Two%20hours%20of%20daily%20silence%20triggers%20new%20brain%20cell%20growth." class="share-btn" target="_blank">Share on Facebook</a>
+                    <a href="https://www.reddit.com/submit?title=The%2020-Minute%20Silence%20Reset%20%E2%80%94%20Contemplative%20Practice%20with%20Neuroscience&url=https://the-lantern.hacernube.workers.dev/articles/contemplative-silence-reset" class="share-btn" target="_blank">Post on Reddit</a>
+                    <a href="https://wa.me/?text=I'm%20running%20a%2020-minute%20silence%20trial%20today.%20Research%20shows%20silence%20triggers%20neurogenesis%20and%20reduces%20cortisol.%20https://the-lantern.hacernube.workers.dev/articles/contemplative-silence-reset" class="share-btn" target="_blank">Send via WhatsApp</a>
+                </div>
+
+                <div class="canvas-export">
+                    <h4 style="margin-bottom: 1rem;">Generate Your Commitment Card</h4>
+                    <canvas id="shareCanvas" width="600" height="400" style="display: none;"></canvas>
+                    <button class="btn" onclick="generateCanvas()">Generate Card</button>
+                    <button class="btn" onclick="downloadCanvas()" id="downloadBtn" style="display: none; margin-left: 0.5rem;">Download</button>
+                </div>
+            </section>
+
+            <div class="closing-instruction">
+                Sit down. Set your timer for 20 minutes. Begin before you sleep tonight.
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p><a href="https://the-lantern.hacernube.workers.dev/">The Lantern</a> — Cross-faith practices, behavioral science, usable levers.</p>
+    </footer>
+
+    <script>
+        let timerInterval;
+        let timeRemaining = 1200; // 20 minutes in seconds
+        let isRunning = false;
+
+        function revealPrediction() {
+            const prediction = document.getElementById('prediction').value;
+            if (!prediction) {
+                alert('Please enter your prediction first.');
+                return;
+            }
+            document.getElementById('prediction-reveal').classList.add('show');
+            document.getElementById('completion-section').style.display = 'block';
+        }
+
+        function startTimer() {
+            if (isRunning) return;
+            
+            const intention = document.getElementById('intention').value;
+            if (!intention) {
+                alert('Please select what you\'re giving up.');
+                return;
+            }
+            
+            const when = document.getElementById('when').value;
+            if (!when) {
+                alert('Please select when you\'ll do this.');
+                return;
+            }
+
+            isRunning = true;
+            saveCommitment(intention, when);
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    timerComplete();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeRemaining = 1200;
+            updateTimerDisplay();
+        }
+
+        function timerComplete() {
+            isRunning = false;
+            document.getElementById('timer').textContent = '00:00';
+            document.getElementById('timer').style.color = '#6E8CA0';
+            alert('Your 20 minutes are complete. Record your experience below.');
+        }
+
+        function saveCommitment(intention, when) {
+            const commitment = {
+                intention: intention,
+                when: when,
+                timestamp: new Date().toISOString(),
+                completed: false
+            };
+            localStorage.setItem('silenceCommitment', JSON.stringify(commitment));
+        }
+
+        function completeTrial() {
+            const actualRestlessness = document.getElementById('actual-restlessness').value;
+            const insight = document.getElementById('insight').value;
+            
+            if (!actualRestlessness) {
+                alert('Please rate your restlessness.');
+                return;
+            }
+
+            const commitment = JSON.parse(localStorage.getItem('silenceCommitment') || '{}');
+            commitment.completed = true;
+            completionDate: new Date().toISOString(),
+            actualRestlessness: parseInt(actualRestlessness),
+            insight: insight
+            
+            localStorage.setItem('silenceCommitment', JSON.stringify(commitment));
+            
+            document.getElementById('completion-section').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Show day-2 prompt
+            setTimeout(() => {
+                alert('Tomorrow: Try 25 minutes. Your brain is learning that silence is safe.');
+            }, 500);
+        }
+
+        function generateCanvas() {
+            const canvas = document.getElementById('shareCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#17151C';
+            ctx.fillRect(0, 0, 600, 400);
+            
+            // Border
+            ctx.strokeStyle = '#6E8CA0';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(10, 10, 580, 380);
+            
+            // Title
+            ctx.fillStyle = '#F3EFE6';
+            ctx.font = 'bold 32px "Cormorant Garamond", serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('The 20-Minute Silence Reset', 300, 80);
+            
+            // Maxim
+            ctx.fillStyle = '#E8A33D';
+            ctx.font = 'italic 24px "Cormorant Garamond", serif';
+            ctx.fillText('"Silence is not empty.', 300, 160);
+            ctx.fillText('It is full of answers you cannot', 300, 195);
+            ctx.fillText('hear while speaking."', 300, 230);
+            
+            // Stats
+            ctx.fillStyle = '#9C96A8';
+            ctx.font = '16px "JetBrains Mono", monospace';
+            ctx.fillText('2 hours daily → hippocampal neurogenesis', 300, 290);
+            ctx.fillText('20 minutes → cortisol reduction', 300, 320);
+            
+            // Footer
+            ctx.fillStyle = '#6E8CA0';
+            ctx.font = '14px "Inter", sans-serif';
+            ctx.fillText('the-lantern.hacernube.workers.dev', 300, 370);
+            
+            canvas.style.display = 'block';
+            document.getElementById('downloadBtn').style.display = 'inline-block';
+        }
+
+        function downloadCanvas() {
+            const canvas = document.getElementById('shareCanvas');
+            const link = document.createElement('a');
+            link.download = 'silence-commitment.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Load saved state on page load
+        window.onload = function() {
+            const saved = localStorage.getItem('silenceCommitment');
+            if (saved) {
+                const commitment = JSON.parse(saved);
+                if (commitment.completed) {
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('completion-section').style.display = 'none';
+                }
+            }
+        };
+    </script>
+</body>
+</html>
