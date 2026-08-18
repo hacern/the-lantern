@@ -1,0 +1,64 @@
+{
+  "site": "The Lantern",
+  "description": "Faith-inspired, cross-tradition practices for living better, healthier, and happier.",
+  "categories": {
+    "stillness": { "label": "Stillness", "description": "Practices for quieting the mind and reducing reactivity — contemplative prayer, silence, fasting, sabbath." },
+    "discipline": { "label": "Discipline", "description": "Practices that build willpower and structure through repeated, costly effort — vows, rites of restraint, ritual repetition." },
+    "connection": { "label": "Connection", "description": "Practices for binding people together — shared ritual, confession, communal meals, pilgrimage." },
+    "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
+  },
+  "articles": [
+    {
+      "id": "sabbath-rest-as-infrastructure",
+      "slug": "articles/sabbath-rest-as-infrastructure.html",
+      "title": "Rest as Infrastructure",
+      "hook": "The Sabbath wasn't a suggestion to relax. It was a weekly, non-negotiable system reset — and the research on forced recovery says it still works.",
+      "category": "stillness",
+      "traditions": ["Judaism", "Christianity"],
+      "namedModel": "The Recovery Debt",
+      "interactMinutes": 5,
+      "publishDate": "2026-08-01",
+      "status": "published",
+      "heroAccent": "cat-stillness"
+    },
+    {
+      "id": "fasting-as-a-reset-not-a-punishment",
+      "slug": "articles/fasting-as-a-reset.html",
+      "title": "The Hunger That Clarifies",
+      "hook": "Ramadan, Lent, Yom Kippur, and Buddhist fasting days all ask for the same costly thing. Here's what's actually happening in your body and attention when you say yes.",
+      "category": "discipline",
+      "traditions": ["Islam", "Christianity", "Judaism", "Buddhism"],
+      "namedModel": "The Costly Signal",
+      "interactMinutes": 6,
+      "publishDate": "2026-08-08",
+      "status": "published",
+      "heroAccent": "cat-discipline"
+    },
+    {
+      "id": "confession-and-the-open-loop",
+      "slug": "articles/confession-and-the-open-loop.html",
+      "title": "Why Saying It Out Loud Works",
+      "hook": "Catholic confession, Islamic tawbah, and 12-step 'making amends' all force the same uncomfortable act — and the psychology of unfinished business explains exactly why it works.",
+      "category": "connection",
+      "traditions": ["Christianity", "Islam", "Recovery traditions"],
+      "namedModel": "The Open Loop",
+      "interactMinutes": 5,
+      "publishDate": "2026-08-15",
+      "status": "draft",
+      "heroAccent": "cat-connection"
+    },
+    {
+      "id": "almsgiving-and-the-giver",
+      "slug": "articles/almsgiving-and-the-giver.html",
+      "title": "The Gift That Changes the Giver, Not the Receiver",
+      "hook": "Zakat, tithing, and dana all set a mandatory minimum for giving. That constraint — not the size of the gift — is what makes it change how you see yourself.",
+      "category": "service",
+      "traditions": ["Islam", "Christianity", "Buddhism"],
+      "namedModel": "The Forced Gift",
+      "interactMinutes": 4,
+      "publishDate": null,
+      "status": "draft",
+      "heroAccent": "cat-service"
+    }
+  ]
+}
