@@ -7,7 +7,73 @@
     "connection": { "label": "Connection", "description": "Practices for binding people together — shared ritual, confession, communal meals, pilgrimage." },
     "service": { "label": "Service", "description": "Practices oriented outward — almsgiving, hospitality to strangers, care for the dying, tithing." }
   },
-  "articles": [
+  "articles": [{
+  "id": "contemplative-silence-reset",
+  "slug": "articles/contemplative-silence-reset.html",
+  "title": "The 20-Minute Silence Reset",
+  "hook": "Your mind won't stop running the same loops at 1 a.m. Two hours of daily silence triggers new brain cell growth — but you can feel the shift in 20 minutes.",
+  "category": "stillness",
+  "traditions": ["Quaker Worship", "Mauna (Hindu/Buddhist)"],
+  "namedModel": "Default Mode Network Regulation",
+  "figuresOfSpeech": [
+    "Silence is not empty. It is full of answers you cannot hear while speaking.",
+    "Discomfort is the signal that your default mode network is engaging. Stay with it.",
+    "Your brain builds tolerance for its own company. What feels impossible today becomes your refuge in four weeks."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Interactive timer with prediction/reveal mechanic showing cortisol reduction timeline and neurogenesis threshold",
+  "instrument": "20-minute silence timer with commitment contract and completion tracking",
+  "actionStep": "Sit in complete silence for 20 minutes today — no music, no podcast, no phone — and notice when your thoughts slow from a sprint to a walk.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-19",
+  "status": "draft",
+  "heroAccent": "cat-stillness",
+  "verification": "skipped"
+},
+    {
+  "id": "confession-repair-loop",
+  "slug": "articles/confession-repair-loop.html",
+  "title": "The 10-Minute Micro-Confession Repair Loop",
+  "hook": "Unsent apologies cost an average of 1.4 hours of nightly rumination; sending a structured 3-part acknowledgment dissolves the open loop before sleep.",
+  "category": "connection",
+  "traditions": ["Judaism (Teshuvah)", "Christianity (Reconciliation)"],
+  "namedModel": "The Triadic Repair Framework",
+  "figuresOfSpeech": [
+    "Name the fracture to reclaim the focus.",
+    "State the cost, yield the defense.",
+    "Small confessions clear large debts."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Interactive Cortisol vs. Delay Horizon Predictor",
+  "instrument": "Micro-Confession Builder and Commitment Contract",
+  "actionStep": "Draft and send a 30-word 3-part confession to one person before midnight.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-connection",
+  "verification": "skipped"
+},{
+  "id": "restraint-of-speech-gossip-fast",
+  "slug": "articles/restraint-of-speech-gossip-fast.html",
+  "title": "The Speech Fast: 24 Hours Without Casual Judgment",
+  "hook": "You waste 40 minutes a day repairing or regretting unprompted speech. Mute the social-evaluation circuit for 24 hours to reclaim working memory.",
+  "category": "discipline",
+  "traditions": ["Buddhism (Sammā Vācā)", "Judaism (Shmirat HaLashon)"],
+  "namedModel": "The Speech Fast Protocol",
+  "figuresOfSpeech": [
+    "Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind?",
+    "Silence is not the absence of sound, but the mastery of impulse."
+  ],
+  "visualMotif": "N/A - Text Only",
+  "dataVisualization": "Interactive Cortisol & Social Evaluation Stress Curve Simulator",
+  "instrument": "24-Hour Speech Contract & Gate Log",
+  "actionStep": "Commit to a 24-hour fast from unprompted evaluation, gossip, and self-justification, logging every urge using the three-gate filter.",
+  "interactMinutes": 4,
+  "publishDate": "2026-08-18",
+  "status": "published",
+  "heroAccent": "cat-discipline",
+  "verification": "skipped"
+},
     {
   "id": "the-generosity-circuit-why-almsgiving-rewires-the-brain",
   "slug": "articles/the-generosity-circuit-why-almsgiving-rewires-the-brain.html",
