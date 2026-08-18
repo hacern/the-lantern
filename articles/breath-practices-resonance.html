@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vagal Brake: Why Breath Practices Work | The Lantern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17151C;
+      --bg-raised: #1F1C26;
+      --line: #332F3D;
+      --text: #F3EFE6;
+      --dim: #9C96A8;
+      --flame: #E8A33D;
+      --cat-stillness: #6E8CA0;
+      --cat-discipline: #C1502E;
+      --cat-connection: #C97B93;
+      --cat-service: #4F9C8C;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.2; }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--cat-stillness); }
+    h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    p { margin-bottom: 1.25rem; color: var(--text); }
+    .back-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--dim);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--flame); }
+    .hook {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--dim);
+      font-style: italic;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--cat-stillness);
+      padding-left: 1rem;
+    }
+    .model-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--bg);
+      border: 1px solid var(--flame);
+      color: var(--flame);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin: 0 0.25rem;
+    }
+    .predict {
+      background: var(--bg-raised);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .predict-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .predict-input {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .predict-btn {
+      background: var(--cat-stillness);
+      color: var(--bg);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .predict-btn:hover { opacity: 0.9; }
+    .predict-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .predict-reveal {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--flame);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .instrument {
+      background: var(--bg-raised);
+      border: 1px solid var(--cat-stillness);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .pacer-visual {
+      width: 200px;
+      height: 200px;
+      margin: 2rem auto;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pacer-circle {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: var(--cat-stillness);
+      border-radius: 50%;
+      opacity: 0.3;
+      transition: transform 1s linear;
+    }
+    .pacer-text {
+      position: relative;
+      z-index: 2;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .pacer-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .btn-primary {
+      background: var(--flame);
+      color: var(--bg);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--dim);
+      border: 1px solid var(--line);
+      padding: 0.75rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-secondary:disabled { opacity: 0.3; cursor: not-allowed; }
+    .pacer-fallback {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+    .reframe {
+      background: var(--bg-raised);
+      border: 1px solid var(--flame);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 3rem 0;
+      position: relative;
+    }
+    .reframe h3 { color: var(--flame); margin-bottom: 1rem; }
+    .reframe p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .action-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 3px solid var(--cat-stillness);
+      margin-bottom: 1.5rem;
+    }
+    .share-btn {
+      background: transparent;
+      color: var(--cat-stillness);
+      border: 1px solid var(--cat-stillness);
+      padding: 0.6rem 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { background: var(--cat-stillness); color: var(--bg); }
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--dim);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">← Back to The Lantern</a>
+
+  <h1>The Vagal Brake: Why Breath Practices Work</h1>
+  <p class="hook">You don't need to clear your mind to find calm. You just need to breathe at 5.5 cycles per minute.</p>
+
+  <p>Across distinct religious traditions, structured breath practice is a cornerstone of spiritual discipline. In Hindu yoga, <em>Sama Vritti</em> pranayama uses equal-ratio breathing to steady the mind [[33]]. In Buddhism, <em>Ānāpānasati</em> (mindfulness of breathing) serves as the foundational anchor for meditation [[17]]. In Sufism, practitioners coordinate <em>Dam</em> (breath control) with <em>Dhikr</em> (remembrance), using the rhythm of inhalation and exhalation to quiet the ego [[11]].</p>
+
+  <p>These traditions do not share a single theology, but they converge on a single physical action: slowing and structuring the breath. Modern physiology now explains why this specific action is so universally effective. It is not mystical hand-waving. It is a direct mechanical intervention in the autonomic nervous system.</p>
+
+  <div class="predict">
+    <span class="predict-label">Predict Before You Reveal</span>
+    <p>Guess the optimal breathing rate (in breaths per minute) to maximize Heart Rate Variability (HRV) and trigger the body's relaxation response.</p>
+    <input type="number" class="predict-input" placeholder="Enter a number (e.g., 12)" min="1" max="30">
+    <button class="predict-btn">Reveal Answer</button>
+    <div class="predict-reveal">
+      Most people guess 10–15, which is the average resting rate. Research shows the actual optimal rate for maximizing HRV is approximately 5.5 breaths per minute [[44]].
+    </div>
+  </div>
+
+  <h2>The Mechanism</h2>
+  <p>This is where we engage <span class="model-tag">The Vagal Brake Model</span>. The vagus nerve is the main component of the parasympathetic nervous system, responsible for rest and digestion. It acts as a physical brake on your heart rate. </p>
+  
+  <p>When you breathe slowly, particularly at a specific rate, you maximize "respiratory sinus arrhythmia." This is the natural, healthy fluctuation where your heart rate speeds up slightly on the inhale and slows down on the exhale. By deliberately pacing your breath, you synchronize your cardiovascular and respiratory systems, sending a direct signal to your brain that you are safe.</p>
+
+  <div class="predict">
+    <span class="predict-label">Predict Before You Reveal</span>
+    <p>How many minutes of resonance breathing does it take to see a measurable, acute shift in your heart rate variability?</p>
+    <input type="number" class="predict-input" placeholder="Enter minutes (e.g., 20)" min="1" max="60">
+    <button class="predict-btn">Reveal Answer</button>
+    <div class="predict-reveal">
+      As little as 5 minutes. While long-term practice builds lasting resilience, a single 5-minute session is enough to synchronize heart rate and respiration, producing an immediate, measurable shift in your nervous system state [[43]].
+    </div>
+  </div>
+
+  <h2>The Instrument</h2>
+  <p>Understanding <span class="model-tag">The Vagal Brake Model</span> is only useful if you apply it. The tool below operationalizes the research. It removes the guesswork of pacing and timing.</p>
+
+  <div class="instrument" id="breath-pacer">
+    <h3>5-Minute Resonance Pacer</h3>
+    <p style="color: var(--dim); font-size: 0.95rem;">Inhale as the circle expands (5 seconds). Exhale as it contracts (6 seconds).</p>
+    
+    <div class="pacer-visual">
+      <div class="pacer-circle" id="pacer-circle"></div>
+      <div class="pacer-text" id="pacer-text">Ready</div>
+    </div>
+    
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; margin-bottom: 1rem; color: var(--text);" id="timer-display">0:00</div>
+
+    <div class="pacer-controls">
+      <button id="start-btn" class="btn-primary">Start 5-Minute Session</button>
+      <button id="reset-btn" class="btn-secondary" disabled>Reset</button>
+    </div>
+
+    <div class="pacer-fallback">
+      <strong>No JavaScript?</strong> Breathe in for 5 seconds, out for 6 seconds. Repeat 27 times (approximately 5 minutes).
+    </div>
+  </div>
+
+  <div class="reframe">
+    <h3>The Perspective Shift</h3>
+    <p>You are not trying to "clear your mind." You are physically tuning an instrument. The vagus nerve does not respond to good intentions; it responds to rhythm. This physiological tuning does not replace the sacred intent of these practices; it is the biological architecture that allows the sacred intent to take root.</p>
+    
+    <div class="action-step">
+      <strong>Your Action:</strong> Spend 5 minutes today breathing at a 5.5 breaths-per-minute pace (5 seconds in, 6 seconds out) using the embedded pacer.
+    </div>
+
+    <button id="share-btn" class="share-btn">Share Reframe</button>
+  </div>
+
+  <footer>
+    <p>The Lantern — Practical wisdom, mechanism shown.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Predict cards logic
+      document.querySelectorAll('.predict').forEach(card => {
+        const input = card.querySelector('.predict-input');
+        const reveal = card.querySelector('.predict-reveal');
+        const btn = card.querySelector('.predict-btn');
+        if(btn) {
+          btn.addEventListener('click', () => {
+            reveal.style.display = 'block';
+            input.disabled = true;
+            btn.disabled = true;
+            btn.textContent = 'Revealed';
+          });
+        }
+      });
+
+      // Pacer logic
+      const pacerCircle = document.getElementById('pacer-circle');
+      const pacerText = document.getElementById('pacer-text');
+      const startBtn = document.getElementById('start-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      const timerDisplay = document.getElementById('timer-display');
+
+      let intervalId = null;
+      let totalTime = 0;
+      const sessionDuration = 300; // 5 minutes in seconds
+
+      function updatePacer() {
+        const cycleTime = 11; // 5s inhale, 6s exhale = 5.45 breaths/min
+        const elapsedInCycle = totalTime % cycleTime;
+        
+        if (elapsedInCycle < 5) {
+          const progress = elapsedInCycle / 5;
+          pacerCircle.style.transform = `scale(${1 + (0.6 * progress)})`;
+          pacerText.textContent = "Inhale";
+        } else {
+          const progress = (elapsedInCycle - 5) / 6;
+          pacerCircle.style.transform = `scale(${1.6 - (0.6 * progress)})`;
+          pacerText.textContent = "Exhale";
+        }
+        
+        const mins = Math.floor(totalTime / 60);
+        const secs = totalTime % 60;
+        if(timerDisplay) {
+          timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        totalTime++;
+        
+        if (totalTime >= sessionDuration) {
+          clearInterval(intervalId);
+          pacerText.textContent = "Complete";
+          pacerCircle.style.transform = "scale(1)";
+          startBtn.disabled = true;
+          resetBtn.disabled = false;
+          if(timerDisplay) timerDisplay.textContent = "5:00";
+        }
+      }
+
+      if(startBtn) {
+        startBtn.addEventListener('click', () => {
+          totalTime = 0;
+          startBtn.disabled = true;
+          resetBtn.disabled = false;
+          updatePacer();
+          intervalId = setInterval(updatePacer, 1000);
+        });
+      }
+
+      if(resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          clearInterval(intervalId);
+          totalTime = 0;
+          pacerCircle.style.transform = "scale(1)";
+          pacerText.textContent = "Ready";
+          if(timerDisplay) timerDisplay.textContent = "0:00";
+          startBtn.disabled = false;
+          resetBtn.disabled = true;
+        });
+      }
+
+      // Share button
+      const shareBtn = document.getElementById('share-btn');
+      if(shareBtn) {
+        shareBtn.addEventListener('click', () => {
+          const text = "You are not trying to 'clear your mind.' You are physically tuning an instrument. The vagus nerve does not respond to good intentions; it responds to rhythm. — The Lantern";
+          if (navigator.share) {
+            navigator.share({ title: 'The Vagal Brake', text: text, url: window.location.href }).catch(() => {});
+          } else {
+            navigator.clipboard.writeText(text).then(() => {
+              shareBtn.textContent = 'Copied!';
+              setTimeout(() => { shareBtn.textContent = 'Share Reframe'; }, 2000);
+            });
+          }
+        });
+      }
+
+      // Analytics beacon
+      try {
+        fetch('https://the-lantern-analytics.lantern.workers.dev/collect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: 'breath-practices-resonance', event: 'view' })
+        });
+      } catch (e) {
+        // Fail silently, never block render
+      }
+    });
+  </script>
+</body>
+</html>
